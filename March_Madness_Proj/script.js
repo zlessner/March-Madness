@@ -330,7 +330,8 @@ total
 
 //if number is less than champ[0], pick champ[0], else if between champ[0] and champ [1], pick champ 1...
 
-winners=[]
+//count number of times 1 team was picked
+//for (var i=0; i<200; i++) {
 winnerArray=[]
 
 function chooseWinner() {
@@ -352,7 +353,7 @@ for (var i=0; i<champ.length;i++) {
 
 chooseWinner()
 console.log(winnerArray)
-
+//}
 
 
 //count number of times Duke was picked
