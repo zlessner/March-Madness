@@ -1,3 +1,54 @@
+let body=document.querySelector("body")
+let empty=document.querySelector(".empty")
+let fiveThreeEight=document.querySelector(".fiveThreeEight")
+let teams=document.querySelector(".teams")
+let popPicks=document.querySelector(".popPicks")
+var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+fiveThirtyEightURL = 'https://marchmadnessapi.herokuapp.com/api/538Tournament'
+teamsURL='https://marchmadnessapi.herokuapp.com/'
+popPicksURL='https://marchmadnessapi.herokuapp.com/api/popPicksTournament'
+
+
+fiveThreeEight.addEventListener("click", function() { load538('fiveThree')});
+teams.addEventListener("click", function() { load538('teams')});
+popPicks.addEventListener("click", function() { load538('popPick')});
+
+
+ function load538(x,y) {
+     if (x=='teams') {
+        y=teamsURL
+     }
+     if (x=='popPick') {
+        y=popPicksURL
+     }
+     if (x=='fiveThree') {
+        y=fiveThirtyEightURL
+     }
+    fetch(
+        proxyUrl + y) 
+    .then(blob => blob.json())
+    
+    .then(json => {
+        scraping = JSON.stringify(json, null, 2);
+        console.log(scraping)
+        console.log(json)
+        empty.innerHTML=scraping
+        let silverData = json[0].Bracket
+        console.log(silverData)
+        return json;
+        
+
+    })
+    .catch(e => {
+      console.log(e);
+      return e;
+    });
+ }
+
+
+
+
+
 let entryFee=5
 let participants=150
 let pot=entryFee*participants
