@@ -11,16 +11,36 @@ popPicksURL='https://marchmadnessapi.herokuapp.com/api/popPicksTournament'
 
 fiveThreeEight.addEventListener("click", function() { load538('fiveThree')});
 teams.addEventListener("click", function() { load538('teams')});
-popPicks.addEventListener("click", function() { load538('popPick')});
+//popPicks.addEventListener("click", function() { load538('popPick')});
+
+popPicks.addEventListener("click", function() { loadpopPicks()});
+
+//click PopPicks button first now to load in pop picks API before clicking on FiveThirtyEight
+
+function loadpopPicks() {
+   fetch(
+       proxyUrl + popPicksURL) 
+   .then(woof => woof.json())
+   
+   .then(YCST => {
+       write = JSON.stringify(YCST, null, 2);
+       console.log(write)
+       console.log(YCST)
+       yahooData = YCST[0].Bracket
+       console.log(yahooData)
+       console.log(yahooData.length)
+       empty.innerHTML=write //worked bofore with yahooData (just displayed object[object])
+   })
+}
 
 
  function load538(x,y) {
      if (x=='teams') {
         y=teamsURL
      }
-     if (x=='popPick') {
-        y=popPicksURL
-     }
+     //if (x=='popPick') {
+       // y=popPicksURL
+     //}
      if (x=='fiveThree') {
         y=fiveThirtyEightURL
      }
@@ -87,8 +107,7 @@ popPicks.addEventListener("click", function() { load538('popPick')});
             {bonus:0}
         ]
         
-        
-        
+             
         console.log(silverData[0].Round6)
         
         //track if silverData picks entered in correctly
@@ -138,88 +157,13 @@ popPicks.addEventListener("click", function() { load538('popPick')});
             }
         
             console.log(round1OddsTrack)
-        
-        
+              
          }
-        
-        
+             
          fiveThirtyEightValidOdds()
         
         
-        
-        
-        
-        let popularPicks = [
-        
-            {Team:"	Duke	" ,Seed:	1	 ,Region:"	East	" ,Round1:	0.994	 ,Round2:	0.977	 ,Round3:	0.932	 ,Round4:	0.768	 ,Round5:	0.629	 ,Round6:	0.461	},
-        {Team:"	Virginia	" ,Seed:	1	 ,Region:"	South	" ,Round1:	0.985	 ,Round2:	0.934	 ,Round3:	0.799	 ,Round4:	0.445	 ,Round5:	0.182	 ,Round6:	0.067	},
-        {Team:"	Gonzaga	" ,Seed:	1	 ,Region:"	West	" ,Round1:	0.988	 ,Round2:	0.879	 ,Round3:	0.704	 ,Round4:	0.462	 ,Round5:	0.146	 ,Round6:	0.09	},
-        {Team:"	North Carolina	" ,Seed:	1	 ,Region:"	Midwest	" ,Round1:	0.985	 ,Round2:	0.959	 ,Round3:	0.843	 ,Round4:	0.624	 ,Round5:	0.449	 ,Round6:	0.164	},
-        {Team:"	Michigan State	" ,Seed:	2	 ,Region:"	East	" ,Round1:	0.982	 ,Round2:	0.888	 ,Round3:	0.734	 ,Round4:	0.166	 ,Round5:	0.098	 ,Round6:	0.047	},
-        {Team:"	Kentucky	" ,Seed:	2	 ,Region:"	Midwest	" ,Round1:	0.982	 ,Round2:	0.902	 ,Round3:	0.684	 ,Round4:	0.228	 ,Round5:	0.136	 ,Round6:	0.042	},
-        {Team:"	Tennessee	" ,Seed:	2	 ,Region:"	South	" ,Round1:	0.973	 ,Round2:	0.855	 ,Round3:	0.622	 ,Round4:	0.349	 ,Round5:	0.115	 ,Round6:	0.033	},
-        {Team:"	Michigan	" ,Seed:	2	 ,Region:"	West	" ,Round1:	0.981	 ,Round2:	0.833	 ,Round3:	0.615	 ,Round4:	0.295	 ,Round5:	0.061	 ,Round6:	0.029	},
-        {Team:"	Texas Tech	" ,Seed:	3	 ,Region:"	West	" ,Round1:	0.953	 ,Round2:	0.688	 ,Round3:	0.242	 ,Round4:	0.091	 ,Round5:	0.013	 ,Round6:	0.005	},
-        {Team:"	Purdue	" ,Seed:	3	 ,Region:"	South	" ,Round1:	0.911	 ,Round2:	0.477	 ,Round3:	0.158	 ,Round4:	0.062	 ,Round5:	0.015	 ,Round6:	0.004	},
-        {Team:"	Virginia Tech	" ,Seed:	4	 ,Region:"	East	" ,Round1:	0.898	 ,Round2:	0.695	 ,Round3:	0.043	 ,Round4:	0.015	 ,Round5:	0.005	 ,Round6:	0.002	},
-        {Team:"	Auburn	" ,Seed:	5	 ,Region:"	Midwest	" ,Round1:	0.819	 ,Round2:	0.407	 ,Round3:	0.054	 ,Round4:	0.022	 ,Round5:	0.009	 ,Round6:	0.003	},
-        {Team:"	Houston	" ,Seed:	3	 ,Region:"	Midwest	" ,Round1:	0.93	 ,Round2:	0.641	 ,Round3:	0.201	 ,Round4:	0.058	 ,Round5:	0.022	 ,Round6:	0.006	},
-        {Team:"	Florida State	" ,Seed:	4	 ,Region:"	West	" ,Round1:	0.913	 ,Round2:	0.623	 ,Round3:	0.179	 ,Round4:	0.074	 ,Round5:	0.011	 ,Round6:	0.004	},
-        {Team:"	Kansas	" ,Seed:	4	 ,Region:"	Midwest	" ,Round1:	0.91	 ,Round2:	0.52	 ,Round3:	0.077	 ,Round4:	0.033	 ,Round5:	0.017	 ,Round6:	0.006	},
-        {Team:"	Iowa State	" ,Seed:	6	 ,Region:"	Midwest	" ,Round1:	0.722	 ,Round2:	0.255	 ,Round3:	0.059	 ,Round4:	0.011	 ,Round5:	0.004	 ,Round6:	0.001	},
-        {Team:"	Wisconsin	" ,Seed:	5	 ,Region:"	South	" ,Round1:	0.6	 ,Round2:	0.319	 ,Round3:	0.06	 ,Round4:	0.018	 ,Round5:	0.005	 ,Round6:	0.002	},
-        {Team:"	Villanova	" ,Seed:	6	 ,Region:"	South	" ,Round1:	0.81	 ,Round2:	0.453	 ,Round3:	0.156	 ,Round4:	0.066	 ,Round5:	0.019	 ,Round6:	0.006	},
-        {Team:"	Kansas State	" ,Seed:	4	 ,Region:"	South	" ,Round1:	0.789	 ,Round2:	0.43	 ,Round3:	0.078	 ,Round4:	0.025	 ,Round5:	0.005	 ,Round6:	0.002	},
-        {Team:"	Louisiana State	" ,Seed:	3	 ,Region:"	East	" ,Round1:	0.848	 ,Round2:	0.594	 ,Round3:	0.161	 ,Round4:	0.026	 ,Round5:	0.01	 ,Round6:	0.004	},
-        {Team:"	Cincinnati	" ,Seed:	7	 ,Region:"	South	" ,Round1:	0.643	 ,Round2:	0.095	 ,Round3:	0.035	 ,Round4:	0.01	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Louisville	" ,Seed:	7	 ,Region:"	East	" ,Round1:	0.677	 ,Round2:	0.083	 ,Round3:	0.042	 ,Round4:	0.006	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Nevada	" ,Seed:	7	 ,Region:"	West	" ,Round1:	0.485	 ,Round2:	0.096	 ,Round3:	0.042	 ,Round4:	0.011	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Maryland	" ,Seed:	6	 ,Region:"	East	" ,Round1:	0.69	 ,Round2:	0.254	 ,Round3:	0.04	 ,Round4:	0.005	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Buffalo	" ,Seed:	6	 ,Region:"	West	" ,Round1:	0.788	 ,Round2:	0.255	 ,Round3:	0.062	 ,Round4:	0.014	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Mississippi State	" ,Seed:	5	 ,Region:"	East	" ,Round1:	0.76	 ,Round2:	0.229	 ,Round3:	0.009	 ,Round4:	0.003	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Marquette	" ,Seed:	5	 ,Region:"	West	" ,Round1:	0.578	 ,Round2:	0.23	 ,Round3:	0.041	 ,Round4:	0.013	 ,Round5:	0.003	 ,Round6:	0.001	},
-        {Team:"	Wofford	" ,Seed:	7	 ,Region:"	Midwest	" ,Round1:	0.522	 ,Round2:	0.059	 ,Round3:	0.021	 ,Round4:	0.005	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Syracuse	" ,Seed:	8	 ,Region:"	West	" ,Round1:	0.64	 ,Round2:	0.091	 ,Round3:	0.044	 ,Round4:	0.019	 ,Round5:	0.003	 ,Round6:	0.002	},
-        {Team:"	Florida	" ,Seed:	10	 ,Region:"	West	" ,Round1:	0.512	 ,Round2:	0.063	 ,Round3:	0.026	 ,Round4:	0.006	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Ohio State	" ,Seed:	11	 ,Region:"	Midwest	" ,Round1:	0.272	 ,Round2:	0.083	 ,Round3:	0.015	 ,Round4:	0.005	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Oklahoma	" ,Seed:	9	 ,Region:"	South	" ,Round1:	0.553	 ,Round2:	0.037	 ,Round3:	0.018	 ,Round4:	0.003	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Iowa	" ,Seed:	10	 ,Region:"	South	" ,Round1:	0.351	 ,Round2:	0.037	 ,Round3:	0.01	 ,Round4:	0.004	 ,Round5:	0.002	 ,Round6:	0.002	},
-        {Team:"	Belmont	" ,Seed:	11	 ,Region:"	East	" ,Round1:	0.308	 ,Round2:	0.109	 ,Round3:	0.007	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Arizona State	" ,Seed:	11	 ,Region:"	West	" ,Round1:	0.209	 ,Round2:	0.041	 ,Round3:	0.006	 ,Round4:	0.002	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Oregon	" ,Seed:	12	 ,Region:"	South	" ,Round1:	0.394	 ,Round2:	0.185	 ,Round3:	0.026	 ,Round4:	0.007	 ,Round5:	0.002	 ,Round6:	0.001	},
-        {Team:"	Seton Hall	" ,Seed:	10	 ,Region:"	Midwest	" ,Round1:	0.471	 ,Round2:	0.031	 ,Round3:	0.011	 ,Round4:	0.002	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Saint Mary's (CA)	" ,Seed:	11	 ,Region:"	South	" ,Round1:	0.184	 ,Round2:	0.051	 ,Round3:	0.009	 ,Round4:	0.002	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Utah State	" ,Seed:	8	 ,Region:"	Midwest	" ,Round1:	0.53	 ,Round2:	0.016	 ,Round3:	0.006	 ,Round4:	0.002	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Mississippi	" ,Seed:	8	 ,Region:"	South	" ,Round1:	0.441	 ,Round2:	0.021	 ,Round3:	0.007	 ,Round4:	0.002	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Virginia Commonwealth	" ,Seed:	8	 ,Region:"	East	" ,Round1:	0.403	 ,Round2:	0.008	 ,Round3:	0.003	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Washington	" ,Seed:	9	 ,Region:"	Midwest	" ,Round1:	0.464	 ,Round2:	0.017	 ,Round3:	0.007	 ,Round4:	0.003	 ,Round5:	0.001	 ,Round6:	0.001	},
-        {Team:"	Minnesota	" ,Seed:	10	 ,Region:"	East	" ,Round1:	0.321	 ,Round2:	0.022	 ,Round3:	0.007	 ,Round4:	0.001	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Murray State	" ,Seed:	12	 ,Region:"	West	" ,Round1:	0.419	 ,Round2:	0.122	 ,Round3:	0.016	 ,Round4:	0.005	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Central Florida	" ,Seed:	9	 ,Region:"	East	" ,Round1:	0.596	 ,Round2:	0.011	 ,Round3:	0.005	 ,Round4:	0.001	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	New Mexico State	" ,Seed:	12	 ,Region:"	Midwest	" ,Round1:	0.175	 ,Round2:	0.051	 ,Round3:	0.004	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Baylor	" ,Seed:	9	 ,Region:"	West	" ,Round1:	0.357	 ,Round2:	0.025	 ,Round3:	0.01	 ,Round4:	0.004	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Vermont	" ,Seed:	13	 ,Region:"	West	" ,Round1:	0.084	 ,Round2:	0.021	 ,Round3:	0.003	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Northeastern	" ,Seed:	13	 ,Region:"	Midwest	" ,Round1:	0.084	 ,Round2:	0.017	 ,Round3:	0.003	 ,Round4:	0.001	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Liberty	" ,Seed:	12	 ,Region:"	East	" ,Round1:	0.238	 ,Round2:	0.041	 ,Round3:	0.002	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	UC-Irvine	" ,Seed:	13	 ,Region:"	South	" ,Round1:	0.205	 ,Round2:	0.06	 ,Round3:	0.007	 ,Round4:	0.002	 ,Round5:	0.001	 ,Round6:	0	},
-        {Team:"	Yale	" ,Seed:	14	 ,Region:"	East	" ,Round1:	0.151	 ,Round2:	0.04	 ,Round3:	0.006	 ,Round4:	0.002	 ,Round5:	0.001	 ,Round6:	0.001	},
-        {Team:"	Northern Kentucky	" ,Seed:	14	 ,Region:"	West	" ,Round1:	0.045	 ,Round2:	0.013	 ,Round3:	0.003	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Saint Louis	" ,Seed:	13	 ,Region:"	East	" ,Round1:	0.1	 ,Round2:	0.033	 ,Round3:	0.002	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Old Dominion	" ,Seed:	14	 ,Region:"	South	" ,Round1:	0.083	 ,Round2:	0.014	 ,Round3:	0.003	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Georgia State	" ,Seed:	14	 ,Region:"	Midwest	" ,Round1:	0.064	 ,Round2:	0.015	 ,Round3:	0.003	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Montana	" ,Seed:	15	 ,Region:"	West	" ,Round1:	0.016	 ,Round2:	0.005	 ,Round3:	0.002	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Colgate	" ,Seed:	15	 ,Region:"	South	" ,Round1:	0.021	 ,Round2:	0.008	 ,Round3:	0.004	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Bradley	" ,Seed:	15	 ,Region:"	East	" ,Round1:	0.017	 ,Round2:	0.006	 ,Round3:	0.002	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Gardner-Webb	" ,Seed:	16	 ,Region:"	South	" ,Round1:	0.01	 ,Round2:	0.004	 ,Round3:	0.002	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Abilene Christian	" ,Seed:	15	 ,Region:"	Midwest	" ,Round1:	0.012	 ,Round2:	0.005	 ,Round3:	0.002	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Iona	" ,Seed:	16	 ,Region:"	Midwest	" ,Round1:	0.009	 ,Round2:	0.004	 ,Round3:	0.002	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	North Dakota State	" ,Seed:	16	 ,Region:"	East	" ,Round1:	0.006	 ,Round2:	0.002	 ,Round3:	0.001	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	},
-        {Team:"	Fairleigh Dickinson	" ,Seed:	16	 ,Region:"	West	" ,Round1:	0.01	 ,Round2:	0.003	 ,Round3:	0.002	 ,Round4:	0.001	 ,Round5:	0	 ,Round6:	0	}
-                
-            ]
-        
-        
-            console.log(popularPicks[0].Round6)
+            console.log(yahooData[0].Round6)
         
         //track if popular picks entered in correctly
         
@@ -232,13 +176,13 @@ popPicks.addEventListener("click", function() { load538('popPick')});
         let round6OddsTrackPop=0
         
         function popPicksValidOdds () {
-            for (var i=0; i<popularPicks.length; i++) {
-                round1OddsTrackPop=round1OddsTrackPop+popularPicks[i].Round1
-                round2OddsTrackPop=round2OddsTrackPop+popularPicks[i].Round2
-                round3OddsTrackPop=round3OddsTrackPop+popularPicks[i].Round3
-                round4OddsTrackPop=round4OddsTrackPop+popularPicks[i].Round4
-                round5OddsTrackPop=round5OddsTrackPop+popularPicks[i].Round5
-                round6OddsTrackPop=round6OddsTrackPop+popularPicks[i].Round6
+            for (var i=0; i<yahooData.length; i++) {
+                round1OddsTrackPop=round1OddsTrackPop+yahooData[i].Round1
+                round2OddsTrackPop=round2OddsTrackPop+yahooData[i].Round2
+                round3OddsTrackPop=round3OddsTrackPop+yahooData[i].Round3
+                round4OddsTrackPop=round4OddsTrackPop+yahooData[i].Round4
+                round5OddsTrackPop=round5OddsTrackPop+yahooData[i].Round5
+                round6OddsTrackPop=round6OddsTrackPop+yahooData[i].Round6
             }
         
                 if (round1OddsTrackPop<31.5 || round1OddsTrackPop>32.5) {
@@ -269,8 +213,7 @@ popPicks.addEventListener("click", function() { load538('popPick')});
             console.log(round1OddsTrackPop)
         
          }
-        
-        
+             
          popPicksValidOdds()
         
         
@@ -281,16 +224,15 @@ popPicks.addEventListener("click", function() { load538('popPick')});
             console.count(Math.random() <= roundOdds)
         };
         
-        probability(popularPicks[0].Round6)
+        probability(yahooData[0].Round6)
         
-        
-        
+               
         var champ=[]
         var total=0
         function champion() {
-        for(var i=0; i<popularPicks.length; i++) {
-            champ.push((popularPicks[i].Round6))
-            total=total+popularPicks[i].Round6
+        for(var i=0; i<yahooData.length; i++) {
+            champ.push((yahooData[i].Round6))
+            total=total+yahooData[i].Round6
         }
         }
         
@@ -314,7 +256,7 @@ popPicks.addEventListener("click", function() { load538('popPick')});
                
         for (var i=0; i<champ.length;i++) {
             if(Math.random() <= champ[i]) {
-                winnerArray.push(popularPicks[i].Team)
+                winnerArray.push(yahooData[i].Team)
             
             if (winnerArray.length>1) {
                 winnerArray=[]
@@ -334,10 +276,6 @@ popPicks.addEventListener("click", function() { load538('popPick')});
         
         
         //use filter method or for each or for loop to eliminate teams that can't possbily advance now that winner is set  
-        
-        
-        
-        
         
         
         return json;
