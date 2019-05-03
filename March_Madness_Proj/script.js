@@ -9,11 +9,24 @@ teamsURL='https://marchmadnessapi.herokuapp.com/'
 popPicksURL='https://marchmadnessapi.herokuapp.com/api/popPicksTournament'
 
 
-fiveThreeEight.addEventListener("click", function() { load538('fiveThree')});
-teams.addEventListener("click", function() { load538('teams')});
-//popPicks.addEventListener("click", function() { load538('popPick')});
 
-popPicks.addEventListener("click", function() { loadpopPicks()});
+teams.addEventListener("click", function() {loadTeams()});
+
+function loadTeams() {
+    fetch(
+        proxyUrl + teamsURL) 
+    .then(list => list.json())
+    
+    .then(pool => {
+        outcome = JSON.stringify(pool, null, 2);
+        console.log(outcome)
+        //console.log(pool)
+        bracketData = pool[0].Bracket
+        empty.innerHTML=outcome 
+    })
+ }
+
+popPicks.addEventListener("click", function() {loadpopPicks()});
 
 //click PopPicks button first now to load in pop picks API before clicking on FiveThirtyEight
 
@@ -25,33 +38,29 @@ function loadpopPicks() {
    .then(YCST => {
        write = JSON.stringify(YCST, null, 2);
        console.log(write)
-       console.log(YCST)
        yahooData = YCST[0].Bracket
        console.log(yahooData)
-       console.log(yahooData.length)
-       empty.innerHTML=write //worked bofore with yahooData (just displayed object[object])
+
+       for (var i=0; i<yahooData.length; i++) {
+        teamList=yahooData[i].Team
+       console.log(teamList)
+       start = document.createElement('p');
+       start.innerHTML=teamList
+       empty.appendChild(start);
+       }
+
    })
 }
 
-
- function load538(x,y) {
-     if (x=='teams') {
-        y=teamsURL
-     }
-     //if (x=='popPick') {
-       // y=popPicksURL
-     //}
-     if (x=='fiveThree') {
-        y=fiveThirtyEightURL
-     }
+fiveThreeEight.addEventListener("click", function() {load538('fiveThree')});
+ function load538() {
     fetch(
-        proxyUrl + y) 
+        proxyUrl + fiveThirtyEightURL) 
     .then(blob => blob.json())
     
     .then(json => {
         scraping = JSON.stringify(json, null, 2);
         console.log(scraping)
-        console.log(json)
         silverData = json[0].Bracket
         console.log(silverData)
         console.log(silverData.length)
