@@ -84,6 +84,7 @@ function load538() {
 
 
            //track if fivethirtyEightData picks entered in correctly
+           //run standings of 150 or so partcipants over and over for a large sample of times to find out the bracket that usually places highest
 
 
            let round1OddsTrack = 0
@@ -139,6 +140,11 @@ function load538() {
 
 
            firstRoundWinners538=[]
+           secondRoundWinners538=[]
+           thirdRoundWinners538=[]
+           finalFourTeams538=[]
+           championshipTeams538=[]
+           winningTeam538=[]
 
 
 
@@ -178,7 +184,192 @@ function load538() {
         firstRound538()
 
 
+
+
+        function secondRound538 () {
+
+            for (let i = -1; i < firstRoundWinners538.length; i++) {
+
+                if (i%2==0) {
+                    let ranNumber2= Math.random()
+
+                if (ranNumber2 <= firstRoundWinners538[i].Round2) {
+                    secondRoundWinners538.push(firstRoundWinners538[i])
+                }
+
+                else if ((ranNumber2 > firstRoundWinners538[i].Round2) && (ranNumber2 <= (firstRoundWinners538[i].Round2 + firstRoundWinners538[i+1].Round2))) {
+                    secondRoundWinners538.push(firstRoundWinners538[i+1])
+
+                }
+
+                else {
+                    secondRoundWinners538=[]
+                    i=-1 
+                }
+
+                ranNumber2= Math.random()
+
+        }
+        
+    }
+
+        }
+
+
+        secondRound538()
+
+
+
+
+        function thirdRound538 () {
+
+            for (let i = -1; i < secondRoundWinners538.length; i++) {
+
+                if (i%2==0) {
+                    let ranNumber3= Math.random()
+
+                if (ranNumber3 <= secondRoundWinners538[i].Round3) {
+                    thirdRoundWinners538.push(secondRoundWinners538[i])
+                }
+
+                else if ((ranNumber3 > secondRoundWinners538[i].Round3) && (ranNumber3 <= (secondRoundWinners538[i].Round3 + secondRoundWinners538[i+1].Round3))) {
+                    thirdRoundWinners538.push(secondRoundWinners538[i+1])
+
+                }
+
+                else {
+                    thirdRoundWinners538=[]
+                    i=-1 
+                }
+
+                ranNumber3= Math.random()
+
+        }
+        
+    }
+
+        }
+
+
+        thirdRound538()
+
+
+
+
+
+        function fourthRound538 () {
+
+            for (let i = -1; i < thirdRoundWinners538.length; i++) {
+
+                if (i%2==0) {
+                    let ranNumber4= Math.random()
+
+                if (ranNumber4 <= thirdRoundWinners538[i].Round4) {
+                    finalFourTeams538.push(thirdRoundWinners538[i])
+                }
+
+                else if ((ranNumber4 > thirdRoundWinners538[i].Round4) && (ranNumber4 <= (thirdRoundWinners538[i].Round4 + thirdRoundWinners538[i+1].Round4))) {
+                    finalFourTeams538.push(thirdRoundWinners538[i+1])
+
+                }
+
+                else {
+                    finalFourTeams538=[]
+                    i=-1 
+                }
+
+                ranNumber4= Math.random()
+
+        }
+        
+    }
+
+        }
+
+
+        fourthRound538()
+
+
+
+
+        function fifthRound538 () {
+
+            for (let i = -1; i < finalFourTeams538.length; i++) {
+
+                if (i%2==0) {
+                    let ranNumber5= Math.random()
+
+                if (ranNumber5 <= finalFourTeams538[i].Round5) {
+                    championshipTeams538.push(finalFourTeams538[i])
+                }
+
+                else if ((ranNumber5 > finalFourTeams538[i].Round5) && (ranNumber5 <= (finalFourTeams538[i].Round5 + finalFourTeams538[i+1].Round5))) {
+                    championshipTeams538.push(finalFourTeams538[i+1])
+
+                }
+
+                else {
+                    championshipTeams538=[]
+                    i=-1 
+                }
+
+                ranNumber5= Math.random()
+
+        }
+        
+    }
+
+        }
+
+
+        fifthRound538()
+
+
+
+
+        function sixthRound538 () {
+
+            for (let i = -1; i < championshipTeams538.length; i++) {
+
+                if (i%2==0) {
+                    let ranNumber6= Math.random()
+
+                if (ranNumber6 <= championshipTeams538[i].Round6) {
+                    winningTeam538.push(championshipTeams538[i])
+                }
+
+                else if ((ranNumber6 > championshipTeams538[i].Round6) && (ranNumber6 <= (championshipTeams538[i].Round6 + championshipTeams538[i+1].Round6))) {
+                    winningTeam538.push(championshipTeams538[i+1])
+
+                }
+
+                else {
+                    winningTeam538=[]
+                    i=-1 
+                }
+
+                ranNumber6= Math.random()
+
+        }
+        
+    }
+
+        }
+
+
+        sixthRound538()
+
+
+
+        
+
+
 console.log(firstRoundWinners538)
+console.log(secondRoundWinners538)
+console.log(thirdRoundWinners538)
+console.log(finalFourTeams538)
+console.log(championshipTeams538)
+console.log(winningTeam538)
 
 
 
