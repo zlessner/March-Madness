@@ -4,44 +4,64 @@ let fiveThreeEight = document.querySelector(".fiveThreeEight")
 let teams = document.querySelector(".teams")
 let popPicks = document.querySelector(".popPicks")
 var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
-    fiveThirtyEightURL = 'https://marchmadnessapi.herokuapp.com/api/538Tournament'
-teamsURL = 'https://marchmadnessapi.herokuapp.com/'
+fiveThirtyEightURL = 'https://marchmadnessapi.herokuapp.com/api/538Tournament'
 popPicksURL = 'https://marchmadnessapi.herokuapp.com/api/popPicksTournament'
+
+let entryFee = 5
+let participants = 150
+let pot = entryFee * participants
+//all arbitrary values- goal is to finish as high in standings as possible
+//change window widths for different screen sizes
+let firstPrize = (.75 * participants * entryFee)
+let secondPrize = (.2 * participants * entryFee)
+let thirdPrize = (.05 * participants * entryFee)
+let bracket1 = 'x'
+let bracket2 = 'y'
+//needs some editing
+let winnings = firstPrize * bracket1 - entryFee
+let simulations = 5
+
+
+let ptsRound1 = [
+    { points: 2 },
+    { bonus: 3 }
+]
+
+let ptsRound2 = [
+    { points: 2 },
+    { bonus: 3 }
+]
+
+let ptsRound3 = [
+    { points: 4 },
+    { bonus: 3 }
+]
+
+let ptsRound4 = [
+    { points: 4 },
+    { bonus: 3 }
+]
+
+let ptsRound5 = [
+    { points: 8 },
+    { bonus: 0 }
+]
+
+let ptsRound6 = [
+    { points: 16 },
+    { bonus: 0 }
+]
 
 //load all 3 APIs whatever way before running functionality
 //crud funtionality in new api where user can store results of simulation
 
-teams.addEventListener("click", function () { loadTeams() });
-function loadTeams() {
-    fetch(
-        proxyUrl + teamsURL)
-        .then(list => list.json())
 
-        .then(pool => {
-            outcome = JSON.stringify(pool, null, 2);
-            //console.log(outcome)
-
-            bracketData = pool[0].regions
-
-            for (var i = 0; i < bracketData.length; i++) {
-                bracketList = bracketData[i].Team
-
-                for (var j = 0; j < bracketList.length; j++) {
-
-                    oink = document.createElement('p');
-                    oink.innerHTML = bracketList[j]
-                    console.log(bracketList[j])
-                    empty.appendChild(oink)
-                }
-                console.log(bracketData[i].Team)
-
-            }
-        })
-}
+//fiveThreeEight.addEventListener("click", function () { load538('fiveThree') });
 
 
 
-fiveThreeEight.addEventListener("click", function () { load538('fiveThree') });
+//popPicks.addEventListener("click", function () { loadpopPicks() });
+
 function load538() {
     fetch(
         proxyUrl + fiveThirtyEightURL)
@@ -56,20 +76,127 @@ function load538() {
                     silverData.push(json[0].Bracket[i].Schools[j])
                 }
             }
-            console.log(silverData)
-            console.log(silverData[0].Round1)
-            console.log(silverData.length)
-            empty.innerHTML = scraping
+            //console.log(silverData)
+            // console.log(silverData[0].Round1)
+            // console.log(silverData.length)
+            // empty.innerHTML = scraping
+
+
+
+           //track if fivethirtyEightData picks entered in correctly
+
+
+           let round1OddsTrack = 0
+           let round2OddsTrack = 0
+           let round3OddsTrack = 0
+           let round4OddsTrack = 0
+           let round5OddsTrack = 0
+           let round6OddsTrack = 0
+
+
+
+           function fiveThirtyEightValidOdds() {
+               for (var i = 0; i < silverData.length; i++) {
+                   round1OddsTrack = round1OddsTrack + silverData[i].Round1
+                   round2OddsTrack = round2OddsTrack + silverData[i].Round2
+                   round3OddsTrack = round3OddsTrack + silverData[i].Round3
+                   round4OddsTrack = round4OddsTrack + silverData[i].Round4
+                   round5OddsTrack = round5OddsTrack + silverData[i].Round5
+                   round6OddsTrack = round6OddsTrack + silverData[i].Round6
+               }
+
+               if (round1OddsTrack < 31.5 || round1OddsTrack > 32.5) {
+                   alert("Round 1 odds must total 32")
+                   throw new error("Re-submit odds")
+               }
+               if (round2OddsTrack < 15.75 || round2OddsTrack > 16.25) {
+                   alert("Round 2 odds must total 16")
+                   throw ("Re-submit odds")
+               }
+               if (round3OddsTrack < 7.8 || round3OddsTrack > 8.2) {
+                   alert("Round 3 odds must total 8")
+                   throw ("Re-submit odds")
+               }
+               if (round4OddsTrack < 3.9 || round4OddsTrack > 4.1) {
+                   alert("Round 4 odds must total 4")
+                   throw ("Re-submit odds")
+               }
+               if (round5OddsTrack < 1.95 || round5OddsTrack > 2.05) {
+                   alert("Round 5 odds must total 2")
+                   throw ("Re-submit odds")
+               }
+               if (round6OddsTrack < .97 || round6OddsTrack > 1.03) {
+                   alert("Round 6 odds must total 1")
+                   throw ("Re-submit odds")
+               }
+
+               //console.log(round1OddsTrack)
+
+           }
+
+           fiveThirtyEightValidOdds()
+
+
+
+           firstRoundWinners538=[]
+
+
+
+           let champOddsEveryTeam538 = []
+           function hundredPercentChamp538() {
+               for (var i = 0; i < silverData.length; i++) {
+                   champOddsEveryTeam538.push((silverData[i].Round6))
+               }
+           }
+
+           hundredPercentChamp538()
+
+
+
+           function firstRound538() {
+
+            for (let i = 0; i < silverData.length; i++) {
+
+                if (i%2==0) {
+                    let ranNumber1= Math.random()
+                    //console.log(ranNum)
+                if (ranNumber1 <= silverData[i].Round1) {
+                    firstRoundWinners538.push(silverData[i])
+                }
+
+                else {
+                    firstRoundWinners538.push(silverData[i+1])
+                }
+
+                ranNumber1= Math.random()
+                //console.log(ranNum)
+        }
+        
+    }
+}  
+
+        firstRound538()
+
+
+console.log(firstRoundWinners538)
+
+
+
 
         })
         .catch(e => {
             console.log("You have an error");
             return e;
         });
+
+
+
 }
 
+load538()
 
-popPicks.addEventListener("click", function () { loadpopPicks() });
+
+
 function loadpopPicks() {
     fetch(
         proxyUrl + popPicksURL)
@@ -97,111 +224,15 @@ function loadpopPicks() {
 
 
 
-
-            let entryFee = 5
-            let participants = 150
-            let pot = entryFee * participants
-            //all arbitrary values- goal is to finish as high in standings as possible
-            //change window widths for different screen sizes
-            let firstPrize = (.75 * participants * entryFee)
-            let secondPrize = (.2 * participants * entryFee)
-            let thirdPrize = (.05 * participants * entryFee)
-            let bracket1 = 'x'
-            let bracket2 = 'y'
-            //needs some editing
-            let winnings = firstPrize * bracket1 - entryFee
-            let simulations = 5
-
             //let user input their bracket to see how it would do and also put in ideal brackets 
 
             //console.log(firstPrize)
 
-            let ptsRound1 = [
-                { points: 2 },
-                { bonus: 3 }
-            ]
 
-            let ptsRound2 = [
-                { points: 2 },
-                { bonus: 3 }
-            ]
-
-            let ptsRound3 = [
-                { points: 4 },
-                { bonus: 3 }
-            ]
-
-            let ptsRound4 = [
-                { points: 4 },
-                { bonus: 3 }
-            ]
-
-            let ptsRound5 = [
-                { points: 8 },
-                { bonus: 0 }
-            ]
-
-            let ptsRound16 = [
-                { points: 16 },
-                { bonus: 0 }
-            ]
 
 
             //console.log(yahooData[0].Round6)
 
-            //track if yahooData picks entered in correctly
-
-
-            let round1OddsTrack = 0
-            let round2OddsTrack = 0
-            let round3OddsTrack = 0
-            let round4OddsTrack = 0
-            let round5OddsTrack = 0
-            let round6OddsTrack = 0
-
-
-            //change to silverData from yahooData at some point
-
-            function fiveThirtyEightValidOdds() {
-                for (var i = 0; i < yahooData.length; i++) {
-                    round1OddsTrack = round1OddsTrack + yahooData[i].Round1
-                    round2OddsTrack = round2OddsTrack + yahooData[i].Round2
-                    round3OddsTrack = round3OddsTrack + yahooData[i].Round3
-                    round4OddsTrack = round4OddsTrack + yahooData[i].Round4
-                    round5OddsTrack = round5OddsTrack + yahooData[i].Round5
-                    round6OddsTrack = round6OddsTrack + yahooData[i].Round6
-                }
-
-                if (round1OddsTrack < 31.5 || round1OddsTrack > 32.5) {
-                    alert("Round 1 odds must total 32")
-                    throw new error("Re-submit odds")
-                }
-                if (round2OddsTrack < 15.75 || round2OddsTrack > 16.25) {
-                    alert("Round 2 odds must total 16")
-                    throw ("Re-submit odds")
-                }
-                if (round3OddsTrack < 7.8 || round3OddsTrack > 8.2) {
-                    alert("Round 3 odds must total 8")
-                    throw ("Re-submit odds")
-                }
-                if (round4OddsTrack < 3.9 || round4OddsTrack > 4.1) {
-                    alert("Round 4 odds must total 4")
-                    throw ("Re-submit odds")
-                }
-                if (round5OddsTrack < 1.95 || round5OddsTrack > 2.05) {
-                    alert("Round 5 odds must total 2")
-                    throw ("Re-submit odds")
-                }
-                if (round6OddsTrack < .97 || round6OddsTrack > 1.03) {
-                    alert("Round 6 odds must total 1")
-                    throw ("Re-submit odds")
-                }
-
-                //console.log(round1OddsTrack)
-
-            }
-
-            fiveThirtyEightValidOdds()
 
 
             //console.log(yahooData[0].Round6)
@@ -258,18 +289,7 @@ function loadpopPicks() {
             popPicksValidOdds()
 
 
-            //Win the game- returns true or false
-
-            //  function probability (roundOdds) {
-            //      for (var i=0; i<simulations; i++)
-            //     console.count(Math.random() <= roundOdds)
-            // };
-
-            // probability(yahooData[0].Round6)
-
-
-
-            var champOddsEveryTeam = []
+            let champOddsEveryTeam = []
             function hundredPercentChamp() {
                 for (var i = 0; i < yahooData.length; i++) {
                     champOddsEveryTeam.push((yahooData[i].Round6))
@@ -346,8 +366,8 @@ function loadpopPicks() {
 
 
             chooseRunnerUp()
-             console.log(winnerArray)
-             console.log(runnerUpArray)
+            //  console.log(winnerArray)
+            //  console.log(runnerUpArray)
 
              firstRoundWinners=[]
              secondRoundWinners=[]
@@ -404,7 +424,7 @@ function loadpopPicks() {
 
             function firstRound() {
 
-                for (let i = 0; i < champOddsEveryTeam.length; i++) {
+                for (let i = 0; i < yahooData.length; i++) {
 
                     if (i%2==0) {
                         let ranNum1= Math.random()
@@ -650,10 +670,16 @@ console.log(winningTeam)
 
 
         })
+
+
+        .catch(e => {
+            console.log("You have an error");
+            return e;
+        });
 }
 
 
-
+loadpopPicks()
 
 
 
