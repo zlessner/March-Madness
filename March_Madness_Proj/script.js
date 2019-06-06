@@ -85,7 +85,7 @@ function load538() {
 
            //track if fivethirtyEightData picks entered in correctly
            //run standings of 150 or so partcipants over and over for a large sample of times to find out the bracket that usually places highest
-
+            //put points associated with pop pick bracket sims with 538 results from sim
 
            let round1OddsTrack = 0
            let round2OddsTrack = 0
@@ -858,7 +858,62 @@ console.log(winningTeam)
             //use filter method or for each or for loop to eliminate teams that can't possbily advance now that winner is set  
 
 
+            totalPoints=0
 
+            function tourneyPoints() {
+                for (let i=0; i<firstRoundWinners.length; i++) {
+                    if (firstRoundWinners[i].Team==firstRoundWinners538[i].Team) {
+                        totalPoints=ptsRound1[0].points+totalPoints
+                    }
+                }
+
+                console.log(totalPoints)
+
+                for (let i=0; i<secondRoundWinners.length; i++) {
+                    if (secondRoundWinners[i].Team==secondRoundWinners538[i].Team) {
+                        totalPoints=ptsRound2[0].points+totalPoints
+                    }
+                }
+
+                console.log(totalPoints)
+
+                for (let i=0; i<thirdRoundWinners.length; i++) {
+                    if (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team) {
+                        totalPoints=ptsRound3[0].points+totalPoints
+                    }
+                }
+
+                console.log(totalPoints)
+
+                for (let i=0; i<finalFourTeams.length; i++) {
+                    if (finalFourTeams[i].Team==finalFourTeams538[i].Team) {
+                        totalPoints=ptsRound4[0].points+totalPoints
+                    }
+                }
+
+                console.log(totalPoints)
+
+                for (let i=0; i<championshipTeams.length; i++) {
+                    if (championshipTeams[i].Team==championshipTeams538[i].Team) {
+                        totalPoints=ptsRound5[0].points+totalPoints
+                    }
+                }
+
+                console.log(totalPoints)
+
+                for (let i=0; i<winningTeam.length; i++) {
+                    if (winningTeam[i].Team==winningTeam538[i].Team) {
+                        totalPoints=ptsRound6[0].points+totalPoints
+                    }
+                }
+
+                console.log(totalPoints)
+
+            }
+
+
+
+            tourneyPoints()
 
         })
 
@@ -870,7 +925,7 @@ console.log(winningTeam)
 }
 
 
-loadpopPicks()
 
+loadpopPicks()
 
 
