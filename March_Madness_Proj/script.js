@@ -20,6 +20,7 @@ let bracket2 = 'y'
 //needs some editing
 let winnings = firstPrize * bracket1 - entryFee
 let simulations = 5
+standingsArray=[]
 
 
 let ptsRound1 = [
@@ -61,6 +62,8 @@ let ptsRound6 = [
 
 
 //popPicks.addEventListener("click", function () { loadpopPicks() });
+
+
 
 function load538() {
     fetch(
@@ -364,12 +367,12 @@ function load538() {
         
 
 
-console.log(firstRoundWinners538)
-console.log(secondRoundWinners538)
-console.log(thirdRoundWinners538)
-console.log(finalFourTeams538)
-console.log(championshipTeams538)
-console.log(winningTeam538)
+// console.log(firstRoundWinners538)
+// console.log(secondRoundWinners538)
+// console.log(thirdRoundWinners538)
+// console.log(finalFourTeams538)
+// console.log(championshipTeams538)
+// console.log(winningTeam538)
 
 
 
@@ -429,6 +432,9 @@ function loadpopPicks() {
             //console.log(yahooData[0].Round6)
 
             //track if popular picks entered in correctly
+
+
+            for (let k=0; k<participants; k++) {
 
 
             let round1OddsTrackPop = 0
@@ -838,12 +844,12 @@ function loadpopPicks() {
             //     console.log(firstRoundWinners[i])
             // }
 
-console.log(firstRoundWinners)
-console.log(secondRoundWinners)
-console.log(thirdRoundWinners)
-console.log(finalFourTeams)
-console.log(championshipTeams)
-console.log(winningTeam)
+// console.log(firstRoundWinners)
+// console.log(secondRoundWinners)
+// console.log(thirdRoundWinners)
+// console.log(finalFourTeams)
+// console.log(championshipTeams)
+// console.log(winningTeam)
 
             //}
 
@@ -867,7 +873,7 @@ console.log(winningTeam)
                     }
                 }
 
-                console.log(totalPoints)
+                //console.log(totalPoints)
 
                 for (let i=0; i<secondRoundWinners.length; i++) {
                     if (secondRoundWinners[i].Team==secondRoundWinners538[i].Team) {
@@ -875,7 +881,7 @@ console.log(winningTeam)
                     }
                 }
 
-                console.log(totalPoints)
+                //console.log(totalPoints)
 
                 for (let i=0; i<thirdRoundWinners.length; i++) {
                     if (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team) {
@@ -883,7 +889,7 @@ console.log(winningTeam)
                     }
                 }
 
-                console.log(totalPoints)
+                //console.log(totalPoints)
 
                 for (let i=0; i<finalFourTeams.length; i++) {
                     if (finalFourTeams[i].Team==finalFourTeams538[i].Team) {
@@ -891,7 +897,7 @@ console.log(winningTeam)
                     }
                 }
 
-                console.log(totalPoints)
+                //console.log(totalPoints)
 
                 for (let i=0; i<championshipTeams.length; i++) {
                     if (championshipTeams[i].Team==championshipTeams538[i].Team) {
@@ -899,7 +905,7 @@ console.log(winningTeam)
                     }
                 }
 
-                console.log(totalPoints)
+                //console.log(totalPoints)
 
                 for (let i=0; i<winningTeam.length; i++) {
                     if (winningTeam[i].Team==winningTeam538[i].Team) {
@@ -907,15 +913,17 @@ console.log(winningTeam)
                     }
                 }
 
-                standingsArray=[]
-                standingsArray.push(totalPoints)
+                console.log(totalPoints)
 
+                
+                standingsArray.push(totalPoints)
+                standingsArray.sort(function(a, b){return b-a});
 
                 totalPoints=0
 
 
 
-                console.log(totalPoints)
+                
                 console.log(standingsArray)
 
             }
@@ -924,8 +932,9 @@ console.log(winningTeam)
 
             tourneyPoints()
 
-        })
-
+        }
+    })
+    
 
         .catch(e => {
             console.log("You have an error");
