@@ -907,7 +907,16 @@ console.log(winningTeam)
                     }
                 }
 
+                standingsArray=[]
+                standingsArray.push(totalPoints)
+
+
+                totalPoints=0
+
+
+
                 console.log(totalPoints)
+                console.log(standingsArray)
 
             }
 
@@ -920,6 +929,7 @@ console.log(winningTeam)
 
         .catch(e => {
             console.log("You have an error");
+            loadpopPicks()
             return e;
         });
 }
