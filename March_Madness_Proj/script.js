@@ -351,9 +351,10 @@ function loadpopPicks() {
 
              firstRoundWinners=[]
              secondRoundWinners=[]
-             secondWinners=[]
              thirdRoundWinners=[]
-             thirdWinners=[]
+             finalFourTeams=[]
+             championshipTeams=[]
+             winningTeam=[]
              totalTeams=[]
 
              for (var i = 0; i < yahooData.length; i++) {
@@ -428,7 +429,7 @@ function loadpopPicks() {
 
 
             //why do I need to start at -1 instead of 0
-            function second () {
+            function secondRound () {
 
                 for (let i = -1; i < firstRoundWinners.length; i++) {
 
@@ -436,16 +437,16 @@ function loadpopPicks() {
                         let ranNum= Math.random()
   
                     if (ranNum <= firstRoundWinners[i].Round2) {
-                        secondWinners.push(firstRoundWinners[i])
+                        secondRoundWinners.push(firstRoundWinners[i])
                     }
 
                     else if ((ranNum > firstRoundWinners[i].Round2) && (ranNum <= (firstRoundWinners[i].Round2 + firstRoundWinners[i+1].Round2))) {
-                        secondWinners.push(firstRoundWinners[i+1])
+                        secondRoundWinners.push(firstRoundWinners[i+1])
 
                     }
 
                     else {
-                        secondWinners=[]
+                        secondRoundWinners=[]
                         i=-1 
                     }
 
@@ -459,34 +460,33 @@ function loadpopPicks() {
             }
 
 
-            second()
+            secondRound()
 
 
 
 
-            function third () {
+            function thirdRound () {
 
-                for (let i = -1; i < secondWinners.length; i++) {
+                for (let i = -1; i < secondRoundWinners.length; i++) {
 
                     if (i%2==0) {
                         let ranNum3= Math.random()
   
-                    if (ranNum3 <= secondWinners[i].Round3) {
-                        thirdWinners.push(secondWinners[i])
+                    if (ranNum3 <= secondRoundWinners[i].Round3) {
+                        thirdRoundWinners.push(secondRoundWinners[i])
                     }
 
-                    else if ((ranNum3 > secondWinners[i].Round3) && (ranNum3 <= (secondWinners[i].Round3 + secondWinners[i+1].Round3))) {
-                        thirdWinners.push(secondWinners[i+1])
+                    else if ((ranNum3 > secondRoundWinners[i].Round3) && (ranNum3 <= (secondRoundWinners[i].Round3 + secondRoundWinners[i+1].Round3))) {
+                        thirdRoundWinners.push(secondRoundWinners[i+1])
 
                     }
 
                     else {
-                        thirdWinners=[]
+                        thirdRoundWinners=[]
                         i=-1 
                     }
 
                     ranNum3= Math.random()
-
 
             }
             
@@ -495,113 +495,123 @@ function loadpopPicks() {
             }
 
 
-            third()
+            thirdRound()
 
 
 
 
 
 
-    //         function secondRound() {
+            function FourthRound () {
+
+                for (let i = -1; i < thirdRoundWinners.length; i++) {
+
+                    if (i%2==0) {
+                        let ranNum4= Math.random()
+  
+                    if (ranNum4 <= thirdRoundWinners[i].Round4) {
+                        finalFourTeams.push(thirdRoundWinners[i])
+                    }
+
+                    else if ((ranNum4 > thirdRoundWinners[i].Round4) && (ranNum4 <= (thirdRoundWinners[i].Round4 + thirdRoundWinners[i+1].Round4))) {
+                        finalFourTeams.push(thirdRoundWinners[i+1])
+
+                    }
+
+                    else {
+                        finalFourTeams=[]
+                        i=-1 
+                    }
+
+                    ranNum4= Math.random()
+
+            }
+            
+        }
+
+            }
 
 
-    //             for (let i = 0; i < totalTeams.length; i++) {
-
-    //                 if (i%4==0) {
-    //                     let ranNum2= Math.random()
-    //                     //console.log(ranNum)
-    //                 if (ranNum2 <= yahooData[i].Round2) {
-    //                     secondRoundWinners.push(yahooData[i].Team)
+            FourthRound()
 
 
-    //                 }
 
-    //                 else if ((ranNum2 > yahooData[i].Round2) && (ranNum2 <= (yahooData[i].Round2 + yahooData[i+1].Round2))) {
-    //                     secondRoundWinners.push(yahooData[i+1].Team)
 
-    //                 }
+            function FifthRound () {
 
-    //                 else if ((ranNum2 > yahooData[i+1].Round2) && (ranNum2 <= (yahooData[i].Round2 + yahooData[i+1].Round2 + yahooData[i+2].Round2))) {
-    //                     secondRoundWinners.push(yahooData[i+2].Team)
-    //                 }
+                for (let i = -1; i < finalFourTeams.length; i++) {
 
-    //                 else  {
-    //                     secondRoundWinners.push(yahooData[i+3].Team)
-    //                 }
-                
-    //                 ranNum2= Math.random()
-    //                 //console.log(ranNum)
+                    if (i%2==0) {
+                        let ranNum5= Math.random()
+  
+                    if (ranNum5 <= finalFourTeams[i].Round5) {
+                        championshipTeams.push(finalFourTeams[i])
+                    }
 
-    //         }
+                    else if ((ranNum5 > finalFourTeams[i].Round5) && (ranNum5 <= (finalFourTeams[i].Round5 + finalFourTeams[i+1].Round5))) {
+                        championshipTeams.push(finalFourTeams[i+1])
 
-    // }
-    //         }
+                    }
+
+                    else {
+                        championshipTeams=[]
+                        i=-1 
+                    }
+
+                    ranNum5= Math.random()
+
+            }
+            
+        }
+
+            }
+
+
+            FifthRound()
+
+
+
+
+
+
+            function SixthRound () {
+
+                for (let i = -1; i < championshipTeams.length; i++) {
+
+                    if (i%2==0) {
+                        let ranNum6= Math.random()
+  
+                    if (ranNum6 <= championshipTeams[i].Round6) {
+                        winningTeam.push(championshipTeams[i])
+                    }
+
+                    else if ((ranNum6 > championshipTeams[i].Round6) && (ranNum6 <= (championshipTeams[i].Round6 + champOddsEveryTeam[i+1].Round6))) {
+                        winningTeam.push(championshipTeams[i+1])
+
+                    }
+
+                    else {
+                        winningTeam=[]
+                        i=-1 
+                    }
+
+                    ranNum6= Math.random()
+
+            }
+            
+        }
+
+            }
+
+
+            SixthRound()
+
+        
             
 
 
-    //         secondRound()
 
 
-
-    //         function thirdRound() {
-
-
-
-    //             //should do totalTeams.length or teams from previous round
-
-    //             for (let i = 0; i < totalTeams.length; i++) {
-
-
-
-    //                 if (i%8==0) {
-    //                     let ranNum3= Math.random()
-    //                     //console.log(ranNum3)
-
-    //                 if (ranNum3 <= yahooData[i].Round3) {
-    //                     thirdRoundWinners.push(yahooData[i].Team)
-    //                 }
-
-    //                 else if (
-    //                     (ranNum3 > yahooData[i].Round3) && (ranNum3 <= (yahooData[i].Round3 + yahooData[i+1].Round3))) {
-    //                     thirdRoundWinners.push(yahooData[i+1].Team)
-
-    //                 }
-
-    //                 else if ((ranNum3 > yahooData[i+1].Round3) && (ranNum3 <= (yahooData[i].Round3 + yahooData[i+1].Round3 + yahooData[i+2].Round3))) {
-    //                     thirdRoundWinners.push(yahooData[i+2].Team)
-    //                 }
-
-    //                 else if ((ranNum3 > yahooData[i+2].Round3) && (ranNum3 <= (yahooData[i].Round3 + yahooData[i+1].Round3 + yahooData[i+2].Round3 + yahooData[i+3].Round3))) {
-    //                     thirdRoundWinners.push(yahooData[i+3].Team)
-
-    //                 }
-
-    //                 else if ((ranNum3 > yahooData[i+3].Round3) && (ranNum3 <= (yahooData[i].Round3 + yahooData[i+1].Round3 + yahooData[i+2].Round3 + yahooData[i+3].Round3 + yahooData[i+4].Round3))) {
-    //                     thirdRoundWinners.push(yahooData[i+4].Team)
-    //                 }
-
-    //                 else if ((ranNum3 > yahooData[i+4].Round3) && (ranNum3 <= (yahooData[i].Round3 + yahooData[i+1].Round3 + yahooData[i+2].Round3 + yahooData[i+3].Round3 + yahooData[i+4].Round3 + yahooData[i+5].Round3))) {
-    //                     thirdRoundWinners.push(yahooData[i+5].Team)
-
-    //                 }
-
-    //                 else if ((ranNum3 > yahooData[i+5].Round3) && (ranNum3 <= (yahooData[i].Round3 + yahooData[i+1].Round3 + yahooData[i+2].Round3 + yahooData[i+3].Round3 + yahooData[i+4].Round3 + yahooData[i+5].Round3 + yahooData[i+6].Round3))) {
-    //                     thirdRoundWinners.push(yahooData[i+6].Team)
-    //                 }
-
-    //                 else  {
-    //                     thirdRoundWinners.push(yahooData[i+7].Team)
-    //                 }
-                
-    //                 ranNum3= Math.random()
-    //                 //console.log(ranNum3)
-
-    //         }
-
-    // }
-    //         }
-
-    //         thirdRound()
 
 
 //writes out a bunch of Abelein Christian
@@ -618,11 +628,11 @@ function loadpopPicks() {
             // }
 
 console.log(firstRoundWinners)
-//console.log(secondRoundWinners)
-console.log(secondWinners)
-// console.log(thirdRoundWinners)
-console.log(thirdWinners)
-//console.log(totalTeams)
+console.log(secondRoundWinners)
+console.log(thirdRoundWinners)
+console.log(finalFourTeams)
+console.log(championshipTeams)
+console.log(winningTeam)
 
             //}
 
