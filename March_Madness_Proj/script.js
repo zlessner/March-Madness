@@ -20,37 +20,50 @@ let bracket2 = 'y'
 //needs some editing
 let winnings = firstPrize * bracket1 - entryFee
 let simulations = 5
+myBracketRound1= ['Duke', 'Central Florida', 'Virginia Tech', 'Mississippi State', 'Maryland', 'Louisiana State', 'Minnesota', 'Michigan State', 'Gonzaga', 'Baylor', 'Florida State', 'Murray State', 'Arizona State', 'Texas Tech', 'Florida', 'Michigan', 'Virginia', 'Oklahoma', 'UC-Irvine', 'Oregon', 'Villanova', 'Purdue', 'Iowa', 'Tennessee', 'North Carolina', 'Washington', 'Kansas', 'Auburn', 'Iowa State', 'Houston', 'Seton Hall', 'Kentucky']
+myBracketRound2= ['Duke', 'Mississippi State', 'Maryland', 'Michigan State', 'Gonzaga', 'Florida State', 'Texas Tech', 'Michigan', 'Virginia', 'Oregon', 'Villanova', 'Tennessee', 'North Carolina', 'Auburn', 'Iowa State', 'Kentucky']
+myBracketRound3= ['Duke', 'Michigan State', 'Gonzaga', 'Texas Tech', 'Virginia', 'Tennessee', 'North Carolina', 'Kentucky']
+myBracketRound4= ['Michigan State', 'Gonzaga', 'Virginia', 'North Carolina']
+myBracketRound5= ['Gonzaga', 'Virginia']
+myBracketRound6= ['Gonzaga']
+
 standingsArray=[]
 
 
 let ptsRound1 = [
-    { points: 2 },
-    { bonus: 3 }
+    { winPoints: 2 },
+    { bonus: 3 },
+    { totalBonus: 0}
 ]
 
 let ptsRound2 = [
-    { points: 2 },
-    { bonus: 3 }
+    { winPoints: 2 },
+    { bonus: 3 },
+    { totalBonus: 0}
 ]
 
 let ptsRound3 = [
-    { points: 4 },
-    { bonus: 3 }
+    { winPoints: 4 },
+    { bonus: 3 },
+    { totalBonus: 0}
 ]
 
 let ptsRound4 = [
-    { points: 4 },
-    { bonus: 3 }
+    { winPoints: 4 },
+    { bonus: 3 },
+    { totalBonus: 0}
 ]
 
 let ptsRound5 = [
-    { points: 8 },
-    { bonus: 0 }
+    { winPoints: 8 },
+    { bonus: 0 },
+    { totalBonus: 0}
 ]
 
 let ptsRound6 = [
-    { points: 16 },
-    { bonus: 0 }
+    { winPoints: 16 },
+    { bonus: 0 },
+    { totalBonus: 0}
 ]
 
 //load all 3 APIs whatever way before running functionality
@@ -88,7 +101,7 @@ function load538() {
 
            //track if fivethirtyEightData picks entered in correctly
            //run standings of 150 or so partcipants over and over for a large sample of times to find out the bracket that usually places highest
-            //put points associated with pop pick bracket sims with 538 results from sim
+            //put winPoints associated with pop pick bracket sims with 538 results from sim
 
            let round1OddsTrack = 0
            let round2OddsTrack = 0
@@ -628,10 +641,18 @@ function loadpopPicks() {
                         //console.log(ranNum)
                     if (ranNum1 <= yahooData[i].Round1) {
                         firstRoundWinners.push(yahooData[i])
+                       
+                        // if (yahooData[i].Seed>yahooData[i+1].Seed) {
+                        //     ptsRound1[2].totalBonus=ptsRound1[2].totalBonus+ptsRound1[1].bonus
+                        //     console.log(ptsRound1[2].totalBonus)
+                        // }
                     }
 
                     else {
                         firstRoundWinners.push(yahooData[i+1])
+                        //     if (yahooData[i].Seed<yahooData[i+1].Seed) {
+                        //         ptsRound1[2].totalBonus=ptsRound1[2].totalBonus+ptsRound1[1].bonus
+                        // }
                     }
 
                     ranNum1= Math.random()
@@ -655,10 +676,16 @@ function loadpopPicks() {
   
                     if (ranNum <= firstRoundWinners[i].Round2) {
                         secondRoundWinners.push(firstRoundWinners[i])
+                        // if (firstRoundWinners[i].Seed>firstRoundWinners[i+1].Seed) {
+                        //     ptsRound2[2].totalBonus=ptsRound2[2].totalBonus+ptsRound2[1].bonus
+                        // }
                     }
 
                     else if ((ranNum > firstRoundWinners[i].Round2) && (ranNum <= (firstRoundWinners[i].Round2 + firstRoundWinners[i+1].Round2))) {
                         secondRoundWinners.push(firstRoundWinners[i+1])
+                    //     if (firstRoundWinners[i].Seed<firstRoundWinners[i+1].Seed) {
+                    //         ptsRound2[2].totalBonus=ptsRound2[2].totalBonus+ptsRound2[1].bonus
+                    // }
 
                     }
 
@@ -691,10 +718,16 @@ function loadpopPicks() {
   
                     if (ranNum3 <= secondRoundWinners[i].Round3) {
                         thirdRoundWinners.push(secondRoundWinners[i])
+                        // if (secondRoundWinners[i].Seed>secondRoundWinners[i+1].Seed) {
+                        //     ptsRound3[2].totalBonus=ptsRound3[2].totalBonus+ptsRound3[1].bonus
+                        // }
                     }
 
                     else if ((ranNum3 > secondRoundWinners[i].Round3) && (ranNum3 <= (secondRoundWinners[i].Round3 + secondRoundWinners[i+1].Round3))) {
                         thirdRoundWinners.push(secondRoundWinners[i+1])
+                    //     if (secondRoundWinners[i].Seed<secondRoundWinners[i+1].Seed) {
+                    //         ptsRound3[2].totalBonus=ptsRound3[2].totalBonus+ptsRound3[1].bonus
+                    // }
 
                     }
 
@@ -728,12 +761,24 @@ function loadpopPicks() {
   
                     if (ranNum4 <= thirdRoundWinners[i].Round4) {
                         finalFourTeams.push(thirdRoundWinners[i])
+      
                     }
 
                     else if ((ranNum4 > thirdRoundWinners[i].Round4) && (ranNum4 <= (thirdRoundWinners[i].Round4 + thirdRoundWinners[i+1].Round4))) {
                         finalFourTeams.push(thirdRoundWinners[i+1])
+                        // if ((thirdRoundWinners[i].Seed<thirdRoundWinners[i+1].Seed) && (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team)) {
+                        //      ptsRound4[2].totalBonus=ptsRound4[2].totalBonus+ptsRound4[1].bonus
 
+
+                            //  console.log(thirdRoundWinners[i].Seed)
+                            // console.log(thirdRoundWinners[i+1].Seed)
+                            // console.log(thirdRoundWinners[i].Team)
+                            // console.log(thirdRoundWinners[i+1].Team)
+                            // console.log(ptsRound4[2].totalBonus)
+                            
                     }
+
+                    
 
                     else {
                         finalFourTeams=[]
@@ -746,12 +791,29 @@ function loadpopPicks() {
             
         }
 
-            }
+    }
+
+    //     for (let i = -1; i < thirdRoundWinners.length; i++) {
+
+    //         if (i%2==0) {
+    //         for (let j = -1; j < finalFourTeams.length; j++) {
+
+    //             if ((thirdRoundWinners[i].Seed>thirdRoundWinners[i+1].Seed) && (finalFourTeams[j].Team==finalFourTeams538[j].Team)) {
+    //                 ptsRound4[2].totalBonus=ptsRound4[2].totalBonus+ptsRound4[1].bonus
+
+    //             }
+    //         }
+
+    //     }
+    // }
 
 
             FourthRound()
-
-
+            
+            console.log(thirdRoundWinners538[0].Team)
+            console.log(thirdRoundWinners538[1].Team)
+            console.log(thirdRoundWinners538[2].Team)
+            console.log(thirdRoundWinners538[3].Team)
 
 
             function FifthRound () {
@@ -763,10 +825,16 @@ function loadpopPicks() {
   
                     if (ranNum5 <= finalFourTeams[i].Round5) {
                         championshipTeams.push(finalFourTeams[i])
+                        if (finalFourTeams[i].Seed>finalFourTeams[i+1].Seed) {
+                            ptsRound5[2].totalBonus=ptsRound5[2].totalBonus+ptsRound5[1].bonus
+                        }
                     }
 
                     else if ((ranNum5 > finalFourTeams[i].Round5) && (ranNum5 <= (finalFourTeams[i].Round5 + finalFourTeams[i+1].Round5))) {
                         championshipTeams.push(finalFourTeams[i+1])
+                        if (finalFourTeams[i].Seed<finalFourTeams[i+1].Seed) {
+                            ptsRound5[2].totalBonus=ptsRound5[2].totalBonus+ptsRound5[1].bonus
+                    }
 
                     }
 
@@ -800,10 +868,16 @@ function loadpopPicks() {
   
                     if (ranNum6 <= championshipTeams[i].Round6) {
                         winningTeam.push(championshipTeams[i])
+                        if (championshipTeams[i].Seed>championshipTeams[i+1].Seed) {
+                            ptsRound6[2].totalBonus=ptsRound6[2].totalBonus+ptsRound6[1].bonus
+                        }
                     }
 
                     else if ((ranNum6 > championshipTeams[i].Round6) && (ranNum6 <= (championshipTeams[i].Round6 + champOddsEveryTeam[i+1].Round6))) {
                         winningTeam.push(championshipTeams[i+1])
+                        if (championshipTeams[i].Seed<championshipTeams[i+1].Seed) {
+                            ptsRound6[2].totalBonus=ptsRound6[2].totalBonus+ptsRound6[1].bonus
+                    }
 
                     }
 
@@ -869,57 +943,73 @@ function loadpopPicks() {
             function tourneyPoints() {
                 for (let i=0; i<firstRoundWinners.length; i++) {
                     if (firstRoundWinners[i].Team==firstRoundWinners538[i].Team) {
-                        totalPoints=ptsRound1[0].points+totalPoints
+                        totalPoints=ptsRound1[0].winPoints+totalPoints
+
                     }
                 }
+
+                totalPoints=totalPoints+ptsRound1[2].totalBonus
 
                 //console.log(totalPoints)
 
                 for (let i=0; i<secondRoundWinners.length; i++) {
                     if (secondRoundWinners[i].Team==secondRoundWinners538[i].Team) {
-                        totalPoints=ptsRound2[0].points+totalPoints
+
+                        totalPoints=ptsRound2[0].winPoints+totalPoints
                     }
                 }
 
                 //console.log(totalPoints)
+                totalPoints=totalPoints+ptsRound2[2].totalBonus
 
                 for (let i=0; i<thirdRoundWinners.length; i++) {
                     if (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team) {
-                        totalPoints=ptsRound3[0].points+totalPoints
+                        totalPoints=ptsRound3[0].winPoints+totalPoints
                     }
                 }
 
                 //console.log(totalPoints)
+                totalPoints=totalPoints+ptsRound3[2].totalBonus
 
                 for (let i=0; i<finalFourTeams.length; i++) {
                     if (finalFourTeams[i].Team==finalFourTeams538[i].Team) {
-                        totalPoints=ptsRound4[0].points+totalPoints
+                        totalPoints=ptsRound4[0].winPoints+totalPoints
                     }
                 }
 
                 //console.log(totalPoints)
+                totalPoints=totalPoints+ptsRound4[2].totalBonus
 
                 for (let i=0; i<championshipTeams.length; i++) {
                     if (championshipTeams[i].Team==championshipTeams538[i].Team) {
-                        totalPoints=ptsRound5[0].points+totalPoints
+                        totalPoints=ptsRound5[0].winPoints+totalPoints
                     }
                 }
 
                 //console.log(totalPoints)
+                totalPoints=totalPoints+ptsRound5[2].totalBonus
 
                 for (let i=0; i<winningTeam.length; i++) {
                     if (winningTeam[i].Team==winningTeam538[i].Team) {
-                        totalPoints=ptsRound6[0].points+totalPoints
+                        totalPoints=ptsRound6[0].winPoints+totalPoints
                     }
                 }
 
+                totalPoints=totalPoints+ptsRound6[2].totalBonus
                 console.log(totalPoints)
+
 
                 
                 standingsArray.push(totalPoints)
                 standingsArray.sort(function(a, b){return b-a});
 
                 totalPoints=0
+                ptsRound1[2].totalBonus=0
+                ptsRound2[2].totalBonus=0
+                ptsRound3[2].totalBonus=0
+                ptsRound4[2].totalBonus=0
+                ptsRound5[2].totalBonus=0
+                ptsRound6[2].totalBonus=0
 
 
 
@@ -946,5 +1036,3 @@ function loadpopPicks() {
 
 
 loadpopPicks()
-
-
