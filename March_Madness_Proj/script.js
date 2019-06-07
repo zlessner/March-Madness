@@ -377,6 +377,82 @@ function load538() {
 
 
 
+
+
+
+        totalPointsPersonal=0
+        function personalScore() {
+            for (let i=0; i<myBracketRound1.length; i++) {
+                if (myBracketRound1[i]==firstRoundWinners538[i].Team) {
+                    totalPointsPersonal=ptsRound1[0].winPoints+totalPointsPersonal
+        
+                }
+            }
+        
+        
+        
+            for (let i=0; i<myBracketRound2.length; i++) {
+                if (secondRoundWinners[i].Team==secondRoundWinners538[i].Team) {
+        
+                    totalPoints=ptsRound2[0].winPoints+totalPoints
+                }
+                if (myBracketRound2[i]==secondRoundWinners538[i].Team) {
+                    totalPointsPersonal=ptsRound2[0].winPoints+totalPointsPersonal
+        
+                }
+            }
+        
+        
+        
+            for (let i=0; i<myBracketRound3.length; i++) {
+                if (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team) {
+                    totalPoints=ptsRound3[0].winPoints+totalPoints
+                }
+                if (myBracketRound3[i]==thirdRoundWinners538[i].Team) {
+                    totalPointsPersonal=ptsRound3[0].winPoints+totalPointsPersonal
+        
+                }
+            }
+        
+        
+        
+            for (let i=0; i<myBracketRound4.length; i++) {
+                if (finalFourTeams[i].Team==finalFourTeams538[i].Team) {
+                    totalPoints=ptsRound4[0].winPoints+totalPoints
+                }
+                if (myBracketRound4[i]==finalFourTeams538[i].Team) {
+                    totalPointsPersonal=ptsRound4[0].winPoints+totalPointsPersonal
+        
+                }
+            }
+        
+        
+        
+            for (let i=0; i<myBracketRound5.length; i++) {
+                if (championshipTeams[i].Team==championshipTeams538[i].Team) {
+                    totalPoints=ptsRound5[0].winPoints+totalPoints
+                }
+                if (myBracketRound5[i]==championshipTeams538[i].Team) {
+                    totalPointsPersonal=ptsRound5[0].winPoints+totalPointsPersonal
+        
+                }
+            }
+        
+        
+        
+            for (let i=0; i<myBracketRound6.length; i++) {
+                if (winningTeam[i].Team==winningTeam538[i].Team) {
+                    totalPoints=ptsRound6[0].winPoints+totalPoints
+                }
+                if (myBracketRound6[i]==winningTeam538[i].Team) {
+                    totalPointsPersonal=ptsRound6[0].winPoints+totalPointsPersonal
+        
+                }
+            }
+        }
+        
+        personalScore()
+        console.log(totalPointsPersonal)
         
 
 
@@ -393,6 +469,7 @@ function load538() {
         })
         .catch(e => {
             console.log("You have an error");
+            load538()
             return e;
         });
 
@@ -939,7 +1016,6 @@ function loadpopPicks() {
 
 
             totalPoints=0
-            totalPointsPersonal=0
 
             function tourneyPoints() {
                 for (let i=0; i<firstRoundWinners.length; i++) {
@@ -947,10 +1023,7 @@ function loadpopPicks() {
                         totalPoints=ptsRound1[0].winPoints+totalPoints
 
                     }
-                    if (myBracketRound1[i]==firstRoundWinners538[i].Team) {
-                        totalPointsPersonal=ptsRound1[0].winPoints+totalPointsPersonal
 
-                    }
                 }
 
                 totalPoints=totalPoints+ptsRound1[2].totalBonus
@@ -962,10 +1035,7 @@ function loadpopPicks() {
 
                         totalPoints=ptsRound2[0].winPoints+totalPoints
                     }
-                    if (myBracketRound2[i]==secondRoundWinners538[i].Team) {
-                        totalPointsPersonal=ptsRound2[0].winPoints+totalPointsPersonal
 
-                    }
                 }
 
                 //console.log(totalPoints)
@@ -975,10 +1045,7 @@ function loadpopPicks() {
                     if (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team) {
                         totalPoints=ptsRound3[0].winPoints+totalPoints
                     }
-                    if (myBracketRound3[i]==thirdRoundWinners538[i].Team) {
-                        totalPointsPersonal=ptsRound3[0].winPoints+totalPointsPersonal
 
-                    }
                 }
 
                 //console.log(totalPoints)
@@ -988,10 +1055,7 @@ function loadpopPicks() {
                     if (finalFourTeams[i].Team==finalFourTeams538[i].Team) {
                         totalPoints=ptsRound4[0].winPoints+totalPoints
                     }
-                    if (myBracketRound4[i]==finalFourTeams538[i].Team) {
-                        totalPointsPersonal=ptsRound4[0].winPoints+totalPointsPersonal
 
-                    }
                 }
 
                 //console.log(totalPoints)
@@ -1001,10 +1065,7 @@ function loadpopPicks() {
                     if (championshipTeams[i].Team==championshipTeams538[i].Team) {
                         totalPoints=ptsRound5[0].winPoints+totalPoints
                     }
-                    if (myBracketRound5[i]==championshipTeams538[i].Team) {
-                        totalPointsPersonal=ptsRound5[0].winPoints+totalPointsPersonal
 
-                    }
                 }
 
                 //console.log(totalPoints)
@@ -1014,16 +1075,13 @@ function loadpopPicks() {
                     if (winningTeam[i].Team==winningTeam538[i].Team) {
                         totalPoints=ptsRound6[0].winPoints+totalPoints
                     }
-                    if (myBracketRound6[i]==winningTeam538[i].Team) {
-                        totalPointsPersonal=ptsRound6[0].winPoints+totalPointsPersonal
 
-                    }
                 }
 
                 totalPoints=totalPoints+ptsRound6[2].totalBonus
 
                // console.log(totalPoints)
-                console.log(totalPointsPersonal)
+                
 
 
                 
@@ -1031,7 +1089,7 @@ function loadpopPicks() {
                 standingsArray.sort(function(a, b){return b-a});
 
 
-                totalPointsPersonal=0
+                
                 totalPoints=0
                 ptsRound1[2].totalBonus=0
                 ptsRound2[2].totalBonus=0
@@ -1066,4 +1124,8 @@ function loadpopPicks() {
 
 loadpopPicks()
 
+
+
+
 console.log(standingsArray)
+
