@@ -68,7 +68,7 @@ let ptsRound6 = [
 
 //load all 3 APIs whatever way before running functionality
 //crud funtionality in new api where user can store results of simulation
-
+//429 too many requests heroku error still a problem
 
 //fiveThreeEight.addEventListener("click", function () { load538('fiveThree') });
 
@@ -810,10 +810,10 @@ function loadpopPicks() {
 
             FourthRound()
             
-            console.log(thirdRoundWinners538[0].Team)
-            console.log(thirdRoundWinners538[1].Team)
-            console.log(thirdRoundWinners538[2].Team)
-            console.log(thirdRoundWinners538[3].Team)
+            // console.log(thirdRoundWinners538[0].Team)
+            // console.log(thirdRoundWinners538[1].Team)
+            // console.log(thirdRoundWinners538[2].Team)
+            // console.log(thirdRoundWinners538[3].Team)
 
 
             function FifthRound () {
@@ -939,11 +939,16 @@ function loadpopPicks() {
 
 
             totalPoints=0
+            totalPointsPersonal=0
 
             function tourneyPoints() {
                 for (let i=0; i<firstRoundWinners.length; i++) {
                     if (firstRoundWinners[i].Team==firstRoundWinners538[i].Team) {
                         totalPoints=ptsRound1[0].winPoints+totalPoints
+
+                    }
+                    if (myBracketRound1[i]==firstRoundWinners538[i].Team) {
+                        totalPointsPersonal=ptsRound1[0].winPoints+totalPointsPersonal
 
                     }
                 }
@@ -957,6 +962,10 @@ function loadpopPicks() {
 
                         totalPoints=ptsRound2[0].winPoints+totalPoints
                     }
+                    if (myBracketRound2[i]==secondRoundWinners538[i].Team) {
+                        totalPointsPersonal=ptsRound2[0].winPoints+totalPointsPersonal
+
+                    }
                 }
 
                 //console.log(totalPoints)
@@ -965,6 +974,10 @@ function loadpopPicks() {
                 for (let i=0; i<thirdRoundWinners.length; i++) {
                     if (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team) {
                         totalPoints=ptsRound3[0].winPoints+totalPoints
+                    }
+                    if (myBracketRound3[i]==thirdRoundWinners538[i].Team) {
+                        totalPointsPersonal=ptsRound3[0].winPoints+totalPointsPersonal
+
                     }
                 }
 
@@ -975,6 +988,10 @@ function loadpopPicks() {
                     if (finalFourTeams[i].Team==finalFourTeams538[i].Team) {
                         totalPoints=ptsRound4[0].winPoints+totalPoints
                     }
+                    if (myBracketRound4[i]==finalFourTeams538[i].Team) {
+                        totalPointsPersonal=ptsRound4[0].winPoints+totalPointsPersonal
+
+                    }
                 }
 
                 //console.log(totalPoints)
@@ -983,6 +1000,10 @@ function loadpopPicks() {
                 for (let i=0; i<championshipTeams.length; i++) {
                     if (championshipTeams[i].Team==championshipTeams538[i].Team) {
                         totalPoints=ptsRound5[0].winPoints+totalPoints
+                    }
+                    if (myBracketRound5[i]==championshipTeams538[i].Team) {
+                        totalPointsPersonal=ptsRound5[0].winPoints+totalPointsPersonal
+
                     }
                 }
 
@@ -993,16 +1014,24 @@ function loadpopPicks() {
                     if (winningTeam[i].Team==winningTeam538[i].Team) {
                         totalPoints=ptsRound6[0].winPoints+totalPoints
                     }
+                    if (myBracketRound6[i]==winningTeam538[i].Team) {
+                        totalPointsPersonal=ptsRound6[0].winPoints+totalPointsPersonal
+
+                    }
                 }
 
                 totalPoints=totalPoints+ptsRound6[2].totalBonus
-                console.log(totalPoints)
+
+               // console.log(totalPoints)
+                console.log(totalPointsPersonal)
 
 
                 
                 standingsArray.push(totalPoints)
                 standingsArray.sort(function(a, b){return b-a});
 
+
+                totalPointsPersonal=0
                 totalPoints=0
                 ptsRound1[2].totalBonus=0
                 ptsRound2[2].totalBonus=0
@@ -1014,7 +1043,7 @@ function loadpopPicks() {
 
 
                 
-                console.log(standingsArray)
+                
 
             }
 
@@ -1036,3 +1065,5 @@ function loadpopPicks() {
 
 
 loadpopPicks()
+
+console.log(standingsArray)
