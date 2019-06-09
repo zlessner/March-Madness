@@ -1,5 +1,7 @@
 let body = document.querySelector("body")
 let empty = document.querySelector(".empty")
+let seed = document.querySelectorAll(".seed")
+console.log(seed)
 let fiveThreeEight = document.querySelector(".fiveThreeEight")
 let teams = document.querySelector(".teams")
 let popPicks = document.querySelector(".popPicks")
@@ -76,7 +78,7 @@ let ptsRound6 = [
 
 //popPicks.addEventListener("click", function () { loadpopPicks() });
 
-
+//for (let r=0; r<2; r++) {
 
 function load538() {
     fetch(
@@ -506,7 +508,15 @@ function loadpopPicks() {
             //    console.log(newBracket1)
 
 
+            for (var j = 0; j < seed.length; j++) {
+                seedList = yahooData[i].Seed
+                seed.innerHTML = seedList
+                //empty.appendChild(start)
+                //console.log(winnerArray)
+                //console.log(teamList)
 
+
+            }
 
             //let user input their bracket to see how it would do and also put in ideal brackets 
 
@@ -721,15 +731,15 @@ function loadpopPicks() {
                        
                         // if (yahooData[i].Seed>yahooData[i+1].Seed) {
                         //     ptsRound1[2].totalBonus=ptsRound1[2].totalBonus+ptsRound1[1].bonus
-                        //     console.log(ptsRound1[2].totalBonus)
+                        //     // console.log(ptsRound1[2].totalBonus)
                         // }
                     }
 
                     else {
                         firstRoundWinners.push(yahooData[i+1])
-                        //     if (yahooData[i].Seed<yahooData[i+1].Seed) {
-                        //         ptsRound1[2].totalBonus=ptsRound1[2].totalBonus+ptsRound1[1].bonus
-                        // }
+                            if (yahooData[i].Seed<yahooData[i+1].Seed) {
+                                ptsRound1[2].totalBonus=ptsRound1[2].totalBonus+ptsRound1[1].bonus
+                        }
                     }
 
                     ranNum1= Math.random()
@@ -769,6 +779,7 @@ function loadpopPicks() {
                     else {
                         secondRoundWinners=[]
                         i=-1 
+                        ptsRound2[2].totalBonus=0
                     }
 
                     ranNum= Math.random()
@@ -870,11 +881,11 @@ function loadpopPicks() {
 
     }
 
-    //     for (let i = -1; i < thirdRoundWinners.length; i++) {
-
-    //         if (i%2==0) {
+        
     //         for (let j = -1; j < finalFourTeams.length; j++) {
-
+    //         if (j%2==0) {
+            
+    //             for (let i = -1; i < thirdRoundWinners.length; i++) {
     //             if ((thirdRoundWinners[i].Seed>thirdRoundWinners[i+1].Seed) && (finalFourTeams[j].Team==finalFourTeams538[j].Team)) {
     //                 ptsRound4[2].totalBonus=ptsRound4[2].totalBonus+ptsRound4[1].bonus
 
@@ -1027,6 +1038,7 @@ function loadpopPicks() {
                 }
 
                 totalPoints=totalPoints+ptsRound1[2].totalBonus
+                //console.log(ptsRound1[2].totalBonus)
 
                 //console.log(totalPoints)
 
@@ -1037,6 +1049,7 @@ function loadpopPicks() {
                     }
 
                 }
+                //console.log(ptsRound2[2].totalBonus)
 
                 //console.log(totalPoints)
                 totalPoints=totalPoints+ptsRound2[2].totalBonus
@@ -1110,7 +1123,9 @@ function loadpopPicks() {
             tourneyPoints()
 
         }
-    })
+    }
+    
+    )
     
 
         .catch(e => {
@@ -1128,4 +1143,7 @@ loadpopPicks()
 
 
 console.log(standingsArray)
+//standingsArray=[]
+//just doubling the amount of teams in the array instead of clearing it and starting over
 
+//}
