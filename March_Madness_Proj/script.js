@@ -1,11 +1,11 @@
 let body = document.querySelector("body")
 let empty = document.querySelector(".empty")
 let seed = document.querySelectorAll(".seed")
-console.log(seed)
+seedArray=[]
 let fiveThreeEight = document.querySelector(".fiveThreeEight")
 let teams = document.querySelector(".teams")
 let popPicks = document.querySelector(".popPicks")
-var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 fiveThirtyEightURL = 'https://marchmadnessapi.herokuapp.com/api/538Tournament'
 popPicksURL = 'https://marchmadnessapi.herokuapp.com/api/popPicksTournament'
 
@@ -394,10 +394,7 @@ function load538() {
         
         
             for (let i=0; i<myBracketRound2.length; i++) {
-                if (secondRoundWinners[i].Team==secondRoundWinners538[i].Team) {
-        
-                    totalPoints=ptsRound2[0].winPoints+totalPoints
-                }
+
                 if (myBracketRound2[i]==secondRoundWinners538[i].Team) {
                     totalPointsPersonal=ptsRound2[0].winPoints+totalPointsPersonal
         
@@ -407,9 +404,7 @@ function load538() {
         
         
             for (let i=0; i<myBracketRound3.length; i++) {
-                if (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team) {
-                    totalPoints=ptsRound3[0].winPoints+totalPoints
-                }
+  
                 if (myBracketRound3[i]==thirdRoundWinners538[i].Team) {
                     totalPointsPersonal=ptsRound3[0].winPoints+totalPointsPersonal
         
@@ -419,9 +414,7 @@ function load538() {
         
         
             for (let i=0; i<myBracketRound4.length; i++) {
-                if (finalFourTeams[i].Team==finalFourTeams538[i].Team) {
-                    totalPoints=ptsRound4[0].winPoints+totalPoints
-                }
+   
                 if (myBracketRound4[i]==finalFourTeams538[i].Team) {
                     totalPointsPersonal=ptsRound4[0].winPoints+totalPointsPersonal
         
@@ -431,9 +424,7 @@ function load538() {
         
         
             for (let i=0; i<myBracketRound5.length; i++) {
-                if (championshipTeams[i].Team==championshipTeams538[i].Team) {
-                    totalPoints=ptsRound5[0].winPoints+totalPoints
-                }
+    
                 if (myBracketRound5[i]==championshipTeams538[i].Team) {
                     totalPointsPersonal=ptsRound5[0].winPoints+totalPointsPersonal
         
@@ -443,9 +434,7 @@ function load538() {
         
         
             for (let i=0; i<myBracketRound6.length; i++) {
-                if (winningTeam[i].Team==winningTeam538[i].Team) {
-                    totalPoints=ptsRound6[0].winPoints+totalPoints
-                }
+
                 if (myBracketRound6[i]==winningTeam538[i].Team) {
                     totalPointsPersonal=ptsRound6[0].winPoints+totalPointsPersonal
         
@@ -509,14 +498,35 @@ function loadpopPicks() {
 
 
             for (var j = 0; j < seed.length; j++) {
-                seedList = yahooData[i].Seed
-                seed.innerHTML = seedList
-                //empty.appendChild(start)
+                seedArray.push(seed[j])
+                // seedList = yahooData[j].Seed
+                // seed.innerHTML = seedList
+                //seed.appendChild(seedList)
                 //console.log(winnerArray)
                 //console.log(teamList)
 
 
             }
+
+            //console.log(seedArray)
+
+            for (var l = 0; l < seedArray.length; l++) {
+                seedList = yahooData[l].Seed
+                //empty.appendChild(seedArray)
+                //seed.innerHTML = seedList
+                //seed.appendChild(seedList)
+                //console.log(winnerArray)
+                //console.log(teamList)
+
+
+            }
+
+
+            // for (var i = 0; i < yahooData.length; i++) {
+            //     teamList = yahooData[i].Team
+            //     start = document.createElement('p');
+            //     start.innerHTML = teamList
+            //     empty.appendChild(start)
 
             //let user input their bracket to see how it would do and also put in ideal brackets 
 
@@ -729,10 +739,12 @@ function loadpopPicks() {
                     if (ranNum1 <= yahooData[i].Round1) {
                         firstRoundWinners.push(yahooData[i])
                        
-                        // if (yahooData[i].Seed>yahooData[i+1].Seed) {
-                        //     ptsRound1[2].totalBonus=ptsRound1[2].totalBonus+ptsRound1[1].bonus
-                        //     // console.log(ptsRound1[2].totalBonus)
-                        // }
+                        if (yahooData[i].Seed>yahooData[i+1].Seed) {
+                            ptsRound1[2].totalBonus=ptsRound1[2].totalBonus+ptsRound1[1].bonus
+                            // console.log(ptsRound1[2].totalBonus)
+                        }
+
+
                     }
 
                     else {
@@ -763,16 +775,16 @@ function loadpopPicks() {
   
                     if (ranNum <= firstRoundWinners[i].Round2) {
                         secondRoundWinners.push(firstRoundWinners[i])
-                        // if (firstRoundWinners[i].Seed>firstRoundWinners[i+1].Seed) {
-                        //     ptsRound2[2].totalBonus=ptsRound2[2].totalBonus+ptsRound2[1].bonus
-                        // }
+                        if (firstRoundWinners[i].Seed>firstRoundWinners[i+1].Seed) {
+                            ptsRound2[2].totalBonus=ptsRound2[2].totalBonus+ptsRound2[1].bonus
+                        }
                     }
 
                     else if ((ranNum > firstRoundWinners[i].Round2) && (ranNum <= (firstRoundWinners[i].Round2 + firstRoundWinners[i+1].Round2))) {
                         secondRoundWinners.push(firstRoundWinners[i+1])
-                    //     if (firstRoundWinners[i].Seed<firstRoundWinners[i+1].Seed) {
-                    //         ptsRound2[2].totalBonus=ptsRound2[2].totalBonus+ptsRound2[1].bonus
-                    // }
+                        if (firstRoundWinners[i].Seed<firstRoundWinners[i+1].Seed) {
+                            ptsRound2[2].totalBonus=ptsRound2[2].totalBonus+ptsRound2[1].bonus
+                    }
 
                     }
 
@@ -806,22 +818,23 @@ function loadpopPicks() {
   
                     if (ranNum3 <= secondRoundWinners[i].Round3) {
                         thirdRoundWinners.push(secondRoundWinners[i])
-                        // if (secondRoundWinners[i].Seed>secondRoundWinners[i+1].Seed) {
-                        //     ptsRound3[2].totalBonus=ptsRound3[2].totalBonus+ptsRound3[1].bonus
-                        // }
+                        if (secondRoundWinners[i].Seed>secondRoundWinners[i+1].Seed) {
+                            ptsRound3[2].totalBonus=ptsRound3[2].totalBonus+ptsRound3[1].bonus
+                        }
                     }
 
                     else if ((ranNum3 > secondRoundWinners[i].Round3) && (ranNum3 <= (secondRoundWinners[i].Round3 + secondRoundWinners[i+1].Round3))) {
                         thirdRoundWinners.push(secondRoundWinners[i+1])
-                    //     if (secondRoundWinners[i].Seed<secondRoundWinners[i+1].Seed) {
-                    //         ptsRound3[2].totalBonus=ptsRound3[2].totalBonus+ptsRound3[1].bonus
-                    // }
+                        if (secondRoundWinners[i].Seed<secondRoundWinners[i+1].Seed) {
+                            ptsRound3[2].totalBonus=ptsRound3[2].totalBonus+ptsRound3[1].bonus
+                    }
 
                     }
 
                     else {
                         thirdRoundWinners=[]
                         i=-1 
+                        ptsRound3[2].totalBonus=0
                     }
 
                     ranNum3= Math.random()
@@ -849,21 +862,21 @@ function loadpopPicks() {
   
                     if (ranNum4 <= thirdRoundWinners[i].Round4) {
                         finalFourTeams.push(thirdRoundWinners[i])
+
+                        if (thirdRoundWinners[i].Seed>thirdRoundWinners[i+1].Seed) {
+                            ptsRound4[2].totalBonus=ptsRound4[2].totalBonus+ptsRound4[1].bonus
+                        }
       
                     }
 
                     else if ((ranNum4 > thirdRoundWinners[i].Round4) && (ranNum4 <= (thirdRoundWinners[i].Round4 + thirdRoundWinners[i+1].Round4))) {
                         finalFourTeams.push(thirdRoundWinners[i+1])
-                        // if ((thirdRoundWinners[i].Seed<thirdRoundWinners[i+1].Seed) && (thirdRoundWinners[i].Team==thirdRoundWinners538[i].Team)) {
-                        //      ptsRound4[2].totalBonus=ptsRound4[2].totalBonus+ptsRound4[1].bonus
 
+                        if (thirdRoundWinners[i].Seed<thirdRoundWinners[i+1].Seed) {
+                            ptsRound4[2].totalBonus=ptsRound4[2].totalBonus+ptsRound4[1].bonus
+                        }
 
-                            //  console.log(thirdRoundWinners[i].Seed)
-                            // console.log(thirdRoundWinners[i+1].Seed)
-                            // console.log(thirdRoundWinners[i].Team)
-                            // console.log(thirdRoundWinners[i+1].Team)
-                            // console.log(ptsRound4[2].totalBonus)
-                            
+                           
                     }
 
                     
@@ -871,6 +884,7 @@ function loadpopPicks() {
                     else {
                         finalFourTeams=[]
                         i=-1 
+                        ptsRound4[2].totalBonus=0
                     }
 
                     ranNum4= Math.random()
@@ -929,6 +943,7 @@ function loadpopPicks() {
                     else {
                         championshipTeams=[]
                         i=-1 
+                        ptsRound5[2].totalBonus=0
                     }
 
                     ranNum5= Math.random()
@@ -972,6 +987,7 @@ function loadpopPicks() {
                     else {
                         winningTeam=[]
                         i=-1 
+                        ptsRound6[2].totalBonus=0
                     }
 
                     ranNum6= Math.random()
@@ -1038,7 +1054,7 @@ function loadpopPicks() {
                 }
 
                 totalPoints=totalPoints+ptsRound1[2].totalBonus
-                //console.log(ptsRound1[2].totalBonus)
+                console.log(ptsRound1[2].totalBonus)
 
                 //console.log(totalPoints)
 
