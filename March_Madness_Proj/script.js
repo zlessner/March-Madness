@@ -411,16 +411,15 @@ function load538() {
         upsetArraySilver6=[]
         
 
- 
 
-
-    
 
 
         function personalScore() {
+
+
             for (let i=0; i<silverData.length; i++) {
                 if (i%2==0) {
-                if (silverData[i].Seed>silverData[i+1]) {
+                if (silverData[i].Seed>silverData[i+1].Seed) {
                     upsetArraySilver1.push(silverData[i].Team)
                         }
 
@@ -437,13 +436,201 @@ function load538() {
             }
 
 
-            console.log(myBracketRound1)
-            console.log(upsetArraySilver1)
+            //console.log(myBracketRound1)
+            //console.log(upsetArraySilver1)
             
             
             const bonusTeamsSilver1 = silverTeamsRound1.filter(r=> upsetArraySilver1.includes(r))
-            totalBonusPersonal1=bonusTeamsSilver1.length*ptsRound1[1].bonus
-            console.log(totalBonusPersonal1)
+
+            const myTeamsSilver1 = myBracketRound1.filter(r=> bonusTeamsSilver1.includes(r))
+            totalBonusPersonal1=myTeamsSilver1.length*ptsRound1[1].bonus
+
+            //console.log(totalBonusPersonal1)
+
+
+
+
+
+            for (let i=0; i<myBracketRound1.length; i++) {
+                if (i%2==0) {
+                if (myBracketRound1Seed[i]>firstRoundWinners538[i+1].Seed) {
+                    upsetArraySilver2.push(myBracketRound1[i])
+                        }
+
+                else {
+                    upsetArraySilver2.push(myBracketRound1[i+1])
+                }
+
+                }
+            }
+
+
+            silverTeamsRound2=[]
+            for (let x=0; x<secondRoundWinners538.length; x++) {
+                silverTeamsRound2.push(secondRoundWinners538[x].Team)
+            }
+
+
+            //console.log(myBracketRound2)
+            //console.log(upsetArraySilver2)
+            
+            
+            const bonusTeamsSilver2 = silverTeamsRound2.filter(r=> upsetArraySilver2.includes(r))
+
+            const myTeamsSilver2 = myBracketRound2.filter(r=> bonusTeamsSilver2.includes(r))
+            totalBonusPersonal2=myTeamsSilver2.length*ptsRound2[1].bonus
+
+            //console.log(totalBonusPersonal2)
+
+
+
+
+
+
+
+            for (let i=0; i<myBracketRound2.length; i++) {
+                if (i%2==0) {
+                if (myBracketRound2Seed[i]>secondRoundWinners538[i+1].Seed) {
+                    upsetArraySilver3.push(myBracketRound2[i])
+                        }
+
+                else {
+                    upsetArraySilver3.push(myBracketRound2[i+1])
+                }
+
+                }
+            }
+
+
+            silverTeamsRound3=[]
+            for (let x=0; x<thirdRoundWinners538.length; x++) {
+                silverTeamsRound3.push(thirdRoundWinners538[x].Team)
+            }
+
+
+            //console.log(myBracketRound2)
+            //console.log(upsetArraySilver2)
+            
+            
+            const bonusTeamsSilver3 = silverTeamsRound3.filter(r=> upsetArraySilver3.includes(r))
+
+            const myTeamsSilver3 = myBracketRound3.filter(r=> bonusTeamsSilver3.includes(r))
+            totalBonusPersonal3=myTeamsSilver3.length*ptsRound3[1].bonus
+
+            //console.log(totalBonusPersonal3)
+
+
+
+
+
+
+
+            for (let i=0; i<myBracketRound3.length; i++) {
+                if (i%2==0) {
+                if (myBracketRound3Seed[i]>thirdRoundWinners538[i+1].Seed) {
+                    upsetArraySilver4.push(myBracketRound3[i])
+                        }
+
+                else {
+                    upsetArraySilver4.push(myBracketRound3[i+1])
+                }
+
+                }
+            }
+
+
+            silverTeamsRound4=[]
+            for (let x=0; x<finalFourTeams538.length; x++) {
+                silverTeamsRound4.push(finalFourTeams538[x].Team)
+            }
+
+
+            //console.log(myBracketRound2)
+            //console.log(upsetArraySilver2)
+            
+            
+            const bonusTeamsSilver4 = silverTeamsRound4.filter(r=> upsetArraySilver4.includes(r))
+
+            const myTeamsSilver4 = myBracketRound4.filter(r=> bonusTeamsSilver4.includes(r))
+            totalBonusPersonal4=myTeamsSilver4.length*ptsRound4[1].bonus
+
+            //console.log(totalBonusPersonal4)
+
+
+
+
+
+
+
+            for (let i=0; i<myBracketRound4.length; i++) {
+                if (i%2==0) {
+                if (myBracketRound4Seed[i]>finalFourTeams538[i+1].Seed) {
+                    upsetArraySilver5.push(myBracketRound4[i])
+                        }
+
+                else {
+                    upsetArraySilver5.push(myBracketRound4[i+1])
+                }
+
+                }
+            }
+
+
+            silverTeamsRound5=[]
+            for (let x=0; x<championshipTeams538.length; x++) {
+                silverTeamsRound5.push(championshipTeams538[x].Team)
+            }
+
+
+            //console.log(myBracketRound2)
+            //console.log(upsetArraySilver2)
+            
+            
+            const bonusTeamsSilver5 = silverTeamsRound5.filter(r=> upsetArraySilver5.includes(r))
+
+            const myTeamsSilver5 = myBracketRound5.filter(r=> bonusTeamsSilver5.includes(r))
+            totalBonusPersonal5=myTeamsSilver5.length*ptsRound5[1].bonus
+
+            //console.log(totalBonusPersonal5)
+
+
+
+
+
+
+            for (let i=0; i<myBracketRound5.length; i++) {
+                if (i%2==0) {
+                if (myBracketRound5Seed[i]>championshipTeams538[i+1].Seed) {
+                    upsetArraySilver6.push(myBracketRound5[i])
+                        }
+
+                else {
+                    upsetArraySilver6.push(myBracketRound5[i+1])
+                }
+
+                }
+            }
+
+
+            silverTeamsRound6=[]
+            for (let x=0; x<winningTeam538.length; x++) {
+                silverTeamsRound6.push(winningTeam538[x].Team)
+            }
+
+
+            //console.log(myBracketRound2)
+            //console.log(upsetArraySilver2)
+            
+            
+            const bonusTeamsSilver6 = silverTeamsRound6.filter(r=> upsetArraySilver6.includes(r))
+
+            const myTeamsSilver6 = myBracketRound6.filter(r=> bonusTeamsSilver6.includes(r))
+            totalBonusPersonal6=myTeamsSilver6.length*ptsRound6[1].bonus
+
+            console.log(totalBonusPersonal6)
+
+
+
 
 
 
@@ -456,6 +643,13 @@ function load538() {
             }
         
         totalPointsPersonal=totalPointsPersonal+totalBonusPersonal1
+
+
+
+
+
+
+
         
             for (let i=0; i<myBracketRound2.length; i++) {
 
@@ -861,14 +1055,14 @@ function loadpopPicks() {
   
                     if (ranNum <= firstRoundWinners[i].Round2) {
                         secondRoundWinners.push(firstRoundWinners[i])
-                        if (firstRoundWinners[i].Seed>firstRoundWinners[i+1].Seed) {
+                        if (firstRoundWinners[i].Seed>firstRoundWinners538[i+1].Seed) {
                             upsetArray2.push(firstRoundWinners[i].Team)
                         }
                     }
 
                     else if ((ranNum > firstRoundWinners[i].Round2) && (ranNum <= (firstRoundWinners[i].Round2 + firstRoundWinners[i+1].Round2))) {
                         secondRoundWinners.push(firstRoundWinners[i+1])
-                        if (firstRoundWinners[i].Seed<firstRoundWinners[i+1].Seed) {
+                        if (firstRoundWinners538[i].Seed<firstRoundWinners[i+1].Seed) {
                             upsetArray2.push(firstRoundWinners[i+1].Team)
                         }
 
@@ -916,14 +1110,14 @@ function loadpopPicks() {
   
                     if (ranNum3 <= secondRoundWinners[i].Round3) {
                         thirdRoundWinners.push(secondRoundWinners[i])
-                        if (secondRoundWinners[i].Seed>secondRoundWinners[i+1].Seed) {
+                        if (secondRoundWinners[i].Seed>secondRoundWinners538[i+1].Seed) {
                             upsetArray3.push(secondRoundWinners[i].Team)
                         }
                     }
 
                     else if ((ranNum3 > secondRoundWinners[i].Round3) && (ranNum3 <= (secondRoundWinners[i].Round3 + secondRoundWinners[i+1].Round3))) {
                         thirdRoundWinners.push(secondRoundWinners[i+1])
-                        if (secondRoundWinners[i].Seed<secondRoundWinners[i+1].Seed) {
+                        if (secondRoundWinners538[i].Seed<secondRoundWinners[i+1].Seed) {
                             upsetArray3.push(secondRoundWinners[i+1].Team)
 
                     }
@@ -974,7 +1168,7 @@ function loadpopPicks() {
                     if (ranNum4 <= thirdRoundWinners[i].Round4) {
                         finalFourTeams.push(thirdRoundWinners[i])
 
-                        if (thirdRoundWinners[i].Seed>thirdRoundWinners[i+1].Seed) {
+                        if (thirdRoundWinners[i].Seed>thirdRoundWinners538[i+1].Seed) {
                             upsetArray4.push(thirdRoundWinners[i].Team)
                         }
       
@@ -983,7 +1177,7 @@ function loadpopPicks() {
                     else if ((ranNum4 > thirdRoundWinners[i].Round4) && (ranNum4 <= (thirdRoundWinners[i].Round4 + thirdRoundWinners[i+1].Round4))) {
                         finalFourTeams.push(thirdRoundWinners[i+1])
 
-                        if (thirdRoundWinners[i].Seed<thirdRoundWinners[i+1].Seed) {
+                        if (thirdRoundWinners538[i].Seed<thirdRoundWinners[i+1].Seed) {
                             upsetArray4.push(thirdRoundWinners[i+1].Team)
                         }
 
@@ -1033,14 +1227,14 @@ function loadpopPicks() {
   
                     if (ranNum5 <= finalFourTeams[i].Round5) {
                         championshipTeams.push(finalFourTeams[i])
-                        if (finalFourTeams[i].Seed>finalFourTeams[i+1].Seed) {
+                        if (finalFourTeams[i].Seed>finalFourTeams538[i+1].Seed) {
                             upsetArray5.push(finalFourTeams[i].Team)
                         }
                     }
 
                     else if ((ranNum5 > finalFourTeams[i].Round5) && (ranNum5 <= (finalFourTeams[i].Round5 + finalFourTeams[i+1].Round5))) {
                         championshipTeams.push(finalFourTeams[i+1])
-                        if (finalFourTeams[i].Seed<finalFourTeams[i+1].Seed) {
+                        if (finalFourTeams538[i].Seed<finalFourTeams[i+1].Seed) {
                             upsetArray5.push(finalFourTeams[i+1].Team)
                         }
 
@@ -1089,14 +1283,14 @@ function loadpopPicks() {
   
                     if (ranNum6 <= championshipTeams[i].Round6) {
                         winningTeam.push(championshipTeams[i])
-                        if (championshipTeams[i].Seed>championshipTeams[i+1].Seed) {
+                        if (championshipTeams[i].Seed>championshipTeams538[i+1].Seed) {
                             upsetArray6.push(championshipTeams[i].Team)
                         }
                     }
 
                     else if ((ranNum6 > championshipTeams[i].Round6) && (ranNum6 <= (championshipTeams[i].Round6 + champOddsEveryTeam[i+1].Round6))) {
                         winningTeam.push(championshipTeams[i+1])
-                        if (championshipTeams[i].Seed<championshipTeams[i+1].Seed) {
+                        if (championshipTeams538[i].Seed<championshipTeams[i+1].Seed) {
                             upsetArray6.push(championshipTeams[i+1].Team)
                         }
 
@@ -1196,7 +1390,7 @@ function loadpopPicks() {
                     }
 
                 }
-                console.log(ptsRound6[2].totalBonus)
+                //console.log(ptsRound2[2].totalBonus)
 
                 //console.log(totalPoints)
                 totalPoints=totalPoints+ptsRound2[2].totalBonus
