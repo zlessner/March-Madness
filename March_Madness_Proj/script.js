@@ -29,6 +29,13 @@ myBracketRound4= ['Michigan State', 'Gonzaga', 'Virginia', 'North Carolina']
 myBracketRound5= ['Gonzaga', 'Virginia']
 myBracketRound6= ['Gonzaga']
 
+myBracketRound1Seed =[1,9,4,5,6,3,10,2,1,9,4,14,11,3,10,2,1,9,13,12,6,3,10,2,1,9,4,5,6,3,10,2]
+myBracketRound2Seed =[1,5,6,2,1,4,3,2,1,12,6,2,1,5,6,2]
+myBracketRound3Seed =[1,2,1,3,1,2,1,2]
+myBracketRound4Seed =[2,1,1,1]
+myBracketRound5Seed =[1,1]
+myBracketRound6Seed =[1]
+
 standingsArray=[]
 
 
@@ -82,7 +89,8 @@ let ptsRound6 = [
 
 function load538() {
     fetch(
-        proxyUrl + fiveThirtyEightURL)
+        //proxyUrl + 
+        fiveThirtyEightURL)
         .then(blob => blob.json())
 
         .then(json => {
@@ -474,7 +482,8 @@ load538()
 
 function loadpopPicks() {
     fetch(
-        proxyUrl + popPicksURL)
+        //proxyUrl + 
+        popPicksURL)
         .then(woof => woof.json())
 
         .then(YCST => {
