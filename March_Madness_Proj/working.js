@@ -10,3 +10,5 @@ myBracketRound1Seed =[1]
                 // }
 
                                     //try to put in an else if here just like the other rounds (see if bonus points are a bit high)
+
+                                    //weird error about 538 teams not being defined- fixed with another refresh
