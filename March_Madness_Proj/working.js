@@ -11,6 +11,6 @@ myBracketRound1Seed =[1]
 
                 //do personal score bonus just like yahoo one
 
-                                    //try to put in an else if here just like the other rounds (see if bonus points are a bit high)
+                                    //try to put in an else if in first round for yahoo and 538 just like the other rounds (see if bonus points are a bit high)
 
                                     //weird error about 538 teams not being defined- fixed with another refresh

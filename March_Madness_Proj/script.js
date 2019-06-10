@@ -396,11 +396,58 @@ function load538() {
 
 
 
-
-
-
         totalPointsPersonal=0
+        totalBonusPersonal1=0
+        totalBonusPersonal2=0
+        totalBonusPersonal3=0
+        totalBonusPersonal4=0
+        totalBonusPersonal5=0
+        totalBonusPersonal6=0
+        upsetArraySilver1=[]
+        upsetArraySilver2=[]
+        upsetArraySilver3=[]
+        upsetArraySilver4=[]
+        upsetArraySilver5=[]
+        upsetArraySilver6=[]
+        
+
+ 
+
+
+    
+
+
         function personalScore() {
+            for (let i=0; i<silverData.length; i++) {
+                if (i%2==0) {
+                if (silverData[i].Seed>silverData[i+1]) {
+                    upsetArraySilver1.push(silverData[i].Team)
+                        }
+
+                else {
+                    upsetArraySilver1.push(silverData[i+1].Team)
+                }
+                }
+            }
+
+
+            silverTeamsRound1=[]
+            for (let x=0; x<firstRoundWinners538.length; x++) {
+                silverTeamsRound1.push(firstRoundWinners538[x].Team)
+            }
+
+
+            console.log(myBracketRound1)
+            console.log(upsetArraySilver1)
+            
+            
+            const bonusTeamsSilver1 = silverTeamsRound1.filter(r=> upsetArraySilver1.includes(r))
+            totalBonusPersonal1=bonusTeamsSilver1.length*ptsRound1[1].bonus
+            console.log(totalBonusPersonal1)
+
+
+
+
             for (let i=0; i<myBracketRound1.length; i++) {
                 if (myBracketRound1[i]==firstRoundWinners538[i].Team) {
                     totalPointsPersonal=ptsRound1[0].winPoints+totalPointsPersonal
@@ -408,7 +455,7 @@ function load538() {
                 }
             }
         
-        
+        totalPointsPersonal=totalPointsPersonal+totalBonusPersonal1
         
             for (let i=0; i<myBracketRound2.length; i++) {
 
@@ -419,7 +466,8 @@ function load538() {
             }
         
         
-        
+            totalPointsPersonal=totalPointsPersonal+totalBonusPersonal2
+
             for (let i=0; i<myBracketRound3.length; i++) {
   
                 if (myBracketRound3[i]==thirdRoundWinners538[i].Team) {
@@ -428,7 +476,7 @@ function load538() {
                 }
             }
         
-        
+        totalPointsPersonal=totalPointsPersonal+totalBonusPersonal3
         
             for (let i=0; i<myBracketRound4.length; i++) {
    
@@ -439,7 +487,8 @@ function load538() {
             }
         
         
-        
+            totalPointsPersonal=totalPointsPersonal+totalBonusPersonal4
+
             for (let i=0; i<myBracketRound5.length; i++) {
     
                 if (myBracketRound5[i]==championshipTeams538[i].Team) {
@@ -449,7 +498,8 @@ function load538() {
             }
         
         
-        
+        totalPointsPersonal=totalPointsPersonal+totalBonusPersonal5
+
             for (let i=0; i<myBracketRound6.length; i++) {
 
                 if (myBracketRound6[i]==winningTeam538[i].Team) {
@@ -458,6 +508,8 @@ function load538() {
                 }
             }
         }
+
+        totalPointsPersonal=totalPointsPersonal+totalBonusPersonal6
         
         personalScore()
         console.log(totalPointsPersonal)
@@ -475,11 +527,11 @@ function load538() {
 
 
         })
-        .catch(e => {
-            console.log("You have an error");
-            load538()
-            return e;
-        });
+        // .catch(e => {
+        //     console.log("You have an error");
+        //     load538()
+        //     return e;
+        // });
 
 
 
@@ -1164,20 +1216,6 @@ function loadpopPicks() {
                         totalPoints=ptsRound4[0].winPoints+totalPoints
                     }
 
-                
-
-
-                //     for (let i = -1; i < thirdRoundWinners.length; i++) {
-                //         if (i%2==0) {
-                //     if (thirdRoundWinners[i].Seed<thirdRoundWinners[i+1].Seed) {
-                //             ptsRound4[2].totalBonus=ptsRound4[2].totalBonus+ptsRound4[1].bonus
-                //         }
-                //     }
-                // }
-                // }
-                //     }
-                
-                // }
 
                 }
 
