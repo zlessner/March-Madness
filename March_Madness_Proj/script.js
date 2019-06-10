@@ -31,6 +31,22 @@ upsetArray5=[]
 upsetArray6=[]
 
 
+
+totalPointsPersonal=0
+totalBonusPersonal1=0
+totalBonusPersonal2=0
+totalBonusPersonal3=0
+totalBonusPersonal4=0
+totalBonusPersonal5=0
+totalBonusPersonal6=0
+upsetArraySilver1=[]
+upsetArraySilver2=[]
+upsetArraySilver3=[]
+upsetArraySilver4=[]
+upsetArraySilver5=[]
+upsetArraySilver6=[]
+
+
 myBracketRound1= ['Duke', 'Central Florida', 'Virginia Tech', 'Mississippi State', 'Maryland', 'Louisiana State', 'Minnesota', 'Michigan State', 'Gonzaga', 'Baylor', 'Florida State', 'Murray State', 'Arizona State', 'Texas Tech', 'Florida', 'Michigan', 'Virginia', 'Oklahoma', 'UC-Irvine', 'Oregon', 'Villanova', 'Purdue', 'Iowa', 'Tennessee', 'North Carolina', 'Washington', 'Kansas', 'Auburn', 'Iowa State', 'Houston', 'Seton Hall', 'Kentucky']
 myBracketRound2= ['Duke', 'Mississippi State', 'Maryland', 'Michigan State', 'Gonzaga', 'Florida State', 'Texas Tech', 'Michigan', 'Virginia', 'Oregon', 'Villanova', 'Tennessee', 'North Carolina', 'Auburn', 'Iowa State', 'Kentucky']
 myBracketRound3= ['Duke', 'Michigan State', 'Gonzaga', 'Texas Tech', 'Virginia', 'Tennessee', 'North Carolina', 'Kentucky']
@@ -396,19 +412,7 @@ function load538() {
 
 
 
-        totalPointsPersonal=0
-        totalBonusPersonal1=0
-        totalBonusPersonal2=0
-        totalBonusPersonal3=0
-        totalBonusPersonal4=0
-        totalBonusPersonal5=0
-        totalBonusPersonal6=0
-        upsetArraySilver1=[]
-        upsetArraySilver2=[]
-        upsetArraySilver3=[]
-        upsetArraySilver4=[]
-        upsetArraySilver5=[]
-        upsetArraySilver6=[]
+
         
 
 
@@ -627,7 +631,7 @@ function load538() {
             const myTeamsSilver6 = myBracketRound6.filter(r=> bonusTeamsSilver6.includes(r))
             totalBonusPersonal6=myTeamsSilver6.length*ptsRound6[1].bonus
 
-            console.log(totalBonusPersonal6)
+           // console.log(totalBonusPersonal6)
 
 
 
@@ -706,7 +710,7 @@ function load538() {
         totalPointsPersonal=totalPointsPersonal+totalBonusPersonal6
         
         personalScore()
-        console.log(totalPointsPersonal)
+        //console.log(totalPointsPersonal)
         
 
 
@@ -1443,8 +1447,9 @@ function loadpopPicks() {
 
                 
                 standingsArray.push(totalPoints)
-                standingsArray.sort(function(a, b){return b-a});
+                
 
+                
 
                 
                 totalPoints=0
@@ -1456,7 +1461,7 @@ function loadpopPicks() {
                 ptsRound6[2].totalBonus=0
 
 
-
+                
                 
                 
 
@@ -1466,7 +1471,14 @@ function loadpopPicks() {
 
             tourneyPoints()
 
+            
         }
+
+        console.log(totalPointsPersonal)
+        standingsArray.push(totalPointsPersonal)
+        standingsArray.sort(function(a, b){return b-a});
+        console.log(standingsArray.indexOf(totalPointsPersonal)+1)
+        console.log(standingsArray)
     }
     
     )
@@ -1477,6 +1489,8 @@ function loadpopPicks() {
         //     loadpopPicks()
         //     return e;
         // });
+
+        
 }
 
 
@@ -1486,7 +1500,9 @@ loadpopPicks()
 
 
 
-console.log(standingsArray)
+
+
+
 //standingsArray=[]
 //just doubling the amount of teams in the array instead of clearing it and starting over
 
