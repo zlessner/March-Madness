@@ -20,3 +20,9 @@ myBracketRound1Seed =[1]
                                     // after simulations, add number of top 3 finishes, number of top finishes, percentage chance 
                                     // at finishing in one of those places, and percentage chance of finishing in one of those places 
                                     // just based on randomness (1 divided by number of participants)
+
+
+                                    // below is fixed by a few rerfreshes-- why?
+                                    // script.js:191 Uncaught (in promise) ReferenceError: silverData is not defined
+    // at fiveThirtyEightValidOdds (script.js:191)
+    // at script.js:229

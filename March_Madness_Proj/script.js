@@ -110,9 +110,7 @@ let ptsRound6 = [
 
 //popPicks.addEventListener("click", function () { loadpopPicks() });
 
-// for (let r=0; r<2; r++) {
-    standingsArray=[]
-    totalPointsPersonal=0
+
 
 function load538() {
     fetch(
@@ -129,6 +127,8 @@ function load538() {
                     silverData.push(json[0].Bracket[i].Schools[j])
                 }
             }
+        }
+        )
             //console.log(silverData)
             // console.log(silverData[0].Round1)
             // console.log(silverData.length)
@@ -139,6 +139,44 @@ function load538() {
            //track if fivethirtyEightData picks entered in correctly
            //run standings of 150 or so partcipants over and over for a large sample of times to find out the bracket that usually places highest
             //put winPoints associated with pop pick bracket sims with 538 results from sim
+
+
+
+            .then(fetch(
+                //proxyUrl + 
+                popPicksURL)
+                .then(woof => woof.json())
+        
+                .then(YCST => {
+                    write = JSON.stringify(YCST, null, 2);
+                    //console.log(write)
+                    yahooData = []
+                    regionData=[]
+                    for (var i = 0; i < YCST[0].Bracket.length; i++) {
+                        for (var j = 0; j < YCST[0].Bracket[i].Schools.length; j++) {
+                            yahooData.push(YCST[0].Bracket[i].Schools[j])
+                            regionData.push(YCST[0].Bracket[i].Region)
+                        }
+                    }
+                                    //newBracket=Object.assign({}, yahooData, {})
+                        //trying to clone yahooData variable into new var in order to splice off winner data
+        
+                        //    newBracket1=Array.prototype.slice.call(newBracket);
+               
+                                  //console.log(yahooData)
+                    //    console.log(newBracket)
+                    //    console.log(newBracket1) 
+                }
+                )
+
+
+
+
+
+    
+        .then(() => {
+
+             for (let r=0; r<2; r++) {
 
            let round1OddsTrack = 0
            let round2OddsTrack = 0
@@ -724,36 +762,6 @@ function load538() {
 // console.log(winningTeam538)
 
 
-
-
-        })
-
-
-        .then(fetch(
-        //proxyUrl + 
-        popPicksURL)
-        .then(woof => woof.json())
-
-        .then(YCST => {
-            write = JSON.stringify(YCST, null, 2);
-            //console.log(write)
-            yahooData = []
-            regionData=[]
-            for (var i = 0; i < YCST[0].Bracket.length; i++) {
-                for (var j = 0; j < YCST[0].Bracket[i].Schools.length; j++) {
-                    yahooData.push(YCST[0].Bracket[i].Schools[j])
-                    regionData.push(YCST[0].Bracket[i].Region)
-                }
-            }
-                            //newBracket=Object.assign({}, yahooData, {})
-                //trying to clone yahooData variable into new var in order to splice off winner data
-
-                //    newBracket1=Array.prototype.slice.call(newBracket);
-       
-                          //console.log(yahooData)
-            //    console.log(newBracket)
-            //    console.log(newBracket1) 
-       
        
             for (var j = 0; j < seed.length; j++) {
                 seedArray.push(seed[j])
@@ -1466,6 +1474,13 @@ function load538() {
             standingsArray.sort(function(a, b){return b-a});
             console.log(standingsArray.indexOf(totalPointsPersonal)+1)
             console.log(standingsArray)
+
+
+            standingsArray=[]
+            totalPointsPersonal=0
+
+        }
+
         }
         
         )
@@ -1477,7 +1492,7 @@ function load538() {
         //     return e;
         // });
     
-
+    
         )
 
 }
