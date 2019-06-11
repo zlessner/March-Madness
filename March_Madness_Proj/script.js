@@ -1513,21 +1513,17 @@ function load538() {
             
 
 
-
- team[0].addEventListener("click", chooseRound2);
+for (let q=0; q<team.length; q++) {
+ team[q].addEventListener("click", chooseRound2);
           function chooseRound2(evt) {
-            if (team[0].contains(evt.target)) {
-                team2[0].innerHTML=team[0].innerHTML
+            if (team[q].contains(evt.target)) {
+                team2[Math.floor(q/2)].innerHTML=team[q].innerHTML
             }
-
-            if (team[1].contains(evt.target)) {
-                team2[0].innerHTML=team[1].innerHTML
-            }
-        
-
           }
 
+}
 
+//if array lengths are greater than certain length, able to submit, if not show pop up error
 
 
 
