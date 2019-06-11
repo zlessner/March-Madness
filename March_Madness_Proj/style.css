@@ -12,6 +12,11 @@ body {
   section {
     margin: 0 8px;
   }
+
+  .team, .team2, .team3, .team4, .team5, .team6 {
+      font-size: 8px;
+      cursor: pointer;
+  }
   
   .header-text {
       color: white;

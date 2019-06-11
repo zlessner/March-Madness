@@ -1,7 +1,9 @@
 let body = document.querySelector("body")
 let empty = document.querySelector(".empty")
 let seed = document.querySelectorAll(".seed")
-seedArray = []
+let team = document.querySelectorAll(".team")
+let team2 = document.querySelectorAll(".team2")
+
 let fiveThreeEight = document.querySelector(".fiveThreeEight")
 let teams = document.querySelector(".teams")
 let popPicks = document.querySelector(".popPicks")
@@ -779,19 +781,6 @@ function load538() {
 
 
 
-                    for (var j = 0; j < seed.length; j++) {
-                        seedArray.push(seed[j])
-                        //console.log(seed.length)
-                        // seedList = yahooData[j].Seed
-                        // seed.innerHTML = seedList
-                        //seed.appendChild(seedList)
-                        //console.log(winnerArray)
-                        //console.log(teamList)
-
-
-                    }
-
-
                     //console.log(seedArray)
 
                     // for (var l = 0; l < seedArray.length; l++) {
@@ -1514,6 +1503,34 @@ function load538() {
 
                 console.log(firstPlaceFinishes)
 
+            for (let j = 0; j < seed.length; j++) {
+
+            seed[j].innerHTML=yahooData[j].Seed
+            team[j].innerHTML=yahooData[j].Team
+
+
+        }
+            
+
+
+
+ team[0].addEventListener("click", chooseRound2);
+          function chooseRound2(evt) {
+            if (team[0].contains(evt.target)) {
+                team2[0].innerHTML=team[0].innerHTML
+            }
+
+            if (team[1].contains(evt.target)) {
+                team2[0].innerHTML=team[1].innerHTML
+            }
+        
+
+          }
+
+
+
+
+
             }
 
             )
@@ -1534,6 +1551,8 @@ function load538() {
 
 }
 
+
+
 load538()
 
 
@@ -1544,23 +1563,3 @@ load538()
 
 
 
-ArrayOfSeeds=[1,16,8,9,4,13,5,12,6,11,3,14,7,10,2,15,1,16,8,9,4,13,5,12,6,11,3,14,7,10,2,15,1,16,8,9,4,13,5,12,6,11,3,14,7,10,2,15,1,16,8,9,4,13,5,12,6,11,3,14,7,10,2,15]
-console.log(seedArray[0])
-console.log(seed.length)
-console.log(seed[0].innerHTML)
-console.log(ArrayOfSeeds)
-
-
-for (var j = 0; j < seed.length; j++) {
-    //seedArray.push(seed[j])
-
-    seed[j].innerHTML=ArrayOfSeeds[j]
-    
-    // seedList = yahooData[j].Seed
-    // seed.innerHTML = seedList
-    //seed.appendChild(seedList)
-    //console.log(winnerArray)
-    //console.log(teamList)
-
-
-}
