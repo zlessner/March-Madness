@@ -14,3 +14,9 @@ myBracketRound1Seed =[1]
                                     //try to put in an else if in first round for yahoo and 538 just like the other rounds (see if bonus points are a bit high)
 
                                     //weird error about 538 teams not being defined- fixed with another refresh
+
+                                    //simulate stnadings 50,000 times and have bracket show average place in standings
+
+                                    // after simulations, add number of top 3 finishes, number of top finishes, percentage chance 
+                                    // at finishing in one of those places, and percentage chance of finishing in one of those places 
+                                    // just based on randomness (1 divided by number of participants)
