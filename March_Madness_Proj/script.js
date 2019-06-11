@@ -22,6 +22,7 @@ let bracket2 = 'y'
 //needs some editing
 let winnings = firstPrize * bracket1 - entryFee
 let simulations = 50000
+firstPlaceFinishes=0
 
 upsetArray1=[]
 upsetArray2=[]
@@ -176,7 +177,24 @@ function load538() {
     
         .then(() => {
 
-             for (let r=0; r<2; r++) {
+             for (let r=0; r<20; r++) {
+
+
+totalPointsPersonal=0
+totalBonusPersonal1=0
+totalBonusPersonal2=0
+totalBonusPersonal3=0
+totalBonusPersonal4=0
+totalBonusPersonal5=0
+totalBonusPersonal6=0
+upsetArraySilver1=[]
+upsetArraySilver2=[]
+upsetArraySilver3=[]
+upsetArraySilver4=[]
+upsetArraySilver5=[]
+upsetArraySilver6=[]
+
+
 
            let round1OddsTrack = 0
            let round2OddsTrack = 0
@@ -959,25 +977,33 @@ function load538() {
     
                     totalTeams.push(yahooData[i].Team)
                  }
+
+
+
     //find a way to print everything on dom
     
-                for (var i = 0; i < yahooData.length; i++) {
-                    teamList = yahooData[i].Team
-                    start = document.createElement('p');
-                    start.innerHTML = teamList
-                    empty.appendChild(start)
-                    //console.log(winnerArray)
-                    //console.log(teamList)
+
+
+                // for (var i = 0; i < yahooData.length; i++) {
+                //     teamList = yahooData[i].Team
+                //     start = document.createElement('p');
+                //     start.innerHTML = teamList
+                //     empty.appendChild(start)
+                //     //console.log(winnerArray)
+                //     //console.log(teamList)
                     
     
     
-                    if (winnerArray == teamList) {
-                        for (var j = 0; j < 5; j++) {
-                            win = document.createElement('span');
-                            win.innerHTML = " " + teamList + " "
-                            start.appendChild(win)
-                        }
-                    }
+                //     if (winnerArray == teamList) {
+                //         for (var j = 0; j < 5; j++) {
+                //             win = document.createElement('span');
+                //             win.innerHTML = " " + teamList + " "
+                //             start.appendChild(win)
+                //         }
+                //     }
+
+
+
     
                     // if (runnerUpArray == teamList) {
                     //     for (var j = 0; j < 4; j++) {
@@ -997,7 +1023,7 @@ function load538() {
     
                     
     
-                }
+                //}
                 
     
                 function firstRound() {
@@ -1469,17 +1495,25 @@ function load538() {
                 
             }
     
-            console.log(totalPointsPersonal)
+            //console.log(totalPointsPersonal)
             standingsArray.push(totalPointsPersonal)
             standingsArray.sort(function(a, b){return b-a});
-            console.log(standingsArray.indexOf(totalPointsPersonal)+1)
-            console.log(standingsArray)
+            //console.log(standingsArray.indexOf(totalPointsPersonal)+1)
+            //console.log(standingsArray)
+
+            
+            if ((standingsArray.indexOf(totalPointsPersonal)+1)==1) {
+                firstPlaceFinishes= firstPlaceFinishes + 1
+            }
 
 
             standingsArray=[]
             totalPointsPersonal=0
+            
 
         }
+
+        console.log(firstPlaceFinishes)
 
         }
         
@@ -1494,6 +1528,7 @@ function load538() {
     
     
         )
+        
 
 }
 
