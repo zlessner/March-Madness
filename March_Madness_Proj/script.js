@@ -72,21 +72,9 @@ upsetArraySilver5 = []
 upsetArraySilver6 = []
 
 
-myBracketRound1 = ['Duke', 'Central Florida', 'Virginia Tech', 'Mississippi State', 'Maryland', 'Louisiana State', 'Minnesota', 'Michigan State', 'Gonzaga', 'Baylor', 'Florida State', 'Murray State', 'Arizona State', 'Texas Tech', 'Florida', 'Michigan', 'Virginia', 'Oklahoma', 'UC-Irvine', 'Oregon', 'Villanova', 'Purdue', 'Iowa', 'Tennessee', 'North Carolina', 'Washington', 'Kansas', 'Auburn', 'Iowa State', 'Houston', 'Seton Hall', 'Kentucky']
-myBracketRound2 = ['Duke', 'Mississippi State', 'Maryland', 'Michigan State', 'Gonzaga', 'Florida State', 'Texas Tech', 'Michigan', 'Virginia', 'Oregon', 'Villanova', 'Tennessee', 'North Carolina', 'Auburn', 'Iowa State', 'Kentucky']
-myBracketRound3 = ['Duke', 'Michigan State', 'Gonzaga', 'Texas Tech', 'Virginia', 'Tennessee', 'North Carolina', 'Kentucky']
-myBracketRound4 = ['Michigan State', 'Gonzaga', 'Virginia', 'North Carolina']
-myBracketRound5 = ['Gonzaga', 'Virginia']
-myBracketRound6 = ['Gonzaga']
 
-myBracketRound1Seed = [1, 9, 4, 5, 6, 3, 10, 2, 1, 9, 4, 14, 11, 3, 10, 2, 1, 9, 13, 12, 6, 3, 10, 2, 1, 9, 4, 5, 6, 3, 10, 2]
-myBracketRound2Seed = [1, 5, 6, 2, 1, 4, 3, 2, 1, 12, 6, 2, 1, 5, 6, 2]
-myBracketRound3Seed = [1, 2, 1, 3, 1, 2, 1, 2]
-myBracketRound4Seed = [2, 1, 1, 1]
-myBracketRound5Seed = [1, 1]
-myBracketRound6Seed = [1]
 
-standingsArray = []
+
 
 
 
@@ -173,61 +161,7 @@ function load538() {
                 }
 
 
-
-submitBracket.addEventListener("click", loadWinners);
-                function loadWinners () {
-
-                    let numberOfPartcipants = document.querySelector(".numberOfPartcipants")
-                    let participants =Number(numberOfPartcipants.value)
-                    let entryFee = 5
-                    let pot = entryFee * participants
-                    let firstPrize = (.75 * participants * entryFee)
-                    let secondPrize = (.2 * participants * entryFee)
-                    let thirdPrize = (.05 * participants * entryFee)
-                    let winnings = firstPrize * bracket1 - entryFee
-
-                    let ptsRound1 = [
-                        { winPoints: Number(points1.value) },
-                        { bonus: Number(bonus1.value) },
-                        { totalBonus: 0 }
-                    ]
-
-                    
-                    
-                    let ptsRound2 = [
-                        { winPoints: Number(points2.value) },
-                        { bonus: Number(bonus2.value) },
-                        { totalBonus: 0 }
-                    ]
-                    
-                    let ptsRound3 = [
-                        { winPoints: Number(points3.value) },
-                        { bonus: Number(bonus3.value) },
-                        { totalBonus: 0 }
-                    ]
-                    
-                    let ptsRound4 = [
-                        { winPoints: Number(points4.value) },
-                        { bonus: Number(bonus4.value) },
-                        { totalBonus: 0 }
-                    ]
-                    
-                    let ptsRound5 = [
-                        { winPoints: Number(points5.value) },
-                        { bonus: Number(bonus5.value) },
-                        { totalBonus: 0 }
-                    ]
-                    
-                    let ptsRound6 = [
-                        { winPoints: Number(points6.value) },
-                        { bonus: Number(bonus6.value) },
-                        { totalBonus: 0 }
-                    ]
-
-
-
-
-//move to top eventually in order to push into standings array when point total is captured
+                //move to top eventually in order to push into standings array when point total is captured
 
 for (let q=0; q<team.length; q++) {
     team[q].addEventListener("click", chooseRound);
@@ -520,13 +454,72 @@ for (let q=0; q<team.length; q++) {
 
 
 
+submitBracket.addEventListener("click", loadWinners);
+                function loadWinners () {
+
+
+                    // myBracketRound1 = ['Duke', 'Central Florida', 'Virginia Tech', 'Mississippi State', 'Maryland', 'Louisiana State', 'Minnesota', 'Michigan State', 'Gonzaga', 'Baylor', 'Florida State', 'Murray State', 'Arizona State', 'Texas Tech', 'Florida', 'Michigan', 'Virginia', 'Oklahoma', 'UC-Irvine', 'Oregon', 'Villanova', 'Purdue', 'Iowa', 'Tennessee', 'North Carolina', 'Washington', 'Kansas', 'Auburn', 'Iowa State', 'Houston', 'Seton Hall', 'Kentucky']
+                    // myBracketRound2 = ['Duke', 'Mississippi State', 'Maryland', 'Michigan State', 'Gonzaga', 'Florida State', 'Texas Tech', 'Michigan', 'Virginia', 'Oregon', 'Villanova', 'Tennessee', 'North Carolina', 'Auburn', 'Iowa State', 'Kentucky']
+                    // myBracketRound3 = ['Duke', 'Michigan State', 'Gonzaga', 'Texas Tech', 'Virginia', 'Tennessee', 'North Carolina', 'Kentucky']
+                    // myBracketRound4 = ['Michigan State', 'Gonzaga', 'Virginia', 'North Carolina']
+                    // myBracketRound5 = ['Gonzaga', 'Virginia']
+                    // myBracketRound6 = ['Gonzaga']
+
+                    // myBracketRound1Seed = [1, 9, 4, 5, 6, 3, 10, 2, 1, 9, 4, 14, 11, 3, 10, 2, 1, 9, 13, 12, 6, 3, 10, 2, 1, 9, 4, 5, 6, 3, 10, 2]
+                    // myBracketRound2Seed = [1, 5, 6, 2, 1, 4, 3, 2, 1, 12, 6, 2, 1, 5, 6, 2]
+                    // myBracketRound3Seed = [1, 2, 1, 3, 1, 2, 1, 2]
+                    // myBracketRound4Seed = [2, 1, 1, 1]
+                    // myBracketRound5Seed = [1, 1]
+                    // myBracketRound6Seed = [1]
 
 
 
+                    let numberOfPartcipants = document.querySelector(".numberOfPartcipants")
+                    let participants =Number(numberOfPartcipants.value)
+                    let entryFee = 5
+                    let pot = entryFee * participants
+                    let firstPrize = (.75 * participants * entryFee)
+                    let secondPrize = (.2 * participants * entryFee)
+                    let thirdPrize = (.05 * participants * entryFee)
+                    let winnings = firstPrize * bracket1 - entryFee
 
+                    let ptsRound1 = [
+                        { winPoints: Number(points1.value) },
+                        { bonus: Number(bonus1.value) },
+                        { totalBonus: 0 }
+                    ]
 
-
-
+                    
+                    
+                    let ptsRound2 = [
+                        { winPoints: Number(points2.value) },
+                        { bonus: Number(bonus2.value) },
+                        { totalBonus: 0 }
+                    ]
+                    
+                    let ptsRound3 = [
+                        { winPoints: Number(points3.value) },
+                        { bonus: Number(bonus3.value) },
+                        { totalBonus: 0 }
+                    ]
+                    
+                    let ptsRound4 = [
+                        { winPoints: Number(points4.value) },
+                        { bonus: Number(bonus4.value) },
+                        { totalBonus: 0 }
+                    ]
+                    
+                    let ptsRound5 = [
+                        { winPoints: Number(points5.value) },
+                        { bonus: Number(bonus5.value) },
+                        { totalBonus: 0 }
+                    ]
+                    
+                    let ptsRound6 = [
+                        { winPoints: Number(points6.value) },
+                        { bonus: Number(bonus6.value) },
+                        { totalBonus: 0 }
+                    ]
 
 
 
@@ -859,24 +852,32 @@ for (let q=0; q<team.length; q++) {
 
 
                         const bonusTeamsSilver1 = silverTeamsRound1.filter(r => upsetArraySilver1.includes(r))
-
-                        const myTeamsSilver1 = myBracketRound1.filter(r => bonusTeamsSilver1.includes(r))
+                        team2Value=[]
+                        for (let p=0; p<team2.length; p++) {
+                            team2Value.push(team2[p].innerHTML)
+                        }
+                        const myTeamsSilver1 = team2Value.filter(r => bonusTeamsSilver1.includes(r))
                         totalBonusPersonal1 = myTeamsSilver1.length * ptsRound1[1].bonus
 
                         //console.log(totalBonusPersonal1)
 
 
+                        seed2Value=[]
+                        for (let h=0; h<seed2.length; h++) {
+                            seed2Value.push(seed2[h].innerHTML)
+                        }
 
 
-
-                        for (let i = 0; i < myBracketRound1.length; i++) {
+                        for (let i = 0; i < team2Value.length; i++) {
                             if (i % 2 == 0) {
-                                if (myBracketRound1Seed[i] > firstRoundWinners538[i + 1].Seed) {
-                                    upsetArraySilver2.push(myBracketRound1[i])
+                                if (seed2Value[i] > firstRoundWinners538[i + 1].Seed) {
+                                    upsetArraySilver2.push(team2Value[i])
+                                    
                                 }
+                                
 
                                 else {
-                                    upsetArraySilver2.push(myBracketRound1[i + 1])
+                                    upsetArraySilver2.push(team2Value[i + 1])
                                 }
 
                             }
@@ -894,8 +895,11 @@ for (let q=0; q<team.length; q++) {
 
 
                         const bonusTeamsSilver2 = silverTeamsRound2.filter(r => upsetArraySilver2.includes(r))
-
-                        const myTeamsSilver2 = myBracketRound2.filter(r => bonusTeamsSilver2.includes(r))
+                        team3Value=[]
+                        for (let p=0; p<team3.length; p++) {
+                            team3Value.push(team3[p].innerHTML)
+                        }
+                        const myTeamsSilver2 = team3Value.filter(r => bonusTeamsSilver2.includes(r))
                         totalBonusPersonal2 = myTeamsSilver2.length * ptsRound2[1].bonus
 
                         //console.log(totalBonusPersonal2)
@@ -903,17 +907,20 @@ for (let q=0; q<team.length; q++) {
 
 
 
+                        seed3Value=[]
+                        for (let h=0; h<seed3.length; h++) {
+                            seed3Value.push(seed3[h].innerHTML)
+                        }
 
 
-
-                        for (let i = 0; i < myBracketRound2.length; i++) {
+                        for (let i = 0; i < team3Value.length; i++) {
                             if (i % 2 == 0) {
-                                if (myBracketRound2Seed[i] > secondRoundWinners538[i + 1].Seed) {
-                                    upsetArraySilver3.push(myBracketRound2[i])
+                                if (seed3Value[i] > secondRoundWinners538[i + 1].Seed) {
+                                    upsetArraySilver3.push(team3Value[i])
                                 }
 
                                 else {
-                                    upsetArraySilver3.push(myBracketRound2[i + 1])
+                                    upsetArraySilver3.push(team3Value[i + 1])
                                 }
 
                             }
@@ -926,31 +933,37 @@ for (let q=0; q<team.length; q++) {
                         }
 
 
-                        //console.log(myBracketRound2)
+                        //console.log(team3Value)
                         //console.log(upsetArraySilver2)
 
 
                         const bonusTeamsSilver3 = silverTeamsRound3.filter(r => upsetArraySilver3.includes(r))
-
-                        const myTeamsSilver3 = myBracketRound3.filter(r => bonusTeamsSilver3.includes(r))
+                        team4Value=[]
+                        for (let p=0; p<team4.length; p++) {
+                            team4Value.push(team4[p].innerHTML)
+                        }
+                        const myTeamsSilver3 = team4Value.filter(r => bonusTeamsSilver3.includes(r))
                         totalBonusPersonal3 = myTeamsSilver3.length * ptsRound3[1].bonus
 
                         //console.log(totalBonusPersonal3)
 
 
 
+                        seed4Value=[]
+                        for (let h=0; h<seed4.length; h++) {
+                            seed4Value.push(seed4[h].innerHTML)
+                        }
 
 
 
-
-                        for (let i = 0; i < myBracketRound3.length; i++) {
+                        for (let i = 0; i < team4Value.length; i++) {
                             if (i % 2 == 0) {
-                                if (myBracketRound3Seed[i] > thirdRoundWinners538[i + 1].Seed) {
-                                    upsetArraySilver4.push(myBracketRound3[i])
+                                if (seed4Value[i] > thirdRoundWinners538[i + 1].Seed) {
+                                    upsetArraySilver4.push(team4Value[i])
                                 }
 
                                 else {
-                                    upsetArraySilver4.push(myBracketRound3[i + 1])
+                                    upsetArraySilver4.push(team4Value[i + 1])
                                 }
 
                             }
@@ -963,13 +976,16 @@ for (let q=0; q<team.length; q++) {
                         }
 
 
-                        //console.log(myBracketRound2)
+                        //console.log(team3Value)
                         //console.log(upsetArraySilver2)
 
 
                         const bonusTeamsSilver4 = silverTeamsRound4.filter(r => upsetArraySilver4.includes(r))
-
-                        const myTeamsSilver4 = myBracketRound4.filter(r => bonusTeamsSilver4.includes(r))
+                        team5Value=[]
+                        for (let p=0; p<team5.length; p++) {
+                            team5Value.push(team5[p].innerHTML)
+                        }
+                        const myTeamsSilver4 = team5Value.filter(r => bonusTeamsSilver4.includes(r))
                         totalBonusPersonal4 = myTeamsSilver4.length * ptsRound4[1].bonus
 
                         //console.log(totalBonusPersonal4)
@@ -977,17 +993,20 @@ for (let q=0; q<team.length; q++) {
 
 
 
+                        seed5Value=[]
+                        for (let h=0; h<seed5.length; h++) {
+                            seed5Value.push(seed5[h].innerHTML)
+                        }
 
 
-
-                        for (let i = 0; i < myBracketRound4.length; i++) {
+                        for (let i = 0; i < team5Value.length; i++) {
                             if (i % 2 == 0) {
-                                if (myBracketRound4Seed[i] > finalFourTeams538[i + 1].Seed) {
-                                    upsetArraySilver5.push(myBracketRound4[i])
+                                if (seed5Value[i] > finalFourTeams538[i + 1].Seed) {
+                                    upsetArraySilver5.push(team5Value[i])
                                 }
 
                                 else {
-                                    upsetArraySilver5.push(myBracketRound4[i + 1])
+                                    upsetArraySilver5.push(team5Value[i + 1])
                                 }
 
                             }
@@ -1000,30 +1019,36 @@ for (let q=0; q<team.length; q++) {
                         }
 
 
-                        //console.log(myBracketRound2)
+                        //console.log(team3Value)
                         //console.log(upsetArraySilver2)
 
 
                         const bonusTeamsSilver5 = silverTeamsRound5.filter(r => upsetArraySilver5.includes(r))
-
-                        const myTeamsSilver5 = myBracketRound5.filter(r => bonusTeamsSilver5.includes(r))
+                        team6Value=[]
+                        for (let p=0; p<team6.length; p++) {
+                            team6Value.push(team6[p].innerHTML)
+                        }
+                        const myTeamsSilver5 = team6Value.filter(r => bonusTeamsSilver5.includes(r))
                         totalBonusPersonal5 = myTeamsSilver5.length * ptsRound5[1].bonus
 
                         //console.log(totalBonusPersonal5)
 
 
 
+                        seed6Value=[]
+                        for (let h=0; h<seed6.length; h++) {
+                            seed6Value.push(seed6[h].innerHTML)
+                        }
 
 
-
-                        for (let i = 0; i < myBracketRound5.length; i++) {
+                        for (let i = 0; i < team6Value.length; i++) {
                             if (i % 2 == 0) {
-                                if (myBracketRound5Seed[i] > championshipTeams538[i + 1].Seed) {
-                                    upsetArraySilver6.push(myBracketRound5[i])
+                                if (seed6Value[i] > championshipTeams538[i + 1].Seed) {
+                                    upsetArraySilver6.push(team6Value[i])
                                 }
 
                                 else {
-                                    upsetArraySilver6.push(myBracketRound5[i + 1])
+                                    upsetArraySilver6.push(team6Value[i + 1])
                                 }
 
                             }
@@ -1036,13 +1061,16 @@ for (let q=0; q<team.length; q++) {
                         }
 
 
-                        //console.log(myBracketRound2)
+                        //console.log(team3Value)
                         //console.log(upsetArraySilver2)
 
 
                         const bonusTeamsSilver6 = silverTeamsRound6.filter(r => upsetArraySilver6.includes(r))
-
-                        const myTeamsSilver6 = myBracketRound6.filter(r => bonusTeamsSilver6.includes(r))
+                        team7Value=[]
+                        for (let p=0; p<team7.length; p++) {
+                            team7Value.push(team7[p].innerHTML)
+                        }
+                        const myTeamsSilver6 = team7Value.filter(r => bonusTeamsSilver6.includes(r))
                         totalBonusPersonal6 = myTeamsSilver6.length * ptsRound6[1].bonus
 
                         // console.log(totalBonusPersonal6)
@@ -1053,8 +1081,8 @@ for (let q=0; q<team.length; q++) {
 
 
 
-                        for (let i = 0; i < myBracketRound1.length; i++) {
-                            if (myBracketRound1[i] == firstRoundWinners538[i].Team) {
+                        for (let i = 0; i < team2Value.length; i++) {
+                            if (team2Value[i] == firstRoundWinners538[i].Team) {
                                 totalPointsPersonal = ptsRound1[0].winPoints + totalPointsPersonal
 
                             }
@@ -1069,9 +1097,9 @@ for (let q=0; q<team.length; q++) {
 
 
 
-                        for (let i = 0; i < myBracketRound2.length; i++) {
+                        for (let i = 0; i < team3Value.length; i++) {
 
-                            if (myBracketRound2[i] == secondRoundWinners538[i].Team) {
+                            if (team3Value[i] == secondRoundWinners538[i].Team) {
                                 totalPointsPersonal = ptsRound2[0].winPoints + totalPointsPersonal
 
                             }
@@ -1080,9 +1108,9 @@ for (let q=0; q<team.length; q++) {
 
                         totalPointsPersonal = totalPointsPersonal + totalBonusPersonal2
 
-                        for (let i = 0; i < myBracketRound3.length; i++) {
+                        for (let i = 0; i < team4Value.length; i++) {
 
-                            if (myBracketRound3[i] == thirdRoundWinners538[i].Team) {
+                            if (team4Value[i] == thirdRoundWinners538[i].Team) {
                                 totalPointsPersonal = ptsRound3[0].winPoints + totalPointsPersonal
 
                             }
@@ -1090,9 +1118,9 @@ for (let q=0; q<team.length; q++) {
 
                         totalPointsPersonal = totalPointsPersonal + totalBonusPersonal3
 
-                        for (let i = 0; i < myBracketRound4.length; i++) {
+                        for (let i = 0; i < team5Value.length; i++) {
 
-                            if (myBracketRound4[i] == finalFourTeams538[i].Team) {
+                            if (team5Value[i] == finalFourTeams538[i].Team) {
                                 totalPointsPersonal = ptsRound4[0].winPoints + totalPointsPersonal
 
                             }
@@ -1101,9 +1129,9 @@ for (let q=0; q<team.length; q++) {
 
                         totalPointsPersonal = totalPointsPersonal + totalBonusPersonal4
 
-                        for (let i = 0; i < myBracketRound5.length; i++) {
+                        for (let i = 0; i < team6Value.length; i++) {
 
-                            if (myBracketRound5[i] == championshipTeams538[i].Team) {
+                            if (team6Value[i] == championshipTeams538[i].Team) {
                                 totalPointsPersonal = ptsRound5[0].winPoints + totalPointsPersonal
 
                             }
@@ -1112,9 +1140,9 @@ for (let q=0; q<team.length; q++) {
 
                         totalPointsPersonal = totalPointsPersonal + totalBonusPersonal5
 
-                        for (let i = 0; i < myBracketRound6.length; i++) {
+                        for (let i = 0; i < team7Value.length; i++) {
 
-                            if (myBracketRound6[i] == winningTeam538[i].Team) {
+                            if (team7Value[i] == winningTeam538[i].Team) {
                                 totalPointsPersonal = ptsRound6[0].winPoints + totalPointsPersonal
 
                             }
