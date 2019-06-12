@@ -1533,8 +1533,63 @@ for (let q=0; q<team.length; q++) {
                 team2[Math.floor(q/2)].innerHTML=team[q].innerHTML
                 seed2[Math.floor(q/2)].innerHTML=seed[q].innerHTML
             }
-          }
+            //only clear if it's team they were playing against that round
+            if (q%2==0) {
+            if (team3[Math.floor(q/4)].innerHTML==team[q+1].innerHTML) {
+                team3[Math.floor(q/4)].innerHTML=''
+                seed3[Math.floor(q/4)].innerHTML=''
+            }
 
+            if (team4[Math.floor(q/8)].innerHTML==team[q+1].innerHTML) {
+                team4[Math.floor(q/8)].innerHTML=''
+                seed4[Math.floor(q/8)].innerHTML=''
+            }
+
+            if (team5[Math.floor(q/16)].innerHTML==team[q+1].innerHTML) {
+                team5[Math.floor(q/16)].innerHTML=''
+                seed5[Math.floor(q/16)].innerHTML=''
+            }
+
+            if (team6[Math.floor(q/32)].innerHTML==team[q+1].innerHTML) {
+                team6[Math.floor(q/32)].innerHTML=''
+                seed6[Math.floor(q/32)].innerHTML=''
+            }
+
+            if (team7[Math.floor(q/64)].innerHTML==team[q+1].innerHTML) {
+                team7[Math.floor(q/64)].innerHTML=''
+                seed7[Math.floor(q/64)].innerHTML=''
+            }
+        }
+
+        else {
+
+            if (team3[Math.floor(q/4)].innerHTML==team[q-1].innerHTML) {
+                team3[Math.floor(q/4)].innerHTML=''
+                seed3[Math.floor(q/4)].innerHTML=''
+            }
+
+            if (team4[Math.floor(q/8)].innerHTML==team[q-1].innerHTML) {
+                team4[Math.floor(q/8)].innerHTML=''
+                seed4[Math.floor(q/8)].innerHTML=''
+            }
+
+            if (team5[Math.floor(q/16)].innerHTML==team[q-1].innerHTML) {
+                team5[Math.floor(q/16)].innerHTML=''
+                seed5[Math.floor(q/16)].innerHTML=''
+            }
+
+            if (team6[Math.floor(q/32)].innerHTML==team[q-1].innerHTML) {
+                team6[Math.floor(q/32)].innerHTML=''
+                seed6[Math.floor(q/32)].innerHTML=''
+            }
+
+            if (team7[Math.floor(q/64)].innerHTML==team[q-1].innerHTML) {
+                team7[Math.floor(q/64)].innerHTML=''
+                seed7[Math.floor(q/64)].innerHTML=''
+            }
+
+        }
+    }
 }
 
 for (let u=0; u<team2.length; u++) {
