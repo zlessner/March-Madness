@@ -1,3 +1,5 @@
+/* change media queries for viewing on mobile phone (make bracket go down longways) */
+
 body {
     background-color: rgb(253, 253, 253);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -8,12 +10,12 @@ body {
   }
 
   .points1, .bonus1, .points2, .bonus2, .points3, .bonus3, .points4, .bonus4, .points5, .bonus5, .points6, .bonus6 {
-      width: 17px;
+      width: 30px;
       height: 10px;
   }
 
   .numberOfPartcipants {
-    width: 20px;
+    width: 40px;
   }
 
   .participantsSpan{
@@ -87,6 +89,7 @@ body {
     background-color: #45f500;
     box-shadow: 3px 3px 3px 1.5px grey;
     color: white;
+    width: 100%;
   }
   
   .first-four-winner li.game-left,
