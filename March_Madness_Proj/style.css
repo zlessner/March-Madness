@@ -7,6 +7,20 @@ body {
     margin: 0 8px;
   }
 
+  .points1, .bonus1, .points2, .bonus2, .points3, .bonus3, .points4, .bonus4, .points5, .bonus5, .points6, .bonus6 {
+      width: 17px;
+      height: 10px;
+  }
+
+  .numberOfPartcipants {
+    width: 20px;
+  }
+
+  .participantsSpan{
+      position: relative;
+      float: right;
+  }
+
   .team, .team2, .team3, .team4, .team5, .team6 {
       font-size: 8px;
       cursor: pointer;

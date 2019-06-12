@@ -16,7 +16,6 @@ let team5 = document.querySelectorAll(".team5")
 let team6 = document.querySelectorAll(".team6")
 let team7 = document.querySelectorAll(".team7")
 
-let fiveThreeEight = document.querySelector(".fiveThreeEight")
 let teams = document.querySelector(".teams")
 let popPicks = document.querySelector(".popPicks")
 var proxyUrl = 'https://cors-anywhere.herokuapp.com/'
