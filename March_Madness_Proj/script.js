@@ -1,5 +1,6 @@
 let body = document.querySelector("body")
 let empty = document.querySelector(".empty")
+let clear = document.querySelector(".clear")
 let seed = document.querySelectorAll(".seed")
 let seed2 = document.querySelectorAll(".seed2")
 let seed3 = document.querySelectorAll(".seed3")
@@ -1526,8 +1527,9 @@ function load538() {
 
 for (let q=0; q<team.length; q++) {
  team[q].addEventListener("click", chooseRound);
+ seed[q].addEventListener("click", chooseRound);
           function chooseRound(evt) {
-            if (team[q].contains(evt.target)) {
+            if (team[q].contains(evt.target) || seed[q].contains(evt.target)) {
                 team2[Math.floor(q/2)].innerHTML=team[q].innerHTML
                 seed2[Math.floor(q/2)].innerHTML=seed[q].innerHTML
             }
@@ -1537,8 +1539,9 @@ for (let q=0; q<team.length; q++) {
 
 for (let u=0; u<team2.length; u++) {
     team2[u].addEventListener("click", chooseRound2);
+    seed2[u].addEventListener("click", chooseRound2);
              function chooseRound2(evt) {
-               if (team2[u].contains(evt.target)) {
+               if (team2[u].contains(evt.target) || seed2[u].contains(evt.target)) {
                    team3[Math.floor(u/2)].innerHTML=team2[u].innerHTML
                    seed3[Math.floor(u/2)].innerHTML=seed2[u].innerHTML
                }
@@ -1548,8 +1551,9 @@ for (let u=0; u<team2.length; u++) {
 
 for (let s=0; s<team3.length; s++) {
 team3[s].addEventListener("click", chooseRound3);
+seed3[s].addEventListener("click", chooseRound3);
             function chooseRound3(evt) {
-            if (team3[s].contains(evt.target)) {
+            if (team3[s].contains(evt.target) || seed3[s].contains(evt.target)) {
                 team4[Math.floor(s/2)].innerHTML=team3[s].innerHTML
                 seed4[Math.floor(s/2)].innerHTML=seed3[s].innerHTML
             }
@@ -1559,8 +1563,9 @@ team3[s].addEventListener("click", chooseRound3);
 
 for (let t=0; t<team4.length; t++) {
 team4[t].addEventListener("click", chooseRound4);
+seed4[t].addEventListener("click", chooseRound4);
             function chooseRound4(evt) {
-            if (team4[t].contains(evt.target)) {
+            if (team4[t].contains(evt.target) || seed4[t].contains(evt.target)) {
                 team5[Math.floor(t/2)].innerHTML=team4[t].innerHTML
                 seed5[Math.floor(t/2)].innerHTML=seed4[t].innerHTML
             }
@@ -1570,8 +1575,9 @@ team4[t].addEventListener("click", chooseRound4);
 
 for (let v=0; v<team5.length; v++) {
 team5[v].addEventListener("click", chooseRound5);
+seed5[v].addEventListener("click", chooseRound5);
             function chooseRound5(evt) {
-            if (team5[v].contains(evt.target)) {
+            if (team5[v].contains(evt.target) || seed5[v].contains(evt.target)) {
                 team6[Math.floor(v/2)].innerHTML=team5[v].innerHTML
                 seed6[Math.floor(v/2)].innerHTML=seed5[v].innerHTML
             }
@@ -1581,14 +1587,43 @@ team5[v].addEventListener("click", chooseRound5);
 
 for (let w=0; w<team6.length; w++) {
     team6[w].addEventListener("click", chooseRound6);
+    seed6[w].addEventListener("click", chooseRound6);
                 function chooseRound6(evt) {
-                if (team6[w].contains(evt.target)) {
+                if (team6[w].contains(evt.target) || seed6[w].contains(evt.target)) {
                     team7[Math.floor(w/2)].innerHTML=team6[w].innerHTML
                     seed7[Math.floor(w/2)].innerHTML=seed6[w].innerHTML
                 }
                 }
     
     }
+
+clear.addEventListener("click", clearBracket);
+    function clearBracket() {
+        for (let i=0; i<team2.length; i++) {
+        team2[i].innerHTML=[]
+        seed2[i].innerHTML=[]
+    }
+        for (let a=0; a<team3.length; a++) {
+            team3[a].innerHTML=[]
+            seed3[a].innerHTML=[]
+        }
+        for (let b=0; b<team4.length; b++) {
+            team4[b].innerHTML=[]
+            seed4[b].innerHTML=[]
+        }
+        for (let c=0; c<team5.length; c++) {
+            team5[c].innerHTML=[]
+            seed5[c].innerHTML=[]
+        }
+        for (let d=0; d<team6.length; d++) {
+            team6[d].innerHTML=[]
+            seed6[d].innerHTML=[]
+        }
+        for (let e=0; e<team7.length; e++) {
+            team7[e].innerHTML=[]
+            seed7[e].innerHTML=[]
+        }
+}
 
 //if array lengths are greater than certain length, able to submit, if not show pop up error
 
