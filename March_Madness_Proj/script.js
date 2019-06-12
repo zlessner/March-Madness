@@ -1,7 +1,5 @@
 let submitBracket=document.querySelector(".submitBracket")
 
-let body = document.querySelector("body")
-let empty = document.querySelector(".empty")
 let clear = document.querySelector(".clear")
 let seed = document.querySelectorAll(".seed")
 let seed2 = document.querySelectorAll(".seed2")
@@ -84,11 +82,6 @@ upsetArraySilver6 = []
 //crud funtionality in new api where user can store results of simulation
 //429 too many requests heroku error still a problem
 
-//fiveThreeEight.addEventListener("click", function () { load538('fiveThree') });
-
-
-
-//popPicks.addEventListener("click", function () { loadpopPicks() });
 
 
 
@@ -108,16 +101,7 @@ function load538() {
             }
         }
         )
-        //console.log(silverData)
-        // console.log(silverData[0].Round1)
-        // console.log(silverData.length)
-        // empty.innerHTML = scraping
 
-
-
-        //track if fivethirtyEightData picks entered in correctly
-        //run standings of 150 or so partcipants over and over for a large sample of times to find out the bracket that usually places highest
-        //put winPoints associated with pop pick bracket sims with 538 results from sim
 
 
 
@@ -136,18 +120,9 @@ function load538() {
                         regionData.push(YCST[0].Bracket[i].Region)
                     }
                 }
-                //newBracket=Object.assign({}, yahooData, {})
-                //trying to clone yahooData variable into new var in order to splice off winner data
-
-                //    newBracket1=Array.prototype.slice.call(newBracket);
-
-                //console.log(yahooData)
-                //    console.log(newBracket)
-                //    console.log(newBracket1) 
+ 
             }
             )
-
-
 
 
             .then(() => {
@@ -482,13 +457,26 @@ submitBracket.addEventListener("click", loadWinners);
                     let medalDescription= document.querySelector(".medalDescription")
                     let regularPercentage= document.querySelector(".regularPercentage")
                     let regularDescription= document.querySelector(".regularDescription")
+                    let field= document.querySelectorAll(".field")
                     let participants =Number(numberOfPartcipants.value)
+                    if (participants<=5) {
+                        alert ("Please enter participant number greater than 5")
+                        return
+                    }
                     let entryFee = 5
                     let pot = entryFee * participants
                     let firstPrize = (.75 * participants * entryFee)
                     let secondPrize = (.2 * participants * entryFee)
                     let thirdPrize = (.05 * participants * entryFee)
                     let winnings = firstPrize * bracket1 - entryFee
+
+                    for (let c=0; c<field.length; c++) {
+                        if (field[c].value.length<1) {
+                            alert("Please fill in all input fields")
+                            return;
+                        }
+                        
+                    }
 
                     let ptsRound1 = [
                         { winPoints: Number(points1.value) },
@@ -614,13 +602,7 @@ submitBracket.addEventListener("click", loadWinners);
 
 
                     let champOddsEveryTeam538 = []
-                    function hundredPercentChamp538() {
-                        for (var i = 0; i < silverData.length; i++) {
-                            champOddsEveryTeam538.push((silverData[i].Round6))
-                        }
-                    }
 
-                    hundredPercentChamp538()
 
 
 
@@ -823,11 +805,6 @@ submitBracket.addEventListener("click", loadWinners);
 
 
                     sixthRound538()
-
-
-
-
-
 
 
 
@@ -1085,9 +1062,6 @@ submitBracket.addEventListener("click", loadWinners);
 
 
 
-
-
-
                         for (let i = 0; i < team2Value.length; i++) {
                             if (team2Value[i] == firstRoundWinners538[i].Team) {
                                 totalPointsPersonal = ptsRound1[0].winPoints + totalPointsPersonal
@@ -1096,10 +1070,6 @@ submitBracket.addEventListener("click", loadWinners);
                         }
 
                         totalPointsPersonal = totalPointsPersonal + totalBonusPersonal1
-
-
-
-
 
 
 
@@ -1163,50 +1133,6 @@ submitBracket.addEventListener("click", loadWinners);
 
 
 
-                    // console.log(firstRoundWinners538)
-                    // console.log(secondRoundWinners538)
-                    // console.log(thirdRoundWinners538)
-                    // console.log(finalFourTeams538)
-                    // console.log(championshipTeams538)
-                    // console.log(winningTeam538)
-
-
-
-                    //console.log(seedArray)
-
-                    // for (var l = 0; l < seedArray.length; l++) {
-                    //     seedList = yahooData[l].Seed
-
-
-
-                    //empty.appendChild(seedArray)
-                    //seed.innerHTML = seedList
-                    //seed.appendChild(seedList)
-                    //console.log(winnerArray)
-                    //console.log(teamList)
-
-
-                    //}
-
-
-                    // for (var i = 0; i < yahooData.length; i++) {
-                    //     teamList = yahooData[i].Team
-                    //     start = document.createElement('p');
-                    //     start.innerHTML = teamList
-                    //     empty.appendChild(start)
-
-                    //let user input their bracket to see how it would do and also put in ideal brackets 
-
-                    //console.log(firstPrize)
-
-
-
-
-                    //console.log(yahooData[0].Round6)
-
-
-
-                    //console.log(yahooData[0].Round6)
 
                     //track if popular picks entered in correctly
 
@@ -1273,75 +1199,6 @@ submitBracket.addEventListener("click", loadWinners);
                         hundredPercentChamp()
 
 
-                        //if number is less than champOddsEveryTeam[0], pick champOddsEveryTeam[0], else if between champOddsEveryTeam[0] and champOddsEveryTeam [1], pick champOddsEveryTeam 1...
-
-                        //count number of times 1 champOddsEveryTeam was picked
-                        //for (var i=0; i<200; i++) {
-                        winnerArray = []
-                        winnerOdds = []
-
-                        function chooseWinner() {
-
-                            while (winnerArray.length < 1) {
-
-                                for (var i = 0; i < champOddsEveryTeam.length; i++) {
-                                    if (Math.random() <= champOddsEveryTeam[i]) {
-                                        winnerArray.push(yahooData[i].Team)
-                                        winnerOdds.push(champOddsEveryTeam[i])
-                                        //newBracket[i].splice()
-                                        //console.log(yahooData)
-                                        //console.log(winnerOdds)
-
-                                        //if two teams get selected, start process over again to pick one team
-                                        if (winnerArray.length > 1) {
-                                            winnerArray = []
-                                        }
-
-                                    }
-
-                                }
-                            }
-                        }
-
-
-                        //Assign ID's to each side of bracket and then break down and more granular as rounds get bigger and bigger?
-
-                        chooseWinner()
-
-                        runnerUpArray = []
-                        runnerOdds = []
-
-                        function chooseRunnerUp() {
-                            while (runnerUpArray.length < 1) {
-
-                                for (var i = 0; i < champOddsEveryTeam.length; i++) {
-                                    if (Math.random() <= champOddsEveryTeam[i]) {
-                                        runnerUpArray.push(yahooData[i].Team)
-                                        runnerOdds.push(champOddsEveryTeam[i])
-
-
-                                        //if two teams get selected, start process over again to pick one team or winner array equals runner up array
-                                        if (runnerUpArray.length > 1) {
-                                            runnerUpArray = []
-                                        }
-
-
-                                        for (let j = 0; j < 32; j++) {
-                                            if (i == j) {
-                                                runnerUpArray = []
-                                            }
-                                        }
-
-                                    }
-
-                                }
-                            }
-                        }
-
-
-                        chooseRunnerUp()
-                        //  console.log(winnerArray)
-                        //  console.log(runnerUpArray)
 
                         firstRoundWinners = []
                         secondRoundWinners = []
@@ -1358,51 +1215,6 @@ submitBracket.addEventListener("click", loadWinners);
                         }
 
 
-
-                        //find a way to print everything on dom
-
-
-
-                        // for (var i = 0; i < yahooData.length; i++) {
-                        //     teamList = yahooData[i].Team
-                        //     start = document.createElement('p');
-                        //     start.innerHTML = teamList
-                        //     empty.appendChild(start)
-                        //     //console.log(winnerArray)
-                        //     //console.log(teamList)
-
-
-
-                        //     if (winnerArray == teamList) {
-                        //         for (var j = 0; j < 5; j++) {
-                        //             win = document.createElement('span');
-                        //             win.innerHTML = " " + teamList + " "
-                        //             start.appendChild(win)
-                        //         }
-                        //     }
-
-
-
-
-                        // if (runnerUpArray == teamList) {
-                        //     for (var j = 0; j < 4; j++) {
-                        //         win = document.createElement('span');
-                        //         win.innerHTML = " " + teamList + " "
-                        //         start.appendChild(win)
-                        //     }
-                        // }
-
-                        //   if (firstRoundWinners[i] == teamList) {
-                        //     for (var j = 0; j < 2; j++) {
-                        //         win = document.createElement('span');
-                        //         win.innerHTML = " " + teamList + " "
-                        //         start.appendChild(win)
-                        //     }
-                        // }
-
-
-
-                        //}
 
 
                         function firstRound() {
@@ -1734,46 +1546,7 @@ submitBracket.addEventListener("click", loadWinners);
 
 
                         SixthRound()
-
-
-
-
-
-
-
-
-
-                        //writes out a bunch of Abelein Christian
-
-                        //     for (var i = 0; i < firstRoundWinners.length; i++) {
-
-                        //         for (var j = 0; j < 2; j++) {
-                        //             win = document.createElement('span');
-                        //             win.innerHTML = " " + teamList + " "
-                        //             start.appendChild(win)
-                        //         }
-
-                        //     console.log(firstRoundWinners[i])
-                        // }
-
-                        // console.log(firstRoundWinners)
-                        // console.log(secondRoundWinners)
-                        // console.log(thirdRoundWinners)
-                        // console.log(finalFourTeams)
-                        // console.log(championshipTeams)
-                        // console.log(winningTeam)
-
-                        //}
-
-
-
-
-                        //count number of times Duke was picked
-
-                        //make test to see if pick odds are accurate for picking each game 
-
-
-                        //use filter method or for each or for loop to eliminate teams that can't possbily advance now that winner is set  
+        
 
 
                         totalPoints = 0
@@ -1896,8 +1669,8 @@ submitBracket.addEventListener("click", loadWinners);
 
                 }
 
-                console.log(firstPlaceFinishes)
-                console.log(medalFinishes)
+                //console.log(firstPlaceFinishes)
+                //console.log(medalFinishes)
                 
                 firstDescription.innerHTML=("Percent chance this bracket finishes in first: ")
                 firstPercentage.innerHTML=firstPlaceFinishes/simulations *100 + "%"
@@ -1920,7 +1693,7 @@ submitBracket.addEventListener("click", loadWinners);
                 }
 
 
-                regularDescription.innerHTML=("Percent chance a random bracket in this pool finishes in the top 3: ")
+                regularDescription.innerHTML=("Percent chance a random bracket in this pool finishes in first: ")
                 regularPercentage.innerHTML=regularFinish *100 + "%"
                 if (regularFinish>.05) {
                     regularPercentage.style.color='green'
@@ -1962,11 +1735,6 @@ submitBracket.addEventListener("click", loadWinners);
 
 
 load538()
-
-
-//just doubling the amount of teams in the array instead of clearing it and starting over
-
-//}
 
 
 
