@@ -1523,7 +1523,7 @@ function load538() {
 
         }
             
-
+//move to top eventually in order to push into standings array when point total is captured
 
 for (let q=0; q<team.length; q++) {
  team[q].addEventListener("click", chooseRound);
@@ -1533,7 +1533,7 @@ for (let q=0; q<team.length; q++) {
                 team2[Math.floor(q/2)].innerHTML=team[q].innerHTML
                 seed2[Math.floor(q/2)].innerHTML=seed[q].innerHTML
             }
-            //only clear if it's team they were playing against that round
+
             if (q%2==0) {
             if (team3[Math.floor(q/4)].innerHTML==team[q+1].innerHTML) {
                 team3[Math.floor(q/4)].innerHTML=''
@@ -1600,6 +1600,54 @@ for (let u=0; u<team2.length; u++) {
                    team3[Math.floor(u/2)].innerHTML=team2[u].innerHTML
                    seed3[Math.floor(u/2)].innerHTML=seed2[u].innerHTML
                }
+
+               if (u%2==0) {
+    
+                if (team4[Math.floor(u/8)].innerHTML==team2[u+1].innerHTML) {
+                    team4[Math.floor(u/8)].innerHTML=''
+                    seed4[Math.floor(u/8)].innerHTML=''
+                }
+    
+                if (team5[Math.floor(u/16)].innerHTML==team2[u+1].innerHTML) {
+                    team5[Math.floor(u/16)].innerHTML=''
+                    seed5[Math.floor(u/16)].innerHTML=''
+                }
+    
+                if (team6[Math.floor(u/32)].innerHTML==team2[u+1].innerHTML) {
+                    team6[Math.floor(u/32)].innerHTML=''
+                    seed6[Math.floor(u/32)].innerHTML=''
+                }
+    
+                if (team7[Math.floor(u/64)].innerHTML==team2[u+1].innerHTML) {
+                    team7[Math.floor(u/64)].innerHTML=''
+                    seed7[Math.floor(u/64)].innerHTML=''
+                }
+            }
+    
+            else {
+    
+                if (team4[Math.floor(u/8)].innerHTML==team2[u-1].innerHTML) {
+                    team4[Math.floor(u/8)].innerHTML=''
+                    seed4[Math.floor(u/8)].innerHTML=''
+                }
+    
+                if (team5[Math.floor(u/16)].innerHTML==team2[u-1].innerHTML) {
+                    team5[Math.floor(u/16)].innerHTML=''
+                    seed5[Math.floor(u/16)].innerHTML=''
+                }
+    
+                if (team6[Math.floor(u/32)].innerHTML==team2[u-1].innerHTML) {
+                    team6[Math.floor(u/32)].innerHTML=''
+                    seed6[Math.floor(u/32)].innerHTML=''
+                }
+    
+                if (team7[Math.floor(u/64)].innerHTML==team2[u-1].innerHTML) {
+                    team7[Math.floor(u/64)].innerHTML=''
+                    seed7[Math.floor(u/64)].innerHTML=''
+                }
+    
+            }
+
              }
    
    }
@@ -1612,6 +1660,44 @@ seed3[s].addEventListener("click", chooseRound3);
                 team4[Math.floor(s/2)].innerHTML=team3[s].innerHTML
                 seed4[Math.floor(s/2)].innerHTML=seed3[s].innerHTML
             }
+
+            if (s%2==0) {
+    
+                if (team5[Math.floor(s/16)].innerHTML==team[s+1].innerHTML) {
+                    team5[Math.floor(s/16)].innerHTML=''
+                    seed5[Math.floor(s/16)].innerHTML=''
+                }
+    
+                if (team6[Math.floor(s/32)].innerHTML==team[s+1].innerHTML) {
+                    team6[Math.floor(s/32)].innerHTML=''
+                    seed6[Math.floor(s/32)].innerHTML=''
+                }
+    
+                if (team7[Math.floor(s/64)].innerHTML==team[s+1].innerHTML) {
+                    team7[Math.floor(s/64)].innerHTML=''
+                    seed7[Math.floor(s/64)].innerHTML=''
+                }
+            }
+    
+            else {
+    
+                if (team5[Math.floor(s/16)].innerHTML==team[s-1].innerHTML) {
+                    team5[Math.floor(s/16)].innerHTML=''
+                    seed5[Math.floor(s/16)].innerHTML=''
+                }
+    
+                if (team6[Math.floor(s/32)].innerHTML==team[s-1].innerHTML) {
+                    team6[Math.floor(s/32)].innerHTML=''
+                    seed6[Math.floor(s/32)].innerHTML=''
+                }
+    
+                if (team7[Math.floor(s/64)].innerHTML==team[s-1].innerHTML) {
+                    team7[Math.floor(s/64)].innerHTML=''
+                    seed7[Math.floor(s/64)].innerHTML=''
+                }
+    
+            }
+
             }
 
 }
@@ -1624,6 +1710,34 @@ seed4[t].addEventListener("click", chooseRound4);
                 team5[Math.floor(t/2)].innerHTML=team4[t].innerHTML
                 seed5[Math.floor(t/2)].innerHTML=seed4[t].innerHTML
             }
+
+            if (t%2==0) {
+    
+                if (team6[Math.floor(t/32)].innerHTML==team[t+1].innerHTML) {
+                    team6[Math.floor(t/32)].innerHTML=''
+                    seed6[Math.floor(t/32)].innerHTML=''
+                }
+    
+                if (team7[Math.floor(t/64)].innerHTML==team[t+1].innerHTML) {
+                    team7[Math.floor(t/64)].innerHTML=''
+                    seed7[Math.floor(t/64)].innerHTML=''
+                }
+            }
+    
+            else {
+    
+                if (team6[Math.floor(t/32)].innerHTML==team[t-1].innerHTML) {
+                    team6[Math.floor(t/32)].innerHTML=''
+                    seed6[Math.floor(t/32)].innerHTML=''
+                }
+    
+                if (team7[Math.floor(t/64)].innerHTML==team[t-1].innerHTML) {
+                    team7[Math.floor(t/64)].innerHTML=''
+                    seed7[Math.floor(t/64)].innerHTML=''
+                }
+    
+            }
+
             }
 
 }
@@ -1636,6 +1750,24 @@ seed5[v].addEventListener("click", chooseRound5);
                 team6[Math.floor(v/2)].innerHTML=team5[v].innerHTML
                 seed6[Math.floor(v/2)].innerHTML=seed5[v].innerHTML
             }
+
+            if (v%2==0) {
+    
+                if (team7[Math.floor(v/64)].innerHTML==team[v+1].innerHTML) {
+                    team7[Math.floor(v/64)].innerHTML=''
+                    seed7[Math.floor(v/64)].innerHTML=''
+                }
+            }
+    
+            else {
+    
+                if (team7[Math.floor(v/64)].innerHTML==team[v-1].innerHTML) {
+                    team7[Math.floor(v/64)].innerHTML=''
+                    seed7[Math.floor(v/64)].innerHTML=''
+                }
+    
+            }
+
             }
 
 }
