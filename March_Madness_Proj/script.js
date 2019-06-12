@@ -45,8 +45,9 @@ let bracket1 = 'x'
 let bracket2 = 'y'
 //needs some editing
 
-let simulations = 20
+let simulations = 50
 firstPlaceFinishes = 0
+medalFinishes=0
 
 upsetArray1 = []
 upsetArray2 = []
@@ -475,6 +476,12 @@ submitBracket.addEventListener("click", loadWinners);
 
 
                     let numberOfPartcipants = document.querySelector(".numberOfPartcipants")
+                    let firstPercentage= document.querySelector(".firstPercentage")
+                    let firstDescription= document.querySelector(".firstDescription")
+                    let medalPercentage= document.querySelector(".medalPercentage")
+                    let medalDescription= document.querySelector(".medalDescription")
+                    let regularPercentage= document.querySelector(".regularPercentage")
+                    let regularDescription= document.querySelector(".regularDescription")
                     let participants =Number(numberOfPartcipants.value)
                     let entryFee = 5
                     let pot = entryFee * participants
@@ -1878,15 +1885,55 @@ submitBracket.addEventListener("click", loadWinners);
                         firstPlaceFinishes = firstPlaceFinishes + 1
                     }
 
+                    if ((standingsArray.indexOf(totalPointsPersonal) + 1) == 1 || (standingsArray.indexOf(totalPointsPersonal) + 1) == 2 || (standingsArray.indexOf(totalPointsPersonal) + 1) == 3) {
+                        medalFinishes = medalFinishes + 1
+                    }
 
+                    regularFinish=(1/(participants))
+                    
 
 
 
                 }
 
                 console.log(firstPlaceFinishes)
+                console.log(medalFinishes)
+                
+                firstDescription.innerHTML=("Percent chance this bracket finishes in first: ")
+                firstPercentage.innerHTML=firstPlaceFinishes/simulations *100 + "%"
+                if (firstPlaceFinishes/simulations>.05) {
+                    firstPercentage.style.color='green'
+                }
+
+                else {
+                    firstPercentage.style.color='red'
+                }
+
+                medalDescription.innerHTML=("Percent chance this bracket finishes in the top 3: ")
+                medalPercentage.innerHTML=medalFinishes/simulations *100 + "%"
+                if (medalFinishes/simulations>.15) {
+                    medalPercentage.style.color='green'
+                }
+
+                else {
+                    medalPercentage.style.color='red'
+                }
 
 
+                regularDescription.innerHTML=("Percent chance a random bracket in this pool finishes in the top 3: ")
+                regularPercentage.innerHTML=regularFinish *100 + "%"
+                if (regularFinish>.05) {
+                    regularPercentage.style.color='green'
+                }
+
+                else {
+                    regularPercentage.style.color='red'
+                }
+
+
+                firstPlaceFinishes=0
+                medalFinishes=0
+                regularFinish=0
             
 
 
@@ -1920,7 +1967,6 @@ load538()
 //just doubling the amount of teams in the array instead of clearing it and starting over
 
 //}
-
 
 
 
