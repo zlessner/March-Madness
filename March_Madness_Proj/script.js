@@ -1,8 +1,19 @@
 let body = document.querySelector("body")
 let empty = document.querySelector(".empty")
 let seed = document.querySelectorAll(".seed")
+let seed2 = document.querySelectorAll(".seed2")
+let seed3 = document.querySelectorAll(".seed3")
+let seed4 = document.querySelectorAll(".seed4")
+let seed5 = document.querySelectorAll(".seed5")
+let seed6 = document.querySelectorAll(".seed6")
+let seed7 = document.querySelectorAll(".seed7")
 let team = document.querySelectorAll(".team")
 let team2 = document.querySelectorAll(".team2")
+let team3 = document.querySelectorAll(".team3")
+let team4 = document.querySelectorAll(".team4")
+let team5 = document.querySelectorAll(".team5")
+let team6 = document.querySelectorAll(".team6")
+let team7 = document.querySelectorAll(".team7")
 
 let fiveThreeEight = document.querySelector(".fiveThreeEight")
 let teams = document.querySelector(".teams")
@@ -1514,14 +1525,70 @@ function load538() {
 
 
 for (let q=0; q<team.length; q++) {
- team[q].addEventListener("click", chooseRound2);
-          function chooseRound2(evt) {
+ team[q].addEventListener("click", chooseRound);
+          function chooseRound(evt) {
             if (team[q].contains(evt.target)) {
                 team2[Math.floor(q/2)].innerHTML=team[q].innerHTML
+                seed2[Math.floor(q/2)].innerHTML=seed[q].innerHTML
             }
           }
 
 }
+
+for (let u=0; u<team2.length; u++) {
+    team2[u].addEventListener("click", chooseRound2);
+             function chooseRound2(evt) {
+               if (team2[u].contains(evt.target)) {
+                   team3[Math.floor(u/2)].innerHTML=team2[u].innerHTML
+                   seed3[Math.floor(u/2)].innerHTML=seed2[u].innerHTML
+               }
+             }
+   
+   }
+
+for (let s=0; s<team3.length; s++) {
+team3[s].addEventListener("click", chooseRound3);
+            function chooseRound3(evt) {
+            if (team3[s].contains(evt.target)) {
+                team4[Math.floor(s/2)].innerHTML=team3[s].innerHTML
+                seed4[Math.floor(s/2)].innerHTML=seed3[s].innerHTML
+            }
+            }
+
+}
+
+for (let t=0; t<team4.length; t++) {
+team4[t].addEventListener("click", chooseRound4);
+            function chooseRound4(evt) {
+            if (team4[t].contains(evt.target)) {
+                team5[Math.floor(t/2)].innerHTML=team4[t].innerHTML
+                seed5[Math.floor(t/2)].innerHTML=seed4[t].innerHTML
+            }
+            }
+
+}
+
+for (let v=0; v<team5.length; v++) {
+team5[v].addEventListener("click", chooseRound5);
+            function chooseRound5(evt) {
+            if (team5[v].contains(evt.target)) {
+                team6[Math.floor(v/2)].innerHTML=team5[v].innerHTML
+                seed6[Math.floor(v/2)].innerHTML=seed5[v].innerHTML
+            }
+            }
+
+}
+
+for (let w=0; w<team6.length; w++) {
+    team6[w].addEventListener("click", chooseRound6);
+                function chooseRound6(evt) {
+                if (team6[w].contains(evt.target)) {
+                    team7[Math.floor(w/2)].innerHTML=team6[w].innerHTML
+                    seed7[Math.floor(w/2)].innerHTML=seed6[w].innerHTML
+                }
+                }
+    
+    }
 
 //if array lengths are greater than certain length, able to submit, if not show pop up error
 
