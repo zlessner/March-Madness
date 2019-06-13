@@ -24,3 +24,8 @@
 
 
     //move user input bracket to top eventually in order to push into standings array when point total is captured
+
+
+
+
+

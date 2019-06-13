@@ -3,7 +3,7 @@ let tourneyHeader= document.querySelector(".tournament-header")
 
 function size(x) {
     for (let i=0; i<right.length; i++) {
-    if (x.matches) { // If media query matches
+    if (x.matches) { 
       right[i].remove()
     }
     else {
@@ -12,9 +12,9 @@ function size(x) {
   }
 }
   
-  let x = window.matchMedia("(max-width: 400px)")
-  size(x) // Call listener function at run time
-  x.addListener(size) // Attach listener function on state changes
+  let x = window.matchMedia("(max-width: 650px)")
+  size(x) 
+  x.addListener(size) 
 
 
 let submitBracket=document.querySelector(".submitBracket")
@@ -1739,10 +1739,10 @@ submitBracket.addEventListener("click", loadWinners);
 
                 let secondPercentage=secondPlaceFinishes/simulations
                 let thirdPercentage=thirdPlaceFinishes/simulations
-                let expectedPrize = (((participants * fee * (firstPlaceFinishes/simulations) * winner1)+ (participants * fee * (secondPlaceFinishes/simulations) * winner2)+ (participants * fee * (thirdPlaceFinishes/simulations) * winner3))-5)
+                let expectedPrize = (((participants * fee  * winner1 * (firstPlaceFinishes/simulations))+ (participants * fee * winner2 * (secondPlaceFinishes/simulations))+ (participants * fee * winner3 * (thirdPlaceFinishes/simulations)))-5)
 
-                prizeDescription.innerHTML=("Prize winning expected value: $")
-                prizeWinnings.innerHTML=expectedPrize.toFixed(2)
+                prizeDescription.innerHTML=("Prize winning expected value: ")
+                prizeWinnings.innerHTML=("$"+expectedPrize.toFixed(2))
                 if (expectedPrize>fee) {
                     prizeWinnings.style.color='green'
                 }

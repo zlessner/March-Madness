@@ -1,5 +1,3 @@
-/* change media queries for viewing on mobile phone (make bracket go down longways) */
-
 body {
     background-color: rgb(202, 199, 199);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -13,15 +11,40 @@ body {
       width: 30px;
       height: 10px;
       margin-bottom: 10px;
-      margin-right: 5px;
+      margin-right: 25px;
   }
 
+  .points, .points1, .bonus1, .points2, .bonus2, .points3, .bonus3, .points4, .bonus4, .points5, .bonus5, .points6, .bonus6 {
+padding-left: 5px;
+}
+
+ 
+
   .numberOfPartcipants, .winner1, .winner2, .winner3, .fee {
-    width: 125px;
+    width: 60px;
     margin-right: 18px;
     position: relative;
   }
 
+ .percent1, .percent2, .percent3, .entry, .participantsSpan {
+    display: inline-block;
+  }
+
+
+.top {
+  display:flex;
+  justify-content: space-between;
+}
+
+.decimal {
+  text-align: center;
+  background: rgb(189, 187, 187);
+}
+
+.entry, .participantsSpan {
+  font-weight: bold;
+  font-size: 18px;
+}
  
 
   .team, .team2, .team3, .team4, .team5, .team6 {
@@ -55,6 +78,7 @@ body {
 .points {
     color: black;
     font-size: 8px;
+    text-align: left;
 }
   
   .tournament {
@@ -173,31 +197,67 @@ body {
     margin-top: -50px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 580px) {
     .tournament-header{
-      width: 100vw
+      width: 100%;
     }
     .roundTitle {
       font-size: 7px;
     }
-    .participantsSpan {
-      font-size: 9px;
-    }
-  }
 
-  @media screen and (max-width: 350px) {
+    .percent1, .percent2, .percent3, .entry, .participantsSpan {
+      font-size: 10px;
+    }
+    input::placeholder {
+      font-size: 10px;
+    }
+    .numberOfPartcipants, .fee {
+      width: 38px;
+  }
+}
+
+  @media screen and (max-width: 400px) {
   .submitBracket, .clear {
     font-size: 7px;
   }
-  .participantsSpan {
+
+    .percent1, .percent2, .percent3, .entry, .participantsSpan {
+      font-size: 8px;
+    
+  }
+
+  input::placeholder {
     font-size: 8px;
   }
 
   .roundTitle {
     font-size: 5px;
   }
+
+  .points {
+    font-size: 7px;
   }
 
-  .money {
-    border: 2px solid black;
+  .points1, .bonus1, .points2, .bonus2, .points3, .bonus3, .points4, .bonus4, .points5, .bonus5, .points6, .bonus6 {
+    width: 25px;
+    height: 10px;
+    margin-bottom: 10px;
+    margin-right: 8px;
+
   }
+  .points, .points1, .bonus1, .points2, .bonus2, .points3, .bonus3, .points4, .bonus4, .points5, .bonus5, .points6, .bonus6 {
+    padding-left: .5px;
+    }
+}
+
+  .entering {
+    display: flex;
+    justify-content: space-around;
+    background: rgb(189, 187, 187)
+  }
+
+  .roundTitle {
+    margin-right:10px;
+  }
+
+  
