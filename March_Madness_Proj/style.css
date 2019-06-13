@@ -12,6 +12,8 @@ body {
   .points1, .bonus1, .points2, .bonus2, .points3, .bonus3, .points4, .bonus4, .points5, .bonus5, .points6, .bonus6 {
       width: 30px;
       height: 10px;
+      margin-bottom: 10px;
+      margin-right: 5px;
   }
 
   .numberOfPartcipants {
@@ -26,11 +28,13 @@ body {
   .team, .team2, .team3, .team4, .team5, .team6 {
       font-size: 8px;
       cursor: pointer;
+      font-weight: bold;
   }
 
   .seed, .seed2, .seed3, .seed4, .seed5, .seed6 {
       font-size: 9px;
       cursor: pointer;
+      font-weight: bold;
   }
   
   .header-text {
@@ -92,23 +96,6 @@ body {
     width: 100%;
   }
   
-  .first-four-winner li.game-left,
-  .round-1 li.game-left,
-  .round-2 li.game-left,
-  .round-3 li.game-left,
-  .round-4 li.game-left,
-  .semi-final li.game-left {
-      padding-left: 0.5em;
-  }
-  
-  .first-four-winner li.game-right,
-  .round-1 li.game-right,
-  .round-2 li.game-right,
-  .round-3 li.game-right,
-  .round-4 li.game-right,
-  .semi-final li.game-right {
-      padding-right: 0.5em;
-  }
   
   .region {
       font-size: 1.5em;
@@ -142,6 +129,7 @@ body {
     border: none;
     border-bottom: 1px solid #aaa;
   }
+
   li.game-left.spacer {
       border-right: 1px solid #aaa;
       min-height: 5px;
