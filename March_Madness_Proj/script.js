@@ -1,3 +1,22 @@
+let right = document.querySelectorAll(".right")
+let tourneyHeader= document.querySelector(".tournament-header")
+
+function size(x) {
+    for (let i=0; i<right.length; i++) {
+    if (x.matches) { // If media query matches
+      right[i].remove()
+    }
+    else {
+        tourneyHeader.append(right[i])
+    }
+  }
+}
+  
+  let x = window.matchMedia("(max-width: 400px)")
+  size(x) // Call listener function at run time
+  x.addListener(size) // Attach listener function on state changes
+
+
 let submitBracket=document.querySelector(".submitBracket")
 
 let clear = document.querySelector(".clear")

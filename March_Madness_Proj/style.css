@@ -1,7 +1,7 @@
 /* change media queries for viewing on mobile phone (make bracket go down longways) */
 
 body {
-    background-color: rgb(253, 253, 253);
+    background-color: rgb(202, 199, 199);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
   }
@@ -92,7 +92,7 @@ body {
     border: 1px solid black;
     background-color: #45f500;
     box-shadow: 3px 3px 3px 1.5px grey;
-    color: white;
+    color: black;
     width: 100%;
   }
   
@@ -117,26 +117,27 @@ body {
   
   li.game-right {
     text-align: right;
-    border-left: 1px solid #aaa;
+    border-left: 1px solid black;
   }
   li.game-left {
-      border-right: 1px solid #aaa;
+      border-right: 1px solid black;
   }
   li.game-bottom {
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid black;
   }
   li.game-top {
     border: none;
-    border-bottom: 1px solid #aaa;
+    border-bottom: 1px solid black;
   }
 
+
   li.game-left.spacer {
-      border-right: 1px solid #aaa;
+      border-right: 1px solid black;
       min-height: 5px;
       padding-right:.25em;
   }
   li.game-right.spacer {
-      border-left: 1px solid #aaa;
+      border-left: 1px solid black;
       min-height: 5px;
       padding-left:.25em;
       text-align: left;
@@ -146,7 +147,7 @@ body {
       text-align: center;
       padding-top: 1em;
       padding-bottom: 1em;
-      border: 1px solid #aaa;
+      border: 1px solid black;
       margin-top: 1em;
       margin-bottom: 1em;
       font-weight:bold;
@@ -167,4 +168,33 @@ body {
   }
   .extra-padding {
     padding-top: 45px;
+  }
+
+  .right {
+    margin-top: -50px;
+  }
+
+  @media screen and (max-width: 500px) {
+    .tournament-header{
+      width: 100vw
+    }
+    .roundTitle {
+      font-size: 7px;
+    }
+    .participantsSpan {
+      font-size: 9px;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+  .submitBracket, .clear {
+    font-size: 7px;
+  }
+  .participantsSpan {
+    font-size: 8px;
+  }
+
+  .roundTitle {
+    font-size: 5px;
+  }
   }
