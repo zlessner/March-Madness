@@ -56,38 +56,36 @@ popPicksURL = 'https://marchmadnessapi.herokuapp.com/api/popPicksTournament'
 
 
 //all arbitrary values- goal is to finish as high in standings as possible
-//change window widths for different screen sizes
 
-let bracket1 = 'x'
-let bracket2 = 'y'
-//needs some editing
 
 let simulations = 50
-firstPlaceFinishes = 0
-medalFinishes=0
+let firstPlaceFinishes = 0
+let secondPlaceFinishes= 0
+let thirdPlaceFinishes=0
+let medalFinishes=0
 
-upsetArray1 = []
-upsetArray2 = []
-upsetArray3 = []
-upsetArray4 = []
-upsetArray5 = []
-upsetArray6 = []
+let upsetArray1 = []
+let upsetArray2 = []
+let upsetArray3 = []
+let upsetArray4 = []
+let upsetArray5 = []
+let upsetArray6 = []
 
 
 
-totalPointsPersonal = 0
-totalBonusPersonal1 = 0
-totalBonusPersonal2 = 0
-totalBonusPersonal3 = 0
-totalBonusPersonal4 = 0
-totalBonusPersonal5 = 0
-totalBonusPersonal6 = 0
-upsetArraySilver1 = []
-upsetArraySilver2 = []
-upsetArraySilver3 = []
-upsetArraySilver4 = []
-upsetArraySilver5 = []
-upsetArraySilver6 = []
+let totalPointsPersonal = 0
+let totalBonusPersonal1 = 0
+let totalBonusPersonal2 = 0
+let totalBonusPersonal3 = 0
+let totalBonusPersonal4 = 0
+let totalBonusPersonal5 = 0
+let totalBonusPersonal6 = 0
+let upsetArraySilver1 = []
+let upsetArraySilver2 = []
+let upsetArraySilver3 = []
+let upsetArraySilver4 = []
+let upsetArraySilver5 = []
+let upsetArraySilver6 = []
 
 
 
@@ -470,6 +468,8 @@ submitBracket.addEventListener("click", loadWinners);
 
 
                     let numberOfPartcipants = document.querySelector(".numberOfPartcipants")
+                    let prizeWinnings= document.querySelector(".prizeWinnings")
+                    let prizeDescription= document.querySelector(".prizeDescription")
                     let firstPercentage= document.querySelector(".firstPercentage")
                     let firstDescription= document.querySelector(".firstDescription")
                     let medalPercentage= document.querySelector(".medalPercentage")
@@ -477,17 +477,25 @@ submitBracket.addEventListener("click", loadWinners);
                     let regularPercentage= document.querySelector(".regularPercentage")
                     let regularDescription= document.querySelector(".regularDescription")
                     let field= document.querySelectorAll(".field")
+                    let feex= document.querySelector(".fee")
+                    let winner1x= document.querySelector(".winner1")
+                    let winner2x= document.querySelector(".winner2")
+                    let winner3x= document.querySelector(".winner3")
+
+                    let fee=Number(feex.value)
+                    let winner1=Number(winner1x.value)
+                    let winner2=Number(winner2x.value)
+                    let winner3=Number(winner3x.value)
+
                     let participants =Number(numberOfPartcipants.value)
                     if (participants<=5) {
                         alert ("Please enter participant number greater than 5")
                         return
                     }
-                    let entryFee = 5
-                    let pot = entryFee * participants
-                    let firstPrize = (.75 * participants * entryFee)
-                    let secondPrize = (.2 * participants * entryFee)
-                    let thirdPrize = (.05 * participants * entryFee)
-                    let winnings = firstPrize * bracket1 - entryFee
+   
+                    
+
+
 
                     for (let c=0; c<field.length; c++) {
                         if (field[c].value.length<1) {
@@ -1677,6 +1685,14 @@ submitBracket.addEventListener("click", loadWinners);
                         firstPlaceFinishes = firstPlaceFinishes + 1
                     }
 
+                    if ((standingsArray.indexOf(totalPointsPersonal) + 1) == 2) {
+                        secondPlaceFinishes = secondPlaceFinishes + 1
+                    }
+
+                    if ((standingsArray.indexOf(totalPointsPersonal) + 1) == 3) {
+                        thirdPlaceFinishes = thirdPlaceFinishes + 1
+                    }
+
                     if ((standingsArray.indexOf(totalPointsPersonal) + 1) == 1 || (standingsArray.indexOf(totalPointsPersonal) + 1) == 2 || (standingsArray.indexOf(totalPointsPersonal) + 1) == 3) {
                         medalFinishes = medalFinishes + 1
                     }
@@ -1711,6 +1727,29 @@ submitBracket.addEventListener("click", loadWinners);
                     medalPercentage.style.color='red'
                 }
 
+                medalDescription.innerHTML=("Percent chance this bracket finishes in the top 3: ")
+                medalPercentage.innerHTML=medalFinishes/simulations *100 + "%"
+                if (medalFinishes/simulations>.15) {
+                    medalPercentage.style.color='green'
+                }
+
+                else {
+                    medalPercentage.style.color='red'
+                }
+
+                let secondPercentage=secondPlaceFinishes/simulations
+                let thirdPercentage=thirdPlaceFinishes/simulations
+                let expectedPrize = (((participants * fee * (firstPlaceFinishes/simulations) * winner1)+ (participants * fee * (secondPlaceFinishes/simulations) * winner2)+ (participants * fee * (thirdPlaceFinishes/simulations) * winner3))-5)
+
+                prizeDescription.innerHTML=("Prize winning expected value: $")
+                prizeWinnings.innerHTML=expectedPrize.toFixed(2)
+                if (expectedPrize>fee) {
+                    prizeWinnings.style.color='green'
+                }
+
+                else {
+                    prizeWinnings.style.color='red'
+                }
 
                 regularDescription.innerHTML=("Percent chance a random bracket in this pool finishes in first: ")
                 regularPercentage.innerHTML=regularFinish *100 + "%"
@@ -1724,6 +1763,8 @@ submitBracket.addEventListener("click", loadWinners);
 
 
                 firstPlaceFinishes=0
+                secondPlaceFinishes=0
+                thirdPlaceFinishes=0
                 medalFinishes=0
                 regularFinish=0
             
@@ -1756,4 +1797,11 @@ submitBracket.addEventListener("click", loadWinners);
 load538()
 
 
+// counter=0
+// for (i=0; i<5000000; i++) {
+//     for (j=0; j<150; j++) {
+//         counter=counter+1
+//     }
+// }
 
+// console.log(counter)

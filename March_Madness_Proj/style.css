@@ -16,14 +16,13 @@ body {
       margin-right: 5px;
   }
 
-  .numberOfPartcipants {
-    width: 40px;
+  .numberOfPartcipants, .winner1, .winner2, .winner3, .fee {
+    width: 125px;
+    margin-right: 18px;
+    position: relative;
   }
 
-  .participantsSpan{
-      position: relative;
-      float: right;
-  }
+ 
 
   .team, .team2, .team3, .team4, .team5, .team6 {
       font-size: 8px;
@@ -197,4 +196,8 @@ body {
   .roundTitle {
     font-size: 5px;
   }
+  }
+
+  .money {
+    border: 2px solid black;
   }

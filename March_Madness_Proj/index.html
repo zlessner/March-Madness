@@ -44,15 +44,43 @@
   <form>
         <button type="button" class="submitBracket">Submit Bracket</button>
         <button type="button" class="clear">Clear Bracket</button>
-        <span class="participantsSpan">
-        Number of participants in pool: 
-                <input type="number" class="numberOfPartcipants field">
-        </span> 
+
         </form>
 
-        <br>
+<br>
+<form class="money">
+<div class="poolInfo">
+<span class="entry">
+                Pool Entry Fee: 
+                        <input type="number" class="fee field">
+                </span> 
+
+                <span class="participantsSpan">
+                                Number of participants in pool: 
+                                        <input type="number" class="numberOfPartcipants field">
+                                </span> 
+                                <span class="percent1">
+                                     Percentage of pot to winner: 
+                                <input type="number" class="winner1 field" placeholder="Please enter decimal">
+                                 </span> 
+                                 <br>
+                                 <br>
+
+                                 <span class="percent2">
+                                                Percentage of pot to second place: 
+                                           <input type="number" class="winner2 field" placeholder="Please enter decimal">
+                                            </span>
+
+                                            <span class="percent3">
+                                                        Percentage of pot to third place: 
+                                                   <input type="number" class="winner3 field" placeholder="Please enter decimal">
+                                                    </span>
+
+                                          
+                                                </div>
+                                        </form>
+                <br>       
         
-        <div class="empty"></div>
 
   <section>
 
@@ -165,6 +193,8 @@
    <div class= "results"> <span class="firstDescription">  </span> <span class="firstPercentage"></span> </div>
    <br>
    <div class= "results"> <span class="medalDescription">  </span> <span class="medalPercentage"></span> </div>
+   <br>
+   <div class= "results"> <span class="prizeDescription">  </span> <span class="prizeWinnings"></span> </div>
    <br>
    <div class= "results"> <span class="regularDescription">  </span> <span class="regularPercentage"></span> </div>
     <div class='tournament'>
