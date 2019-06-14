@@ -483,13 +483,6 @@ submitBracket.addEventListener("click", loadWinners);
                     let winner3=Number(winner3x.value)
 
                     let participants =Number(numberOfPartcipants.value)
-                    if (participants<=5) {
-                        alert ("Please enter participant number greater than 5")
-                        return
-                    }
-   
-                    
-
 
 
                     for (let c=0; c<field.length; c++) {
@@ -500,6 +493,11 @@ submitBracket.addEventListener("click", loadWinners);
                         
                     }
 
+                    if (participants<=5) {
+                        alert ("Please enter participant number greater than 5")
+                        return
+                    }
+   
                     let ptsRound1 = [
                         { winPoints: Number(points1.value) },
                         { bonus: Number(bonus1.value) },
