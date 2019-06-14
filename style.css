@@ -11,6 +11,10 @@ body {
     float: right;
   }
 
+  footer {
+    text-align: center;
+  }
+
 
   .points1, .bonus1, .points2, .bonus2, .points3, .bonus3, .points4, .bonus4, .points5, .bonus5, .points6, .bonus6 {
       width: 30px;
