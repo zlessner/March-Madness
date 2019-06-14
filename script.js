@@ -64,35 +64,6 @@ let secondPlaceFinishes= 0
 let thirdPlaceFinishes=0
 let medalFinishes=0
 
-let upsetArray1 = []
-let upsetArray2 = []
-let upsetArray3 = []
-let upsetArray4 = []
-let upsetArray5 = []
-let upsetArray6 = []
-
-
-
-let totalPointsPersonal = 0
-let totalBonusPersonal1 = 0
-let totalBonusPersonal2 = 0
-let totalBonusPersonal3 = 0
-let totalBonusPersonal4 = 0
-let totalBonusPersonal5 = 0
-let totalBonusPersonal6 = 0
-let upsetArraySilver1 = []
-let upsetArraySilver2 = []
-let upsetArraySilver3 = []
-let upsetArraySilver4 = []
-let upsetArraySilver5 = []
-let upsetArraySilver6 = []
-
-
-
-
-
-
-
 
 
 //load all 3 APIs whatever way before running functionality
@@ -1718,7 +1689,7 @@ submitBracket.addEventListener("click", loadWinners);
                 }
 
                 medalDescription.innerHTML=("Percent chance this bracket finishes in the top 3: ")
-                medalPercentage.innerHTML=medalFinishes/simulations *100 + "%"
+                medalPercentage.innerHTML=(medalFinishes/simulations *100).toFixed(2) + "%"
                 if (medalFinishes/simulations>.15) {
                     medalPercentage.style.color='green'
                 }
@@ -1728,7 +1699,7 @@ submitBracket.addEventListener("click", loadWinners);
                 }
 
                 medalDescription.innerHTML=("Percent chance this bracket finishes in the top 3: ")
-                medalPercentage.innerHTML=medalFinishes/simulations *100 + "%"
+                medalPercentage.innerHTML=(medalFinishes/simulations *100).toFixed(2) + "%"
                 if (medalFinishes/simulations>.15) {
                     medalPercentage.style.color='green'
                 }
@@ -1752,7 +1723,7 @@ submitBracket.addEventListener("click", loadWinners);
                 }
 
                 regularDescription.innerHTML=("Percent chance a random bracket in this pool finishes in first: ")
-                regularPercentage.innerHTML=regularFinish *100 + "%"
+                regularPercentage.innerHTML=(regularFinish *100).toFixed(2) + "%"
                 if (regularFinish>.05) {
                     regularPercentage.style.color='green'
                 }
@@ -1805,3 +1776,4 @@ load538()
 // }
 
 // console.log(counter)
+
