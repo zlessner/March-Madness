@@ -18,6 +18,7 @@ function size(x) {
 
 
 let submitBracket=document.querySelector(".submitBracket")
+let cueBracket=document.querySelector(".cueBracket")
 
 let clear = document.querySelector(".clear")
 let seed = document.querySelectorAll(".seed")
@@ -49,6 +50,12 @@ let bonus4=document.querySelector(".bonus4")
 let bonus5=document.querySelector(".bonus5")
 let bonus6=document.querySelector(".bonus6")
 
+let loaderCircle=document.createElement("div")
+loaderCircle.className="loader"
+let loaderContainer=document.querySelector(".loaderContainer")
+let field= document.querySelectorAll(".field")
+ 
+
 let teams = document.querySelector(".teams")
 let popPicks = document.querySelector(".popPicks")
 fiveThirtyEightURL = 'https://marchmadnessapi.herokuapp.com/api/538Tournament'
@@ -58,7 +65,7 @@ popPicksURL = 'https://marchmadnessapi.herokuapp.com/api/popPicksTournament'
 //all arbitrary values- goal is to finish as high in standings as possible
 
 
-let simulations = 5000
+let simulations = 6000
 let firstPlaceFinishes = 0
 let secondPlaceFinishes= 0
 let thirdPlaceFinishes=0
@@ -416,6 +423,21 @@ for (let q=0; q<team.length; q++) {
    
    //if array lengths are greater than certain length, able to submit, if not show pop up error
 
+cueBracket.addEventListener("click", loadBracket);
+
+function loadBracket () {
+
+    for (let c=0; c<field.length; c++) {
+        if (field[c].value.length<1) {
+            alert("Please fill in all input fields")
+            return;
+        }
+    }
+
+loaderContainer.appendChild(loaderCircle)
+
+}
+
 
 
 submitBracket.addEventListener("click", loadWinners);
@@ -437,6 +459,9 @@ submitBracket.addEventListener("click", loadWinners);
                     // myBracketRound6Seed = [1]
 
 
+                    
+
+
 
                     let numberOfPartcipants = document.querySelector(".numberOfPartcipants")
                     let prizeWinnings= document.querySelector(".prizeWinnings")
@@ -447,7 +472,6 @@ submitBracket.addEventListener("click", loadWinners);
                     let medalDescription= document.querySelector(".medalDescription")
                     let regularPercentage= document.querySelector(".regularPercentage")
                     let regularDescription= document.querySelector(".regularDescription")
-                    let field= document.querySelectorAll(".field")
                     let feex= document.querySelector(".fee")
                     let winner1x= document.querySelector(".winner1")
                     let winner2x= document.querySelector(".winner2")
@@ -1614,6 +1638,8 @@ submitBracket.addEventListener("click", loadWinners);
 
                 //console.log(firstPlaceFinishes)
                 //console.log(medalFinishes)
+
+                loaderCircle.remove()
                 
                 firstDescription.innerHTML=("Percent chance this bracket finishes in first: ")
                 firstPercentage.innerHTML=(firstPlaceFinishes/simulations *100).toFixed(2) + "%"

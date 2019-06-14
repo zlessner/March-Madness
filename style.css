@@ -15,6 +15,20 @@ body {
     text-align: center;
   }
 
+  .loader {
+    border: 6px solid #f3f3f3; 
+    border-top: 6px solid #3498db; 
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 
   .points1, .bonus1, .points2, .bonus2, .points3, .bonus3, .points4, .bonus4, .points5, .bonus5, .points6, .bonus6 {
       width: 30px;
