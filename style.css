@@ -2,7 +2,6 @@ body {
     background-color: rgb(202, 199, 199);
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 0;
-    width: 100%;
   }
   section {
     margin: 0 8px;
@@ -17,7 +16,7 @@ body {
   }
 
   .loader {
-    border: 6px solid #f3f3f3; 
+    border: 6px solid #832e2e; 
     border-top: 6px solid #3498db; 
     border-radius: 50%;
     width: 40px;
