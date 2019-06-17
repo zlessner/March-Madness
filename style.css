@@ -241,7 +241,7 @@ padding-left: 5px;
 }
 
   @media screen and (max-width: 400px) {
-  .submitBracket, .clear {
+  .submitBracket, .clear, .cueBracket {
     font-size: 7px;
   }
 
