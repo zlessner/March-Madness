@@ -732,7 +732,7 @@ submitBracket.addEventListener("click", loadWinners);
                             if (i % 2 == 0) {
                                 let ranNumber2 = Math.random()
 
-                                if (ranNumber2 <= ((firstRoundWinners538[i].Round2)/(firstRoundWinners538[i].Round1))) {
+                                if (ranNumber2 <= (((firstRoundWinners538[i].Round2)/(firstRoundWinners538[i].Round1))/((((firstRoundWinners538[i].Round2)/(firstRoundWinners538[i].Round1))+((firstRoundWinners538[i+1].Round2)/(firstRoundWinners538[i+1].Round1)))))) {
                                     secondRoundWinners538.push(firstRoundWinners538[i])
                                 }
 
@@ -761,7 +761,7 @@ submitBracket.addEventListener("click", loadWinners);
                             if (i % 2 == 0) {
                                 let ranNumber3 = Math.random()
 
-                                if (ranNumber3 <= ((secondRoundWinners538[i].Round3)/(secondRoundWinners538[i].Round2))) {
+                                if (ranNumber3 <= (((secondRoundWinners538[i].Round2)/(secondRoundWinners538[i].Round1))/((((secondRoundWinners538[i].Round2)/(secondRoundWinners538[i].Round1))+((secondRoundWinners538[i+1].Round2)/(secondRoundWinners538[i+1].Round1)))))) {
                                     thirdRoundWinners538.push(secondRoundWinners538[i])
                                 }
 
@@ -792,7 +792,7 @@ submitBracket.addEventListener("click", loadWinners);
                             if (i % 2 == 0) {
                                 let ranNumber4 = Math.random()
 
-                                if (ranNumber4 <= ((thirdRoundWinners538[i].Round4)/(thirdRoundWinners538[i].Round3))) {
+                                if (ranNumber4 <= (((thirdRoundWinners538[i].Round2)/(thirdRoundWinners538[i].Round1))/((((thirdRoundWinners538[i].Round2)/(thirdRoundWinners538[i].Round1))+((thirdRoundWinners538[i+1].Round2)/(thirdRoundWinners538[i+1].Round1)))))) {
                                     finalFourTeams538.push(thirdRoundWinners538[i])
                                 }
 
@@ -822,7 +822,7 @@ submitBracket.addEventListener("click", loadWinners);
                             if (i % 2 == 0) {
                                 let ranNumber5 = Math.random()
 
-                                if (ranNumber5 <= ((finalFourTeams538[i].Round5)/(finalFourTeams538[i].Round4))) {
+                                if (ranNumber5 <= (((finalFourTeams538[i].Round2)/(finalFourTeams538[i].Round1))/((((finalFourTeams538[i].Round2)/(finalFourTeams538[i].Round1))+((finalFourTeams538[i+1].Round2)/(finalFourTeams538[i+1].Round1)))))) {
                                     championshipTeams538.push(finalFourTeams538[i])
                                 }
 
@@ -852,7 +852,7 @@ submitBracket.addEventListener("click", loadWinners);
                             if (i % 2 == 0) {
                                 let ranNumber6 = Math.random()
 
-                                if (ranNumber6 <= ((championshipTeams538[i].Round6)/(championshipTeams538[i].Round5))) {
+                                if (ranNumber6 <= (((championshipTeams538[i].Round2)/(championshipTeams538[i].Round1))/((((championshipTeams538[i].Round2)/(championshipTeams538[i].Round1))+((championshipTeams538[i+1].Round2)/(championshipTeams538[i+1].Round1)))))) {
                                     winningTeam538.push(championshipTeams538[i])
                                 }
 
@@ -1342,7 +1342,7 @@ submitBracket.addEventListener("click", loadWinners);
                                 if (i % 2 == 0) {
                                     let ranNum = Math.random()
 
-                                    if (ranNum <= ((firstRoundWinners[i].Round2)/(firstRoundWinners[i].Round1))) {
+                                    if (ranNum <= (((firstRoundWinners[i].Round2)/(firstRoundWinners[i].Round1))/((((firstRoundWinners[i].Round2)/(firstRoundWinners[i].Round1))+((firstRoundWinners[i+1].Round2)/(firstRoundWinners[i+1].Round1)))))) {
                                         secondRoundWinners.push(firstRoundWinners[i])
                                         if (firstRoundWinners[i].Seed > firstRoundWinners538[i + 1].Seed) {
                                             upsetArray2.push(firstRoundWinners[i].Team)
@@ -1390,7 +1390,7 @@ submitBracket.addEventListener("click", loadWinners);
                                 if (i % 2 == 0) {
                                     let ranNum3 = Math.random()
 
-                                    if (ranNum3 <= ((secondRoundWinners[i].Round3)/(secondRoundWinners[i].Round2))) {
+                                    if (ranNum3 <= (((secondRoundWinners[i].Round2)/(secondRoundWinners[i].Round1))/((((secondRoundWinners[i].Round2)/(secondRoundWinners[i].Round1))+((secondRoundWinners[i+1].Round2)/(secondRoundWinners[i+1].Round1)))))) {
                                         thirdRoundWinners.push(secondRoundWinners[i])
                                         if (secondRoundWinners[i].Seed > secondRoundWinners538[i + 1].Seed) {
                                             upsetArray3.push(secondRoundWinners[i].Team)
@@ -1440,7 +1440,7 @@ submitBracket.addEventListener("click", loadWinners);
                                 if (i % 2 == 0) {
                                     let ranNum4 = Math.random()
 
-                                    if (ranNum4 <= ((thirdRoundWinners[i].Round4)/(thirdRoundWinners[i].Round3))) {
+                                    if (ranNum4 <= (((thirdRoundWinners[i].Round2)/(thirdRoundWinners[i].Round1))/((((thirdRoundWinners[i].Round2)/(thirdRoundWinners[i].Round1))+((thirdRoundWinners[i+1].Round2)/(thirdRoundWinners[i+1].Round1)))))) {
                                         finalFourTeams.push(thirdRoundWinners[i])
 
                                         if (thirdRoundWinners[i].Seed > thirdRoundWinners538[i + 1].Seed) {
@@ -1491,7 +1491,7 @@ submitBracket.addEventListener("click", loadWinners);
                                 if (i % 2 == 0) {
                                     let ranNum5 = Math.random()
 
-                                    if (ranNum5 <= ((finalFourTeams[i].Round5)/(finalFourTeams[i].Round4))) {
+                                    if (ranNum5 <= (((finalFourTeams[i].Round2)/(finalFourTeams[i].Round1))/((((finalFourTeams[i].Round2)/(finalFourTeams[i].Round1))+((finalFourTeams[i+1].Round2)/(finalFourTeams[i+1].Round1)))))) {
                                         championshipTeams.push(finalFourTeams[i])
                                         if (finalFourTeams[i].Seed > finalFourTeams538[i + 1].Seed) {
                                             upsetArray5.push(finalFourTeams[i].Team)
@@ -1540,7 +1540,7 @@ submitBracket.addEventListener("click", loadWinners);
                                 if (i % 2 == 0) {
                                     let ranNum6 = Math.random()
 
-                                    if (ranNum6 <= ((championshipTeams[i].Round6)/(championshipTeams[i].Round5))) {
+                                    if (ranNum6 <= (((championshipTeams[i].Round2)/(championshipTeams[i].Round1))/((((championshipTeams[i].Round2)/(championshipTeams[i].Round1))+((championshipTeams[i+1].Round2)/(championshipTeams[i+1].Round1)))))) {
                                         winningTeam.push(championshipTeams[i])
                                         if (championshipTeams[i].Seed > championshipTeams538[i + 1].Seed) {
                                             upsetArray6.push(championshipTeams[i].Team)
