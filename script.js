@@ -65,7 +65,7 @@ popPicksURL = 'https://marchmadnessapi.herokuapp.com/api/popPicksTournament'
 //all arbitrary values- goal is to finish as high in standings as possible
 
 
-let simulations = 8000
+let simulations = 10000
 let firstPlaceFinishes = 0
 let secondPlaceFinishes= 0
 let thirdPlaceFinishes=0
@@ -701,10 +701,10 @@ submitBracket.addEventListener("click", loadWinners);
                     function firstRound538() {
 
                         for (let i = 0; i < silverData.length; i++) {
+                            ranNumber1 = Math.random()
 
                             if (i % 2 == 0) {
-                                let ranNumber1 = Math.random()
-                                //console.log(ranNum)
+
                                 if (ranNumber1 <= silverData[i].Round1) {
                                     firstRoundWinners538.push(silverData[i])
                                 }
@@ -713,8 +713,7 @@ submitBracket.addEventListener("click", loadWinners);
                                     firstRoundWinners538.push(silverData[i + 1])
                                 }
 
-                                ranNumber1 = Math.random()
-                                //console.log(ranNum)
+
                             }
 
                         }
@@ -728,9 +727,9 @@ submitBracket.addEventListener("click", loadWinners);
                     function secondRound538() {
 
                         for (let i = -1; i < firstRoundWinners538.length; i++) {
+                            ranNumber2 = Math.random()
 
                             if (i % 2 == 0) {
-                                let ranNumber2 = Math.random()
 
                                 if (ranNumber2 <= (((firstRoundWinners538[i].Round2)/(firstRoundWinners538[i].Round1))/((((firstRoundWinners538[i].Round2)/(firstRoundWinners538[i].Round1))+((firstRoundWinners538[i+1].Round2)/(firstRoundWinners538[i+1].Round1)))))) {
                                     secondRoundWinners538.push(firstRoundWinners538[i])
@@ -741,7 +740,6 @@ submitBracket.addEventListener("click", loadWinners);
 
                                 }
 
-                                ranNumber2 = Math.random()
                             }
 
                         }
@@ -757,9 +755,9 @@ submitBracket.addEventListener("click", loadWinners);
                     function thirdRound538() {
 
                         for (let i = -1; i < secondRoundWinners538.length; i++) {
+                            ranNumber3 = Math.random()
 
                             if (i % 2 == 0) {
-                                let ranNumber3 = Math.random()
 
                                 if (ranNumber3 <= (((secondRoundWinners538[i].Round2)/(secondRoundWinners538[i].Round1))/((((secondRoundWinners538[i].Round2)/(secondRoundWinners538[i].Round1))+((secondRoundWinners538[i+1].Round2)/(secondRoundWinners538[i+1].Round1)))))) {
                                     thirdRoundWinners538.push(secondRoundWinners538[i])
@@ -770,7 +768,7 @@ submitBracket.addEventListener("click", loadWinners);
 
                                 }
 
-                                ranNumber3 = Math.random()
+                                
 
                             }
 
@@ -788,9 +786,9 @@ submitBracket.addEventListener("click", loadWinners);
                     function fourthRound538() {
 
                         for (let i = -1; i < thirdRoundWinners538.length; i++) {
+                            ranNumber4 = Math.random()
 
                             if (i % 2 == 0) {
-                                let ranNumber4 = Math.random()
 
                                 if (ranNumber4 <= (((thirdRoundWinners538[i].Round2)/(thirdRoundWinners538[i].Round1))/((((thirdRoundWinners538[i].Round2)/(thirdRoundWinners538[i].Round1))+((thirdRoundWinners538[i+1].Round2)/(thirdRoundWinners538[i+1].Round1)))))) {
                                     finalFourTeams538.push(thirdRoundWinners538[i])
@@ -801,7 +799,6 @@ submitBracket.addEventListener("click", loadWinners);
 
                                 }
 
-                                ranNumber4 = Math.random()
 
                             }
 
@@ -818,9 +815,9 @@ submitBracket.addEventListener("click", loadWinners);
                     function fifthRound538() {
 
                         for (let i = -1; i < finalFourTeams538.length; i++) {
+                            ranNumber5 = Math.random()
 
                             if (i % 2 == 0) {
-                                let ranNumber5 = Math.random()
 
                                 if (ranNumber5 <= (((finalFourTeams538[i].Round2)/(finalFourTeams538[i].Round1))/((((finalFourTeams538[i].Round2)/(finalFourTeams538[i].Round1))+((finalFourTeams538[i+1].Round2)/(finalFourTeams538[i+1].Round1)))))) {
                                     championshipTeams538.push(finalFourTeams538[i])
@@ -831,7 +828,6 @@ submitBracket.addEventListener("click", loadWinners);
 
                                 }
 
-                                ranNumber5 = Math.random()
 
                             }
 
@@ -848,9 +844,9 @@ submitBracket.addEventListener("click", loadWinners);
                     function sixthRound538() {
 
                         for (let i = -1; i < championshipTeams538.length; i++) {
+                            ranNumber6 = Math.random()
 
                             if (i % 2 == 0) {
-                                let ranNumber6 = Math.random()
 
                                 if (ranNumber6 <= (((championshipTeams538[i].Round2)/(championshipTeams538[i].Round1))/((((championshipTeams538[i].Round2)/(championshipTeams538[i].Round1))+((championshipTeams538[i+1].Round2)/(championshipTeams538[i+1].Round1)))))) {
                                     winningTeam538.push(championshipTeams538[i])
@@ -861,7 +857,6 @@ submitBracket.addEventListener("click", loadWinners);
 
                                 }
 
-                                ranNumber6 = Math.random()
 
                             }
 
@@ -1289,9 +1284,10 @@ submitBracket.addEventListener("click", loadWinners);
 
                             for (let i = 0; i < yahooData.length; i++) {
 
+                                ranNum1 = Math.random()
+
                                 if (i % 2 == 0) {
-                                    let ranNum1 = Math.random()
-                                    //console.log(ranNum)
+
                                     if (ranNum1 <= yahooData[i].Round1) {
                                         firstRoundWinners.push(yahooData[i])
 
@@ -1311,8 +1307,6 @@ submitBracket.addEventListener("click", loadWinners);
 
                                     }
 
-                                    ranNum1 = Math.random()
-                                    //console.log(ranNum)
                                 }
 
                             }
@@ -1338,10 +1332,9 @@ submitBracket.addEventListener("click", loadWinners);
                             upsetArray2 = []
 
                             for (let i = -1; i < firstRoundWinners.length; i++) {
+                                ranNum = Math.random()
 
                                 if (i % 2 == 0) {
-                                    let ranNum = Math.random()
-
                                     if (ranNum <= (((firstRoundWinners[i].Round2)/(firstRoundWinners[i].Round1))/((((firstRoundWinners[i].Round2)/(firstRoundWinners[i].Round1))+((firstRoundWinners[i+1].Round2)/(firstRoundWinners[i+1].Round1)))))) {
                                         secondRoundWinners.push(firstRoundWinners[i])
                                         if (firstRoundWinners[i].Seed > firstRoundWinners538[i + 1].Seed) {
@@ -1357,7 +1350,7 @@ submitBracket.addEventListener("click", loadWinners);
 
                                     }
 
-                                    ranNum = Math.random()
+                                    
 
 
                                 }
@@ -1380,15 +1373,17 @@ submitBracket.addEventListener("click", loadWinners);
                         secondRound()
 
 
-
+                        
 
                         function thirdRound() {
                             upsetArray3 = []
 
                             for (let i = -1; i < secondRoundWinners.length; i++) {
 
+                                    ranNum3 = Math.random()
+
                                 if (i % 2 == 0) {
-                                    let ranNum3 = Math.random()
+                                    
 
                                     if (ranNum3 <= (((secondRoundWinners[i].Round2)/(secondRoundWinners[i].Round1))/((((secondRoundWinners[i].Round2)/(secondRoundWinners[i].Round1))+((secondRoundWinners[i+1].Round2)/(secondRoundWinners[i+1].Round1)))))) {
                                         thirdRoundWinners.push(secondRoundWinners[i])
@@ -1404,8 +1399,6 @@ submitBracket.addEventListener("click", loadWinners);
 
                                         }
                                     }
-
-                                    ranNum3 = Math.random()
 
                                 }
 
@@ -1436,9 +1429,9 @@ submitBracket.addEventListener("click", loadWinners);
                             upsetArray4 = []
 
                             for (let i = -1; i < thirdRoundWinners.length; i++) {
+                                ranNum4 = Math.random()
 
                                 if (i % 2 == 0) {
-                                    let ranNum4 = Math.random()
 
                                     if (ranNum4 <= (((thirdRoundWinners[i].Round2)/(thirdRoundWinners[i].Round1))/((((thirdRoundWinners[i].Round2)/(thirdRoundWinners[i].Round1))+((thirdRoundWinners[i+1].Round2)/(thirdRoundWinners[i+1].Round1)))))) {
                                         finalFourTeams.push(thirdRoundWinners[i])
@@ -1459,7 +1452,7 @@ submitBracket.addEventListener("click", loadWinners);
 
                                     }
 
-                                    ranNum4 = Math.random()
+                                    
 
                                 }
 
@@ -1487,9 +1480,9 @@ submitBracket.addEventListener("click", loadWinners);
                             upsetArray5 = []
 
                             for (let i = -1; i < finalFourTeams.length; i++) {
+                                ranNum5 = Math.random()
 
                                 if (i % 2 == 0) {
-                                    let ranNum5 = Math.random()
 
                                     if (ranNum5 <= (((finalFourTeams[i].Round2)/(finalFourTeams[i].Round1))/((((finalFourTeams[i].Round2)/(finalFourTeams[i].Round1))+((finalFourTeams[i+1].Round2)/(finalFourTeams[i+1].Round1)))))) {
                                         championshipTeams.push(finalFourTeams[i])
@@ -1506,7 +1499,7 @@ submitBracket.addEventListener("click", loadWinners);
 
                                     }
 
-                                    ranNum5 = Math.random()
+                                   
 
                                 }
 
@@ -1536,9 +1529,9 @@ submitBracket.addEventListener("click", loadWinners);
                             upsetArray6 = []
 
                             for (let i = -1; i < championshipTeams.length; i++) {
+                                ranNum6 = Math.random()
 
                                 if (i % 2 == 0) {
-                                    let ranNum6 = Math.random()
 
                                     if (ranNum6 <= (((championshipTeams[i].Round2)/(championshipTeams[i].Round1))/((((championshipTeams[i].Round2)/(championshipTeams[i].Round1))+((championshipTeams[i+1].Round2)/(championshipTeams[i+1].Round1)))))) {
                                         winningTeam.push(championshipTeams[i])
@@ -1555,7 +1548,7 @@ submitBracket.addEventListener("click", loadWinners);
 
                                     }
 
-                                    ranNum6 = Math.random()
+                                   
 
                                 }
 
@@ -1761,7 +1754,6 @@ submitBracket.addEventListener("click", loadWinners);
                 thirdPlaceFinishes=0
                 medalFinishes=0
                 regularFinish=0
-            
 
 
     }
