@@ -426,6 +426,7 @@ for (let q=0; q<team.length; q++) {
 $(function () {
     $(".submitBracket").on('click', function(){
     loaderContainer.appendChild(loaderCircle)
+    $('.loader').show();
     setTimeout(function() {
         loadWinners();
         $('.loader').hide();
