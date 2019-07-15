@@ -1,5 +1,6 @@
 let right = document.querySelectorAll(".right")
 let tourneyHeader= document.querySelector(".tournament-header")
+let moo=false
 
 function size(x) {
     for (let i=0; i<right.length; i++) {
@@ -18,7 +19,6 @@ function size(x) {
 
 
 let submitBracket=document.querySelector(".submitBracket")
-let cueBracket=document.querySelector(".cueBracket")
 
 let clear = document.querySelector(".clear")
 let seed = document.querySelectorAll(".seed")
@@ -423,25 +423,23 @@ for (let q=0; q<team.length; q++) {
    
    //if array lengths are greater than certain length, able to submit, if not show pop up error
 
-cueBracket.addEventListener("click", loadBracket);
-
-function loadBracket () {
-
-    for (let c=0; c<field.length; c++) {
-        if (field[c].value.length<1) {
-            alert("Please fill in all input fields")
-            return;
-        }
-    }
-
-loaderContainer.appendChild(loaderCircle)
-
-}
+$(function () {
+    $(".submitBracket").on('click', function(){
+    loaderContainer.appendChild(loaderCircle)
+    setTimeout(function() {
+        loadWinners();
+        $('.loader').hide();
 
 
+    }, 20);
 
-submitBracket.addEventListener("click", loadWinners);
+})   
+})
+
+
                 function loadWinners () {
+
+                    
 
 
                     // myBracketRound1 = ['Duke', 'Central Florida', 'Virginia Tech', 'Mississippi State', 'Maryland', 'Louisiana State', 'Minnesota', 'Michigan State', 'Gonzaga', 'Baylor', 'Florida State', 'Murray State', 'Arizona State', 'Texas Tech', 'Florida', 'Michigan', 'Virginia', 'Oklahoma', 'UC-Irvine', 'Oregon', 'Villanova', 'Purdue', 'Iowa', 'Tennessee', 'North Carolina', 'Washington', 'Kansas', 'Auburn', 'Iowa State', 'Houston', 'Seton Hall', 'Kentucky']
@@ -497,6 +495,9 @@ submitBracket.addEventListener("click", loadWinners);
                         alert ("Please enter participant number greater than 5")
                         return
                     }
+
+
+                    
    
                     let ptsRound1 = [
                         { winPoints: Number(points1.value) },
@@ -1714,11 +1715,11 @@ submitBracket.addEventListener("click", loadWinners);
                 //console.log(firstPlaceFinishes)
                 //console.log(medalFinishes)
 
-                loaderCircle.remove()
+                // loaderCircle.remove()
                 
                 firstDescription.innerHTML=("Percent chance this bracket finishes in first: ")
                 firstPercentage.innerHTML=(firstPlaceFinishes/simulations *100).toFixed(2) + "%"
-                if (firstPlaceFinishes/simulations>.05) {
+                if (firstPlaceFinishes/simulations>regularFinish) {
                     firstPercentage.style.color='green'
                 }
 
@@ -1728,7 +1729,7 @@ submitBracket.addEventListener("click", loadWinners);
 
                 medalDescription.innerHTML=("Percent chance this bracket finishes in the top 3: ")
                 medalPercentage.innerHTML=(medalFinishes/simulations *100).toFixed(2) + "%"
-                if (medalFinishes/simulations>.15) {
+                if (medalFinishes/simulations>(regularFinish*3)) {
                     medalPercentage.style.color='green'
                 }
 
@@ -1742,7 +1743,7 @@ submitBracket.addEventListener("click", loadWinners);
 
                 prizeDescription.innerHTML=("Prize winning expected value: ")
                 prizeWinnings.innerHTML=("$"+expectedPrize.toFixed(2))
-                if (expectedPrize>fee) {
+                if (expectedPrize>0) {
                     prizeWinnings.style.color='green'
                 }
 
@@ -1753,11 +1754,11 @@ submitBracket.addEventListener("click", loadWinners);
                 regularDescription.innerHTML=("Percent chance a random bracket in this pool finishes in first: ")
                 regularPercentage.innerHTML=(regularFinish *100).toFixed(2) + "%"
                 if (regularFinish>.05) {
-                    regularPercentage.style.color='green'
+                    regularPercentage.style.color='brown'
                 }
 
                 else {
-                    regularPercentage.style.color='red'
+                    regularPercentage.style.color='brown'
                 }
 
 
