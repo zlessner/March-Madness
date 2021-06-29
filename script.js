@@ -1706,7 +1706,7 @@ $(function () {
                         medalFinishes = medalFinishes + 1
                     }
 
-                    regularFinish=(1/(participants))
+                    regularFinish=((1/((participants-1)))*(1-(firstPlaceFinishes/simulations)))
                     
 
 
